@@ -16,9 +16,9 @@ import ProductDetails from '@/components/shop/ProductDetails'
 import RelatedProducts from '@/components/shop/RelatedProducts'
 import React from 'react'
 export const metadata = {
-  title: 'Shop-details || Educrat - Professional LMS Online Education Course NextJS Template',
+  title: 'Shop-details ',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   
 }
 export default function page({ params }) {

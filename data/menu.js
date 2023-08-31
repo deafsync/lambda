@@ -124,14 +124,14 @@ export const menuList = [
       {
         title: "About Us",
         links: [
-          { href: "/about-1", label: "About 1" },
+          { href: "/about", label: "About 1" },
           { href: "/about-2", label: "About 2" },
         ],
       },
       {
         title: "Contact",
         links: [
-          { href: "/contact-1", label: "Contact 1" },
+          { href: "/contact", label: "Contact 1" },
           { href: "/contact-2", label: "Contact 2" },
         ],
       },

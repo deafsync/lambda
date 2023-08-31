@@ -409,8 +409,8 @@ export default function Menu({ allClasses, headerPosition }) {
             <li
               
             >
-              <Link data-barba href="/contact-1"  className={
-                pathname == "/contact-1" ? "activeMenu" : "inActiveMenuTwo"
+              <Link data-barba href="/contact"  className={
+                pathname == "/contact" ? "activeMenu" : "inActiveMenuTwo"
               }>
                 Contact
               </Link>

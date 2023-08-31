@@ -2,12 +2,12 @@ export const footerLinks = [
   {
     title: "ABOUT",
     links: [
-      { href: "/about-1", label: "About Us" },
-      { href: "/blog-list-1", label: "Learner Stories" },
+      { href: "/about", label: "About Us" },
+      // { href: "/blog-list-1", label: "Learner Stories" },
       { href: "/instructor-become", label: "Careers" },
-      { href: "/blog-list-1", label: "Press" },
-      { href: "#", label: "Leadership" },
-      { href: "/contact-1", label: "Contact Us" },
+      // { href: "/blog-list-1", label: "Press" },
+      // { href: "#", label: "Leadership" },
+      { href: "/contact", label: "Contact Us" },
     ],
   },
   {
@@ -36,10 +36,10 @@ export const footerLinks = [
   {
     title: "SUPPORT",
     links: [
-      { href: "/terms", label: "Documentation" },
+      // { href: "/terms", label: "Documentation" },
       { href: "/help-center", label: "FAQs" },
-      { href: "/dashboard", label: "Dashboard" },
-      { href: "/contact-1", label: "Contact" },
+      // { href: "/dashboard", label: "Dashboard" },
+      { href: "/contact", label: "Contact" },
     ],
   },
 ];

@@ -19,8 +19,8 @@ export default function ContactOne() {
 
   return (
     <>
-      <section className="">{showMap && <MapComponent />}</section>
-      <section className="layout-pt-md layout-pb-lg">
+      {/* <section className="">{showMap && <MapComponent />}</section> */}
+      <section className="layout-pt-md layout-pb-lg mt-60">
         <div className="container">
           <div className="row y-gap-50 justify-between">
             <div className="col-lg-4">

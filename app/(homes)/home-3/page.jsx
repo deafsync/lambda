@@ -20,9 +20,9 @@ import JoinTwo from '@/components/homes/join/JoinTwo'
 import FooterTwo from '@/components/layout/footers/FooterThree'
 import Preloader from '@/components/common/Preloader'
 export const metadata = {
-  title: 'Home-3 || Educrat - Professional LMS Online Education Course NextJS Template',
+  title: 'Home-3 ',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   
 }
 export default function page() {

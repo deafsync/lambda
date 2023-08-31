@@ -19,9 +19,9 @@ import HelpCenter from '@/components/others/HelpCenter'
 import Terms from '@/components/terms/Terms'
 import React from 'react'
 export const metadata = {
-  title: 'Help-center || Educrat - Professional LMS Online Education Course NextJS Template',
+  title: 'Help-center ',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   
 }
 
@@ -30,13 +30,14 @@ export default function page() {
     <div className="main-content  ">
       <Preloader/>
 
-        <Header/>
-        <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
-            <HelpCenter/>
-            <Faq/>
-            <FooterOne/>
-        </div>
+      <Header/>
+      <div className="content-wrapper js-content-wrapper overflow-hidden">
+          {/* <PageLinks/> */}
+          <div className='mt-20'></div>
+          <HelpCenter/>
+          <Faq/>
+          <FooterOne/>
+      </div>
 
     </div>
   )

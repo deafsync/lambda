@@ -17,9 +17,9 @@ import FooterOne from '@/components/layout/footers/FooterOne'
 import Header from '@/components/layout/headers/Header'
 import React from 'react'
 export const metadata = {
-  title: 'laabdaa',
+  title: 'lambda',
   description:
-    'Elevate your e-learning content with Laabdaa, the most impressive platforms for online courses and education.',
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
 }
 export default function page() {
   return (
@@ -29,7 +29,7 @@ export default function page() {
 
         <Header/>
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
+            {/* <PageLinks/> */}
             <NotFound/>
             <FooterOne/>
         </div>

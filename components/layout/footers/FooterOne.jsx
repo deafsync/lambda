@@ -19,7 +19,7 @@ export default function FooterOne() {
                 <Image
                   width={140}
                   height={50}
-                  src="/assets/img/footer/footer-logo.svg"
+                  src="/assets/img/general/logo-dark.svg"
                   alt="logo"
                 />
               </div>
@@ -64,7 +64,7 @@ export default function FooterOne() {
           <div className="row justify-between items-center y-gap-20">
             <div className="col-auto">
               <div className="d-flex items-center h-100 text-white">
-                © {new Date().getFullYear()} Educrat. All Right Reserved.
+                © {new Date().getFullYear()} Lambda. All Right Reserved.
               </div>
             </div>
 

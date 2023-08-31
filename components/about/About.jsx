@@ -8,7 +8,7 @@ export default function About() {
         <div className="container">
           <div className="page-header__content">
             <div className="row justify-center text-center">
-              <div className="col-auto">
+              {/* <div className="col-auto">
                 <div>
                   <h1 className="page-header__title">About Us</h1>
                 </div>
@@ -19,7 +19,7 @@ export default function About() {
                     reasonable price.
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

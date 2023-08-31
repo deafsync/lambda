@@ -12,6 +12,8 @@ import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import TestimonialsOne from '@/components/common/TestimonialsOne'
 import WhyCourse from '@/components/homes/WhyCourse'
+import LearningPaths from '@/components/homes/LearningPath/LearningPathsSix'
+import Achievements from '@/components/homes/achievements/Achievements'
 
 
 import FooterOne from '@/components/layout/footers/FooterOne'
@@ -19,9 +21,9 @@ import Header from '@/components/layout/headers/Header'
 import React from 'react'
 
 export const metadata = {
-  title: 'About-1 || Educrat - Professional LMS Online Education Course NextJS Template',
+  title: 'About ',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   
 }
 
@@ -32,19 +34,20 @@ export default function page() {
 
         <Header/>
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
-            <About/>
-            <WhyCourse/>
-            
+          {/* <PageLinks/> */}
+          <About/>
 
-            <TestimonialsOne/>
-            <Instructors/>
-            <Brands/>
-           
+          <WhyCourse/>
 
-            
-            
-            <FooterOne/>
+          <Achievements />
+
+          <LearningPaths />            
+
+          {/* <TestimonialsOne/> */}
+          {/* <Instructors/> */}
+          {/* <Brands/> */}
+          
+          <FooterOne/>
         </div>
 
     </div>

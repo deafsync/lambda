@@ -1,52 +1,59 @@
-// import HomeOne from "@/components/homes/home";
-import  Header  from "../components/layout/headers/Header";
-// import MobileMenu from "@/components/layout/component/MobileMenu";
 
-import HomeHero from "../components/homes/heros/HomeHero";
 
-import Brands from "../components/common/Brands";
-import Categories from "../components/homes/categories/Categories";
-import Courses from "../components/homes/courses/Courses";
-import TestimonialsOne from "../components/common/TestimonialsOne";
-import FeaturesOne from "../components/homes/features/FeaturesOne";
-import WhyCourse from "../components/homes/WhyCourse";
-import Instructors from "../components/common/Instructors";
-import GetApp from "../components/homes/getApp/GetApp";
-import Blog from "../components/homes/blogs/Blog";
-import Join from "../components/homes/join/Join";
-import FooterOne from "../components/layout/footers/FooterOne";
-import Preloader from "@/components/common/Preloader";
 
+
+import React from 'react'
+import Header from '@/components/layout/headers/Header'
+import HeroFour from '@/components/homes/heros/HeroFour'
+import Brands from '@/components/common/Brands'
+import StepsOne from '@/components/common/StepsOne'
+import Line from '@/components/common/Line'
+import Join from "@/components/homes/join/Join";
+
+import CategoriesFour from '@/components/homes/categories/CategoriesFour'
+import Courses from '@/components/homes/courses/Courses'
+import LearningPath from '@/components/homes/LearningPath/LearningPath'
+import FeaturedCourses from '@/components/homes/courses/FeaturedCourses'
+import LandJob from '@/components/homes/landJob/LandJob'
+import TestimonialsFour from '@/components/homes/testimonials/TestimonialsFour'
+import AchievementsTwo from '@/components/homes/achievements/AchievementsTwo'
+import InstractorFour from '@/components/homes/instractors/InstractorFour'
+import EventsFour from '@/components/homes/events/EventsFour'
+import LearningSelection from '@/components/homes/LearningSelection'
+import Footer from '@/components/layout/footers/FooterOne'
+import Preloader from '@/components/common/Preloader'
 export const metadata = {
-  title: 'laabdaa',
+  title: 'lambda',
   description:
-    'Elevate your e-learning content with Laabdaa, the most impressive platforms for online courses and education.',
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
 }
 
-export default function HomePage() {
+
+
+
+export default function page() {
   return (
-    
     <>
-    <Preloader/>
-    <Header />
-    
-    <div className="content-wrapper  js-content-wrapper overflow-hidden">
-    
-      <HomeHero />
-      <Brands/>
-      <Categories />
-      <Courses/>
-      <TestimonialsOne/>
-      <FeaturesOne/>
-      <WhyCourse/>
-      <Instructors/>
-      <GetApp/>
-      <Blog/>
-      <Join/>
-      <FooterOne/>
-      
-      
-    </div>
-  </>
-  );
+      <div className='main-content'>
+        <Preloader/>
+        <Header/>
+      </div>
+      <div className="content-wrapper  js-content-wrapper overflow-hidden">
+        <HeroFour/>
+        {/* <Brands/> */}
+        <CategoriesFour/>
+        <Courses/>
+        <Line />
+        <StepsOne/>
+        {/* <FeaturedCourses/> */}
+        <LandJob/>
+        {/* <TestimonialsFour/> */}
+        <AchievementsTwo/>
+        <InstractorFour/>
+        {/* <EventsFour/> */}
+        {/* <LearningSelection/> */}
+        <Footer/>
+      </div>
+      </>
+  )
 }

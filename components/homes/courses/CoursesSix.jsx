@@ -24,15 +24,15 @@ export default function CoursesSix() {
         <div className="row y-gap-20 justify-between items-end">
           <div className="col-auto">
             <div className="sectionTitle ">
-              <h2 className="sectionTitle__title ">Explore Featured Courses</h2>
+              <h2 className="sectionTitle__title ">Commençons notre apprentissage</h2>
 
               <p className="sectionTitle__text ">
-                10,000+ unique online course list designs
+                Vous avez 3 cours en instance 
               </p>
             </div>
           </div>
 
-          <div className="col-auto">
+          {/* <div className="col-auto">
             <div className="tabs__controls row justify-center x-gap-10 bg-light-3 rounded-200 py-5 js-tabs-controls">
               {catagories.slice(0, 4).map((elm, i) => (
                 <div
@@ -52,7 +52,7 @@ export default function CoursesSix() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="tabs__content pt-60 lg:pt-40 js-tabs-content">

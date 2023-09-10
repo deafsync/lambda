@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
 export default function LessonItems({ rightPosition }) {
-  const [activeItemId, setActiveItemId] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeItemId, setActiveItemId] = useState(1);
+  const [isOpen, setIsOpen] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -21,12 +21,12 @@ export default function LessonItems({ rightPosition }) {
         } `}
       >
         <div className="px-30 sm:px-20">
-          <form onSubmit={handleSubmit} className="lesson-sidebar-search">
+          {/* <form onSubmit={handleSubmit} className="lesson-sidebar-search">
             <input type="text" required placeholder="Search" />
             <button className="" type="submit">
               <i className="icon-search text-20"></i>
             </button>
-          </form>
+          </form> */}
 
           <div className="accordion -block-2 text-left js-accordion mt-30">
             {lessonItems.map((item, index) => (
@@ -72,18 +72,17 @@ export default function LessonItems({ rightPosition }) {
                             <div className="">
                               <div>{lesson.title}</div>
                               <div className="d-flex x-gap-20 items-center pt-5">
-                                <span
+                                {/* <span
                                   onClick={() => setIsOpen(true)}
                                   className="text-14 lh-1 text-purple-1 underline cursor"
                                 >
                                   Preview
-                                </span>
-                                <a
-                                  href="#"
+                                </span> */}
+                                <div
                                   className="text-14 lh-1 text-purple-1 underline"
                                 >
                                   {lesson.duration}
-                                </a>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -97,11 +96,6 @@ export default function LessonItems({ rightPosition }) {
           </div>
         </div>
       </aside>
-      <ModalVideoComponent
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        videoId={"LlCwHnp3kL4"}
-      />
     </>
   );
 }

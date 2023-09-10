@@ -50,18 +50,19 @@ export default function HeroSeven() {
             <div className="col-lg-5" data-aos="fade-up" data-aos-delay="500">
               <div className="masthead__content">
                 <div className="text-17 lh-15 text-purple-1 fw-500 mb-10">
-                  Start learning for free
+                  Continue your learning
                 </div>
                 <h1 className="masthead__title">
                   Build data skills
                   <br /> <span className="text-purple-1">online</span>
                 </h1>
                 <p className="mt-5">
-                  Data drives everything. Get the skills you need
+                  Data drives everything. Get the skills you need for the future
                   <br className="lg:d-none" />
-                  for the future of work.
+                  of work. Des compétences pour aujourd'hui (et demain).Nous vous accompagnons
+                  dans vos premiers pas.
                 </p>
-                <div className="row items-center x-gap-20 y-gap-20 pt-20">
+                {/* <div className="row items-center x-gap-20 y-gap-20 pt-20">
                   <div className="col-auto">
                     <Link
                       href="/signup"
@@ -78,41 +79,29 @@ export default function HeroSeven() {
                       Find Courses
                     </Link>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
-            <div className="col-lg-7" data-aos="fade-up" data-aos-delay="750">
+            <div className="col-lg-6 align-self-end" data-aos="fade-up" data-aos-delay="750">
               <div className="masthead__image relative">
                 <Image
-                  width={780}
-                  height={765}
-                  src="/assets/img/home-7/hero/image.png"
+                  width={855}
+                  height={655}
+                  src="/assets/img/home-8/hero/image.png"
                   alt="image"
                 />
-                <div
-                  onClick={() => setIsOpen(true)}
-                  className="absolute-full-center d-flex justify-center items-center cursor"
-                >
-                  <div
-                    style={{ cursor: "pointer" }}
-                    className="d-flex justify-center items-center size-60 rounded-full bg-white js-gallery"
-                    data-gallery="gallery1"
-                  >
-                    <div className="icon-play text-18"></div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <ModalVideo
+      {/* <ModalVideo
         videoId={"LlCwHnp3kL4"}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-      />
+      /> */}
     </>
   );
 }

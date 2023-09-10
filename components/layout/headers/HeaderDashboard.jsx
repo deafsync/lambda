@@ -92,7 +92,7 @@ export default function HeaderDashboard() {
           <div className="row justify-between items-center">
             <div className="col-auto">
               <div className="d-flex items-center">
-                <div className="header__explore text-dark-1">
+                {/* <div className="header__explore text-dark-1">
                   <button
                     onClick={() => {
                       document
@@ -103,22 +103,15 @@ export default function HeaderDashboard() {
                   >
                     <i className="icon -dark-text-white icon-explore"></i>
                   </button>
-                </div>
+                </div> */}
 
                 <div className="header__logo ml-30 md:ml-20">
                   <Link data-barba href="/">
                     <Image
                       width={140}
                       height={50}
-                      className="-light-d-none"
-                      src="/assets/img/general/logo.svg"
-                      alt="logo"
-                    />
-                    <Image
-                      width={140}
-                      height={50}
-                      className="-dark-d-none"
-                      src="/assets/img/general/logo-dark.svg"
+                      className=""
+                      src="/assets/img/general/logo-lambda.svg"
                       alt="logo"
                     />
                   </Link>
@@ -131,10 +124,10 @@ export default function HeaderDashboard() {
                 <div className="text-white d-flex items-center lg:d-none mr-15">
                   <div className="dropdown bg-transparent px-0 py-0">
                     <div className="d-flex items-center text-14 text-dark-1">
-                      All Pages
-                      <i className="text-9 icon-chevron-down ml-10"></i>
+                      <Link href="/learning">Mon apprentissage</Link>
+                      {/* <i className="text-9 icon-chevron-down ml-10"></i> */}
                     </div>
-                    <div className="dropdown__item -dark-bg-dark-2 -dark-border-white-10">
+                    {/* <div className="dropdown__item -dark-bg-dark-2 -dark-border-white-10">
                       <div className="text-14 y-gap-15">
                         <div>
                           <Link
@@ -185,21 +178,21 @@ export default function HeaderDashboard() {
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
-                  <MyCourses />
+                  {/* <MyCourses /> */}
                 </div>
 
                 <div className="d-flex items-center sm:d-none">
-                  <div className="relative">
+                  {/* <div className="relative">
                     <button
                       onClick={handleDarkmode}
                       className="js-darkmode-toggle text-light-1 d-flex items-center justify-center size-50 rounded-16 -hover-dshb-header-light"
                     >
                       <i className="text-24 icon icon-night"></i>
                     </button>
-                  </div>
+                  </div> */}
 
                   <div className="relative">
                     <button
@@ -217,7 +210,7 @@ export default function HeaderDashboard() {
                     }
                   />
 
-                  <div
+                  {/* <div
                     className="relative"
                     onClick={() => setMessageOpen(true)}
                   >
@@ -228,7 +221,7 @@ export default function HeaderDashboard() {
                     >
                       <i className="text-24 icon icon-email"></i>
                     </a>
-                  </div>
+                  </div> */}
 
                   <div
                     className="relative"

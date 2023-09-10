@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import FooterNine from "../layout/footers/FooterNine";
+import Footer from '@/components/layout/footers/FooterOne'
 import { coursesData } from "@/data/dashboard";
 import Pagination from "../common/Pagination";
 import CoursesCardDashboard from "./DashBoardCards/CoursesCardDashboard";
@@ -41,11 +41,11 @@ export default function MyCourses() {
   }, [currentCategory, pageData]);
 
   return (
-    <div className="dashboard__main">
+    <div className="dashboard__main1">
       <div className="dashboard__content bg-light-4">
         <div className="row pb-50 mb-10">
           <div className="col-auto">
-            <h1 className="text-30 lh-12 fw-700">My Courses</h1>
+            <h1 className="text-30 lh-12 fw-700">My Learning</h1>
             <div className="mt-10">
               Lorem ipsum dolor sit amet, consectetur.
             </div>
@@ -260,7 +260,7 @@ export default function MyCourses() {
         </div>
       </div>
 
-      <FooterNine />
+      <Footer />
     </div>
   );
 }

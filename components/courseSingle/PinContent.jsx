@@ -149,7 +149,7 @@ export default function PinContent({ pageItem }) {
               </div>
             </div>
 
-            <div className="d-flex justify-center pt-15">
+            {/* <div className="d-flex justify-center pt-15">
               <a
                 href="#"
                 className="d-flex justify-center items-center size-40 rounded-full"
@@ -177,7 +177,7 @@ export default function PinContent({ pageItem }) {
               >
                 <i className="fa fa-linkedin"></i>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

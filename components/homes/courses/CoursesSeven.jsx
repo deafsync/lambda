@@ -6,7 +6,7 @@ import { coursesData } from "@/data/courses";
 import { courseStates } from "@/data/courses";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CourceCardSeven from "@/components/homes/courseCards/CourseCardSeven";
+import CourseCardSix from "@/components/homes/courseCards/CourseCardSix";
 import Link from "next/link";
 
 export default function CoursesSeven() {
@@ -35,16 +35,16 @@ export default function CoursesSeven() {
             <div className="col-lg-6">
               <div className="sectionTitle ">
                 <h2 className="sectionTitle__title ">
-                  Our Most Popular Courses
+                  Commençons notre apprentissage
                 </h2>
 
                 <p className="sectionTitle__text ">
-                  10,000+ unique online course list designs
+                  Vous avez 3 cours en instance
                 </p>
               </div>
             </div>
 
-            <div className="col-lg-auto">
+            {/* <div className="col-lg-auto">
               <Link
                 href="/courses-list-6"
                 className="button -icon -purple-3 text-purple-1"
@@ -52,7 +52,7 @@ export default function CoursesSeven() {
                 All Courses
                 <i className="icon-arrow-top-right text-13 ml-10"></i>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="tabs__content pt-60 lg:pt-50 js-tabs-content">
@@ -80,26 +80,32 @@ export default function CoursesSeven() {
                     breakpoints={{
                       // when window width is >= 576px
                       450: {
-                        slidesPerView: 2,
+                        slidesPerView: 1,
                       },
                       // when window width is >= 768px
                       768: {
-                        slidesPerView: 3,
+                        slidesPerView: 1,
                       },
                       1200: {
                         // when window width is >= 992px
-                        slidesPerView: 4,
+                        slidesPerView: 2,
                       },
                     }}
                   >
-                    {pageItem.map((elm, i) => (
+                    {pageItem.slice(0, 3).map((elm, i) => (
                       <SwiperSlide
                         key={i}
                         className="swiper-slide -type-1  border-light bg-white rounded-8 "
                       >
-                        <CourceCardSeven data={elm} index={i} />
+                        {/* <CourceCardSix data={elm} key={i} index={i} /> */}
+                        {/* {pageItem.slice(0, 3).map((elm, i) => ( */}
+                          <CourseCardSix data={elm} key={i} index={i} />
+                        {/* ))} */}
                       </SwiperSlide>
                     ))}
+                    {/* {pageItem.slice(0, 3).map((elm, i) => (
+                      <CourseCardSix data={elm} key={i} index={i} />
+                    ))} */}
                   </Swiper>
                 )}
 

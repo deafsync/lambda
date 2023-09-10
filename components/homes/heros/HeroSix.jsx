@@ -57,7 +57,7 @@ export default function HeroSix() {
               <div className="masthead__content">
                 <h1 className="masthead__title">
                   More Than{" "}
-                  <span className="text-purple-1 underline">3.500+</span>{" "}
+                  <span className="text-purple-1">3.500+</span>{" "}
                   <br className="md:d-none" /> Education Courses
                   <br className="md:d-none" /> Online Join Us Today
                 </h1>

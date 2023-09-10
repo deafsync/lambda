@@ -19,7 +19,7 @@ export default function FooterOne() {
                 <Image
                   width={140}
                   height={50}
-                  src="/assets/img/general/logo-dark.svg"
+                  src="/assets/img/general/logo-dark-f.svg"
                   alt="logo"
                 />
               </div>

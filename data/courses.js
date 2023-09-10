@@ -20,30 +20,30 @@ export const coursesData = [
       "difficulty": "Easy",
       "desc": "Introductory course on web hosting, domain registration, and how you can easily publish and edit your website online."
   },
-  {
-      "id": 2,
-      "imageSrc": "/assets/img/coursesCards/9.png",
-      "authorImageSrc": "/assets/img/general/avatar-1.png",
-      "title": "Complete Python Bootcamp From Zero to Hero in Python",
-      "rating": 4.7,
-      "ratingCount": 1991,
-      "lessonCount": 6,
-      "duration": 410,
-      "level": "Expert",
-      "originalPrice": 189,
-      "discountedPrice": 89,
-      "paid": true,
-      "category": "Programming",
-      "languange": "German",
-      "authorName": "Jenny Wilson",
-      "popular": true,
-      "new": true,
-      "bestSeller": true,
-      "state": "Fetured",
-      "viewStatus": "Low",
-      "difficulty": "Easy",
-      "desc": "Introductory course on web hosting, domain registration, and how you can easily publish and edit your website online."
-  },
+//   {
+//       "id": 2,
+//       "imageSrc": "/assets/img/coursesCards/6.png",
+//       "authorImageSrc": "/assets/img/general/avatar-1.png",
+//       "title": "Complete Python Bootcamp From Zero to Hero in Python",
+//       "rating": 4.7,
+//       "ratingCount": 1991,
+//       "lessonCount": 6,
+//       "duration": 410,
+//       "level": "Expert",
+//       "originalPrice": 189,
+//       "discountedPrice": 89,
+//       "paid": true,
+//       "category": "Programming",
+//       "languange": "German",
+//       "authorName": "Jenny Wilson",
+//       "popular": true,
+//       "new": true,
+//       "bestSeller": true,
+//       "state": "Fetured",
+//       "viewStatus": "Low",
+//       "difficulty": "Easy",
+//       "desc": "Introductory course on web hosting, domain registration, and how you can easily publish and edit your website online."
+//   },
   {
       "id": 3,
       "imageSrc": "/assets/img/coursesCards/6.png",
@@ -67,7 +67,7 @@ export const coursesData = [
   },
   {
       "id": 4,
-      "imageSrc": "/assets/img/coursesCards/1.png",
+      "imageSrc": "/assets/img/coursesCards/6.png",
       "authorImageSrc": "/assets/img/general/avatar-1.png",
       "title": "The Ultimate Drawing Course Beginner to Advanced",
       "rating": 4.2,
@@ -946,7 +946,6 @@ export const catagories = [
   "Photography",
   "Art",
   "Programming",
-
   "Writing",
 ];
 
@@ -1046,8 +1045,9 @@ export const categories = [
   { id: 3, title: "Design",  },
   { id: 4, title: "Photography",  },
   { id: 5, title: "Programming",  },
-
   { id: 6, title: "Writing", },
+  { id: 7, title: "Writing", },
+  { id: 8, title: "Writing", },
 ];
 
 export const duration = [

@@ -35,7 +35,7 @@ export default function CoursesTwo() {
             </div>
           </div>
 
-          <div className="col-lg-auto">
+          {/* <div className="col-lg-auto">
             <div className="d-inline-block">
               <div
                 className={`dropdown js-dropdown js-category-active ${
@@ -71,7 +71,7 @@ export default function CoursesTwo() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div

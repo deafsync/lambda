@@ -34,16 +34,16 @@ export default function CoursesFive({ tabBtnStyle }) {
             <div className="col-auto">
               <div className="sectionTitle ">
                 <h2 className="sectionTitle__title ">
-                  Explore Featured Courses
+                  Les cours que nous vous recommandons pour ma catégorie Agriculture
                 </h2>
 
                 <p className="sectionTitle__text ">
-                  10,000+ unique online course list designs
+                  10+ unique online course list designs
                 </p>
               </div>
             </div>
 
-            <div className="col-auto">
+            {/* <div className="col-auto">
               <div className="tabs__controls d-flex justify-center x-gap-10 js-tabs-controls">
                 {courseStates.map((elm, i) => (
                   <div key={i}>
@@ -62,7 +62,7 @@ export default function CoursesFive({ tabBtnStyle }) {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="tabs__content pt-60 lg:pt-50 js-tabs-content">

@@ -110,7 +110,7 @@ export default function CourseDetailsThree({ id }) {
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <div className="page-nav-menu -line">
+              {/* <div className="page-nav-menu -line">
                 <div className="d-flex x-gap-30">
                   {menuItems.map((item) => (
                     <div key={item.id}>
@@ -125,7 +125,7 @@ export default function CourseDetailsThree({ id }) {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               <Overview />
               <CourseContent />

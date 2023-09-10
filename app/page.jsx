@@ -4,7 +4,7 @@
 
 import React from 'react'
 import Header from '@/components/layout/headers/Header'
-import HeroFour from '@/components/homes/heros/HeroFour'
+import HeroFour from '@/components/homes/heros/HeroSix'
 import Brands from '@/components/common/Brands'
 import StepsOne from '@/components/common/StepsOne'
 import Line from '@/components/common/Line'

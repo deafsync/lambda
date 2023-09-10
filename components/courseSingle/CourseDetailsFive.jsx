@@ -1,7 +1,7 @@
 "use client";
 
 import Instractor from "./Instractor";
-import Reviews from "./Reviews";
+import Reviews from "./ReviewSecond";
 import Overview from "./Overview";
 import CourseContent from "./CourseContent";
 import Star from "../common/Star";
@@ -13,9 +13,9 @@ import ModalVideoComponent from "../common/ModalVideo";
 import Image from "next/image";
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
-  { id: 2, href: "#course-content", text: "Course Content", isActive: false },
-  { id: 3, href: "#instructors", text: "Instructors", isActive: false },
-  { id: 4, href: "#reviews", text: "Reviews", isActive: false },
+  // { id: 2, href: "#course-content", text: "Course Content", isActive: false },
+  { id: 2, href: "#instructors", text: "Instructors", isActive: false },
+  { id: 3, href: "#reviews", text: "Reviews", isActive: false },
 ];
 
 export default function CourseDetailsFive({ id }) {
@@ -29,7 +29,7 @@ export default function CourseDetailsFive({ id }) {
   return (
     <>
       <div className="js-pin-container relative">
-        <section className="page-header -type-5">
+        {/* <section className="page-header -type-5">
           <div className="page-header__bg">
             <div
               className="bg-image js-lazy"
@@ -133,12 +133,12 @@ export default function CourseDetailsFive({ id }) {
             </div>
           </div>
         </section>
-        <PinContentTwo pageItem={pageItem} />
+        <PinContentTwo pageItem={pageItem} /> */}
 
         <section className="pt-30 layout-pb-md">
-          <div className="container">
+          <div className="">
             <div className="row">
-              <div className="col-lg-8">
+              <div className="col-lg-12">
                 <div className="pt-25 pb-30 px-30 bg-white shadow-2 rounded-8 border-light">
                   <div className="tabs -active-purple-2 js-tabs pt-0">
                     <div className="tabs__controls d-flex js-tabs-controls">

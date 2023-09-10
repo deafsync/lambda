@@ -109,6 +109,7 @@ export default function CourseDetailsTwo({ id }) {
           </div>
         </div>
       </section>
+      
       <PinContent pageItem={pageItem} />
 
       <section className="layout-pt-md layout-pb-md">

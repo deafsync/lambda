@@ -23,7 +23,7 @@ export default function JoinToday() {
                 href="/instructor-become"
                 className="button -md -dark-1 text-white"
               >
-                Join Our Team
+                Teach now
               </Link>
             </div>
           </div>

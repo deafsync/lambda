@@ -20,7 +20,7 @@ export default function CategoriesFour() {
         <div className="row y-gap-30 pt-60 lg:pt-50">
           {topCatagoriesFour.map((elm, i) => (
             <Link
-              href={`/courses-list-${elm.id > 8 ? 1 : elm.id}`}
+              href={`/courses/${elm.id > 8 ? 1 : elm.id}`}
               key={i}
               className="col-xl-3 col-lg-4 col-md-6 linkCustomTwo"
             >

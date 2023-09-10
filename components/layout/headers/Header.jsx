@@ -9,7 +9,14 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
+import { sidebarItems } from "../../../data/homeSidebarItems";
+import { notifications } from "@/data/notifications";
+
 export default function Header() {
+
+  const [isOnNotification, setIsOnNotification] = useState(false);
+  const [isOnProfile, setIsOnProfile] = useState(false);
+
 
   // sign up (new) : button h-50 px-25 bg-nav--purple-4 -rounded ml-20
   // login (new): button h-50 px-25 bg-nav--purple-3 -rounded text-purple-1 ml-20
@@ -67,11 +74,6 @@ export default function Header() {
                   activeMobileMenu={activeMobileMenu}
                 />
 
-                <CartToggle
-                  parentClassess={"relative ml-30 xl:ml-20"}
-                  allClasses={"d-flex items-center text-dark-1"}
-                />
-
                 <div className="d-none xl:d-block ml-20">
                   <button
                     onClick={() => setActiveMobileMenu(true)}
@@ -86,11 +88,64 @@ export default function Header() {
               <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
                 <Link
                   href="/instructor-become"
-                  className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-20"
+                  className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
                   Enseigner
                 </Link>
-                <Link
+                <Link 
+                  href="/learning"
+                  className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
+                >
+                  Mon apprentissage
+                </Link>
+                <CartToggle
+                  parentClassess={"relative ml-30 mr-25 xl:ml-20 xl:mr-15"}
+                  allClasses={"d-flex items-center text-dark-1"}
+                />
+                <div
+                  className="relative d-flex items-center ml-10"
+                  onClick={() => setIsOnProfile((pre) => !pre)}
+                >
+                  <a href="#" data-el-toggle=".js-profile-toggle">
+                    <Image
+                      width={50}
+                      height={50}
+                      className="size-50"
+                      src="/assets/img/misc/user-profile.png"
+                      alt="image"
+                    />
+                  </a>
+
+                  <div
+                    className={`toggle-element js-profile-toggle ${
+                      isOnProfile ? "-is-el-visible" : ""
+                    } -`}
+                  >
+                    <div className="toggle-bottom -profile bg-white shadow-4 border-light rounded-8 mt-10">
+                      <div className="px-30 py-30">
+                        <div className="sidebar -dashboard">
+                          {sidebarItems.map((elm, i) => (
+                            <div
+                              key={i}
+                              className={`sidebar__item ${
+                                elm.id == 1 ? "-is-active -dark-bg-dark-2" : ""
+                              }`}
+                            >
+                              <a
+                                href={elm.href}
+                                className="d-flex items-center text-17 lh-1 fw-500 "
+                              >
+                                <i className={elm.iconClass}></i>
+                                {elm.text}
+                              </a>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <Link
                   href="/login"
                   className="button px-30 h-50 -outline-dark-1 text-dark-1 ml-20"
                 >
@@ -101,7 +156,7 @@ export default function Header() {
                   className="button px-30 h-50 -purple-1 text-white ml-10"
                 >
                   Sign up
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

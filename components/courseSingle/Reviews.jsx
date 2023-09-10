@@ -150,7 +150,7 @@ export default function Reviews() {
         </div>
       </div>
 
-      <div className="respondForm pt-60">
+      {/* <div className="respondForm pt-60">
         <h3 className="text-20 fw-500">Write a Review</h3>
 
         <div className="mt-30">
@@ -197,7 +197,7 @@ export default function Reviews() {
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }

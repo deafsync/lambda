@@ -27,7 +27,7 @@ export default function Tabs() {
               data-tab-target=".-tab-item-2"
               type="button"
             >
-              Instructor Rules
+              Instructor rules
             </button>
             <button
               onClick={() => setActiveTab(3)}
@@ -37,7 +37,17 @@ export default function Tabs() {
               data-tab-target=".-tab-item-3"
               type="button"
             >
-              Start with Courses
+              Start with courses
+            </button>
+            <button
+              onClick={() => setActiveTab(4)}
+              className={`tabs__button js-tabs-button ml-30 ${
+                activeTab == 4 ? "is-active" : ""
+              } `}
+              data-tab-target=".-tab-item-4"
+              type="button"
+            >
+              Dub your courses
             </button>
           </div>
 
@@ -82,6 +92,18 @@ export default function Tabs() {
                 Many desktop publishing packages and web page editors now use
                 Lorem Ipsum as their default model text, and a search for 'lorem
                 ipsum' will uncover many web sites still in their infancy.
+              </p>
+            </div>
+            <div
+              className={`tabs__pane -tab-item-4 ${
+                activeTab == 4 ? "is-active" : ""
+              } `}
+            >
+              <p className="text-light-1">
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a more-or-less
+                normal distribution of letters,
               </p>
             </div>
           </div>

@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function HeaderTen() {
   return (
     <header className="header -type-1 js-header">
-      <div className="header__container">
+      <div className="header__container py-10">
         <div className="row justify-between items-center">
           <div className="col-auto">
             <div className="header-left">
@@ -16,7 +16,7 @@ export default function HeaderTen() {
                   <Image
                     width={140}
                     height={50}
-                    src="/assets/img/general/logo.svg"
+                    src="/assets/img/general/logo-dark-f.svg"
                     alt="logo"
                   />
                 </Link>
@@ -39,7 +39,7 @@ export default function HeaderTen() {
           <div className="col-auto">
             <div className="header-right d-flex items-center">
               <div className="header-right__buttons">
-                <a href="#" className="button -sm -rounded -white text-dark-1">
+                <a href="/course/1" className="button -sm -rounded -white text-dark-1">
                   Back to Course
                 </a>
               </div>

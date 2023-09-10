@@ -7,7 +7,7 @@ export default function Video() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative pt-40">
+      <div className="relative">
         <Image
           width={690}
           height={330}

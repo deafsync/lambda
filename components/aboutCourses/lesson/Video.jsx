@@ -8,14 +8,14 @@ export default function Video() {
   return (
     <>
       <div className="relative">
-        <Image
+        {/* <Image
           width={690}
           height={330}
           className="w-1/1 rounded-16"
           src="/assets/img/lesson-single/1.png"
           alt="image"
-        />
-        <div className="absolute-full-center d-flex justify-center items-center">
+        /> */}
+        {/* <div className="absolute-full-center d-flex justify-center items-center">
           <span
             style={{ cursor: "pointer" }}
             onClick={() => setIsOpen(true)}
@@ -23,7 +23,14 @@ export default function Video() {
           >
             <span className="icon-play text-18"></span>
           </span>
-        </div>
+        </div> */}
+        {/* <video src="/assets/img/general/video.mp4">
+
+        </video> */}
+        <video controls>
+          <source src="/assets/img/general/video.mp4" type="video/mp4" />
+          Votre navigateur ne prend pas en charge la lecture de vidéos.
+        </video>
       </div>
       <ModalVideoComponent
         videoId={"LlCwHnp3kL4"}

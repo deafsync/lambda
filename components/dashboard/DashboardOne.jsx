@@ -34,7 +34,7 @@ export default function DashboardOne() {
                     {i == 0 && "$"}{elm.value}
                   </div>
                   <div className="lh-1 mt-25">
-                    {/* <span className="text-purple-1">${elm.new}</span> New Sales */}
+                  <Link href={elm.href}>{i !== 3 && <span className="text-purple-1 fw-700 underline">Voir les détails</span>}</Link>
                   </div>
                 </div>
 
@@ -174,7 +174,7 @@ export default function DashboardOne() {
                 <div className="">
                   <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
                     <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
-                      <h2 className="text-17 lh-1 fw-500">Transactions</h2>
+                      <h2 className="text-17 lh-1 fw-500">4 dernieres transactions</h2>
                     </div>
                     <div className="py-30 px-30">
                       <div className="y-gap-40">

@@ -11,7 +11,7 @@ export default function CourseCardSix({ data, index }) {
     }
   }, []);
   return (
-    <div className="col-12">
+    <div className="col-12 course--hover">
       <div className="coursesCard -type-4 d-flex sm:d-block items-center border-light rounded-8 px-10 py-10">
         <div className="coursesCard__image rounded-8">
            <div className="relative">

@@ -106,7 +106,7 @@ export default function Header() {
                   className="relative d-flex items-center ml-10"
                   onClick={() => setIsOnProfile((pre) => !pre)}
                 >
-                  <a href="/settings" data-el-toggle=".js-profile-toggle">
+                  <span data-el-toggle=".js-profile-toggle">
                     <Image
                       width={50}
                       height={50}
@@ -114,36 +114,44 @@ export default function Header() {
                       src="/assets/img/misc/user-profile.png"
                       alt="image"
                     />
-                  </a>
+                  </span>
 
-                  {/* <div
+                  <div
                     className={`toggle-element js-profile-toggle ${
                       isOnProfile ? "-is-el-visible" : ""
                     } -`}
                   >
                     <div className="toggle-bottom -profile bg-white shadow-4 border-light rounded-8 mt-10">
-                      <div className="px-30 py-30">
+                      <div className="px-10 py-30">
                         <div className="sidebar -dashboard">
-                          {sidebarItems.map((elm, i) => (
                             <div
-                              key={i}
-                              className={`sidebar__item ${
-                                elm.id == 1 ? "-is-active -dark-bg-dark-2" : ""
-                              }`}
+                              className={`sidebar__item`}
                             >
                               <a
-                                href={elm.href}
+                                href={'/settings'}
                                 className="d-flex items-center text-17 lh-1 fw-500 "
                               >
-                                <i className={elm.iconClass}></i>
-                                {elm.text}
+                                <i className='icon-setting mr-10'></i>
+                                Settings
                               </a>
                             </div>
-                          ))}
+                            <div
+                              className={`sidebar__item`}
+                            >
+                              <span
+                                onClick={() => {
+                                  alert("logout")
+                                }}
+                                className="d-flex items-center text-17 lh-1 fw-500 "
+                              >
+                                <i className='icon-power mr-10'></i>
+                                Logout
+                              </span>
+                            </div>
                         </div>
                       </div>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
                 {/* <Link
                   href="/login"

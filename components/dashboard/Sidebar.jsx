@@ -12,7 +12,7 @@ export default function Sidebar() {
         <div
           key={i}
           className={`sidebar__item   ${
-            pathname == elm.href ? "-is-active" : ""
+            (pathname.includes(elm.href) && i !== 0) || (pathname == elm.href && i === 0) ? "-is-active" : ""
           } `}
         >
           <Link

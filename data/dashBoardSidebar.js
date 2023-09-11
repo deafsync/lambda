@@ -18,6 +18,24 @@ export const sidebarItems = [
     text: "Avis",
   },
   {
+    id: 23,
+    href: "/dashboard/users",
+    text: "Utilisateurs",
+    iconClass: "text-20 icon-person-2",
+  },
+  {
+    id: 24,
+    href: "/dashboard/students",
+    text: "Étudiants",
+    iconClass: "text-20 icon-person-3",
+  },
+  {
+    id: 25,
+    href: "/dashboard/transactions",
+    text: "Transactions",
+    iconClass: "text-20 icon-list",
+  },
+  {
     id: 6,
     href: "/dshb-reviews",
     iconClass: "text-20 icon-comment",

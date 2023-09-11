@@ -1362,6 +1362,16 @@ button:focus {
   color: var(--color-white) !important;
 }
 
+.button.-white--1 {
+  background-color: transparent !important;
+  color: var(--color-white) !important;
+  border: 2px solid var(--color-white);
+}
+
+.button.-white--1:hover {
+  border: 2px solid var(--color-white);
+}
+
 .button.-outline-white {
   border: 2px solid var(--color-white);
 }
@@ -4277,18 +4287,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.header.-type-1 .header__container {
+/* .header.-type-1 .header__container {
   position: relative;
   max-width: calc(1500px);
   padding: 20px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   margin: 0 auto;
+} */
+
+.header.-type-1 .header__container {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 @media (max-width: 991px) {
-  .header.-type-1 .header__container {
+  /* .header.-type-1 .header__container {
     padding: 20px;
-  }
+  } */
 }
 
 .header.-type-1 .header-left {
@@ -14928,6 +14944,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.course--hover:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .toggle-bottom {
   position: absolute;
   top: 100%;
@@ -14938,7 +14958,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .toggle-bottom.-profile {
-  width: 300px;
+  width: 150px;
   right: 0;
 }
 

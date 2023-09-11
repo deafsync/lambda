@@ -5,6 +5,7 @@ export const states = [
     value: 10800,
     new: 50,
     iconClass: "icon-coupon",
+    href: "/dashboard/transactions"
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const states = [
     value: 10,
     new: 40,
     iconClass: "icon-play-button",
+    href: "/dashboard/course"
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const states = [
     value: 120,
     new: 90,
     iconClass: "icon-graduate-cap",
+    href: "/dashboard/students"
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export const states = [
     value: 1,
     new: 290,
     iconClass: "icon-online-learning",
+    href: "/dashboard/users/instructors"
   },
 ];
 

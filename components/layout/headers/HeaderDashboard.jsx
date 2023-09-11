@@ -123,10 +123,10 @@ export default function HeaderDashboard() {
               <div className="d-flex items-center">
                 <div className="text-white d-flex items-center lg:d-none mr-15">
                   <div className="dropdown bg-transparent px-0 py-0">
-                    <div className="d-flex items-center text-14 text-dark-1">
+                    {/* <div className="d-flex items-center text-14 text-dark-1">
                       <Link href="/learning">Mon apprentissage</Link>
-                      {/* <i className="text-9 icon-chevron-down ml-10"></i> */}
-                    </div>
+                      <i className="text-9 icon-chevron-down ml-10"></i>
+                    </div> */}
                     {/* <div className="dropdown__item -dark-bg-dark-2 -dark-border-white-10">
                       <div className="text-14 y-gap-15">
                         <div>
@@ -203,12 +203,12 @@ export default function HeaderDashboard() {
                     </button>
                   </div>
 
-                  <CartToggle
+                  {/* <CartToggle
                     parentClassess={"relative"}
                     allClasses={
                       "d-flex items-center text-light-1 d-flex items-center justify-center size-50 rounded-16 -hover-dshb-header-light"
                     }
-                  />
+                  /> */}
 
                   {/* <div
                     className="relative"
@@ -281,7 +281,7 @@ export default function HeaderDashboard() {
                   className="relative d-flex items-center ml-10"
                   onClick={() => setIsOnProfile((pre) => !pre)}
                 >
-                  <a href="#" data-el-toggle=".js-profile-toggle">
+                  <a href="/settings" data-el-toggle=".js-profile-toggle">
                     <Image
                       width={50}
                       height={50}

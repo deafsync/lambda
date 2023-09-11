@@ -30,15 +30,15 @@ export default function DashboardOne() {
               <div className="d-flex justify-between items-center py-35 px-30 rounded-16 bg-white -dark-bg-dark-1 shadow-4">
                 <div>
                   <div className="lh-1 fw-500">{elm.title}</div>
-                  <div className="text-24 lh-1 fw-700 text-dark-1 mt-20">
-                    ${elm.value}
+                  <div className="text-30 lh-1 fw-800 text-dark-1 mt-20">
+                    {i == 0 && "$"}{elm.value}
                   </div>
                   <div className="lh-1 mt-25">
-                    <span className="text-purple-1">${elm.new}</span> New Sales
+                    {/* <span className="text-purple-1">${elm.new}</span> New Sales */}
                   </div>
                 </div>
 
-                <i className={`text-40 ${elm.iconClass} text-purple-1`}></i>
+                <i className={`text-60 ${elm.iconClass} text-purple-1`}></i>
               </div>
             </div>
           ))}
@@ -62,7 +62,7 @@ export default function DashboardOne() {
                     }}
                     className="dropdown js-dropdown js-category-active"
                   >
-                    <div
+                    {/* <div
                       className="dropdown__button d-flex items-center text-14 bg-white -dark-bg-dark-1 border-light rounded-8 px-20 py-10 text-14 lh-12"
                       data-el-toggle=".js-category-toggle"
                       data-el-toggle-active=".js-category-active"
@@ -100,11 +100,11 @@ export default function DashboardOne() {
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
-              <div className="py-40 px-30">
+              <div className="py-40 sm:px-0 sm:pr-10 px-30">
                 <Charts />
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function DashboardOne() {
 
           <div className="col-xl-4 col-md-6">
             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
-              <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
+              {/* <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
                 <h2 className="text-17 lh-1 fw-500">Traffic</h2>
                 <div className="">
                   <div
@@ -168,16 +168,50 @@ export default function DashboardOne() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="py-40 px-30">
-                <PieChartComponent />
+              </div> */}
+              <div className="">
+                {/* <PieChartComponent /> */}
+                <div className="">
+                  <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
+                    <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
+                      <h2 className="text-17 lh-1 fw-500">Transactions</h2>
+                    </div>
+                    <div className="py-30 px-30">
+                      <div className="y-gap-40">
+                        {notifications.slice(0, 3).map((elm, i) => (
+                          <div
+                            key={i}
+                            className={`d-flex items-center ${
+                              i != 0 ? "border-top-light" : ""
+                            } `}
+                          >
+                            <div className="shrink-0">
+                              <Image
+                                width={40}
+                                height={40}
+                                src={elm.imageSrc}
+                                alt="image"
+                              />
+                            </div>
+                            <div className="ml-12">
+                              <h4 className="text-15 lh-1 fw-500">{elm.heading}</h4>
+                              <div className="text-13 lh-1 mt-10">
+                                {elm.time} Hours Ago
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div className="row y-gap-30 pt-30">
-          <div className="col-xl-4 col-md-6">
+          {/* <div className="col-xl-4 col-md-6">
             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
               <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
                 <h2 className="text-17 fw-500">Popular Instructor</h2>
@@ -237,9 +271,9 @@ export default function DashboardOne() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="col-xl-4 col-md-6">
+          {/* <div className="col-xl-4 col-md-6">
             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
               <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
                 <h2 className="text-17 lh-1 fw-500">Recent Courses</h2>
@@ -294,9 +328,9 @@ export default function DashboardOne() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="col-xl-4 col-md-6">
+          {/* <div className="col-xl-4 col-md-6">
             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
               <div className="d-flex justify-between items-center py-20 px-30 border-bottom-light">
                 <h2 className="text-17 lh-1 fw-500">Notifications</h2>
@@ -329,7 +363,7 @@ export default function DashboardOne() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

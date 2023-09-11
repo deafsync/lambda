@@ -5,7 +5,6 @@ import EditProfile from "./EditProfile";
 import Password from "./Password";
 import SocialProfiles from "./SocialProfiles";
 import CloseAccount from "./CloseAccount";
-import FooterNine from "@/components/layout/footers/FooterNine";
 import Notification from "./Notifications";
 
 const buttons = [
@@ -20,7 +19,7 @@ export default function Settings() {
   const [activeTab, setActiveTab] = useState(1);
 
   return (
-    <div className="dashboard__main">
+    <div className="dashboard__main1">
       <div className="dashboard__content bg-light-4">
         <div className="row pb-50 mb-10">
           <div className="col-auto">
@@ -63,7 +62,6 @@ export default function Settings() {
         </div>
       </div>
 
-      <FooterNine />
     </div>
   );
 }

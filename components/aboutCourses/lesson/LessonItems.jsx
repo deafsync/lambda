@@ -79,7 +79,7 @@ export default function LessonItems({ rightPosition }) {
                                   Preview
                                 </span> */}
                                 <div
-                                  className="text-14 lh-1 text-purple-1 underline"
+                                  className="text-14 lh-1 text-purple-1"
                                 >
                                   {lesson.duration}
                                 </div>

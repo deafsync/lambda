@@ -13,6 +13,7 @@ export default function CoursesSeven() {
   const [showSlider, setShowSlider] = useState(false);
   const [currentCourseState, setCurrentCourseState] = useState("All");
   const [pageItem, setPageItem] = useState([]);
+
   useEffect(() => {
     if (currentCourseState == "All") {
       setPageItem(coursesData);
@@ -27,6 +28,7 @@ export default function CoursesSeven() {
   useEffect(() => {
     setShowSlider(true);
   }, []);
+  
   return (
     <section className="layout-pt-lg layout-pb-md">
       <div className="container">

@@ -6,6 +6,24 @@ export const sidebarItems = [
     text: "Dashboard",
   },
   {
+    id: 20,
+    href: "/dashboard/course",
+    iconClass: "text-20 icon-play-button",
+    text: "Cours",
+  },
+  {
+    id: 21,
+    href: "/dashboard/avis",
+    iconClass: "text-20 icon-comment",
+    text: "Avis",
+  },
+  {
+    id: 6,
+    href: "/dshb-reviews",
+    iconClass: "text-20 icon-comment",
+    text: "Reviews",
+  },
+  {
     id: 2,
     href: "/dshb-courses",
     iconClass: "text-20 icon-play-button",
@@ -29,12 +47,6 @@ export const sidebarItems = [
     href: "/dshb-listing",
     iconClass: "text-20 icon-list",
     text: "Create Course",
-  },
-  {
-    id: 6,
-    href: "/dshb-reviews",
-    iconClass: "text-20 icon-comment",
-    text: "Reviews",
   },
   {
     id: 7,

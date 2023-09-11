@@ -106,7 +106,7 @@ export default function Header() {
                   className="relative d-flex items-center ml-10"
                   onClick={() => setIsOnProfile((pre) => !pre)}
                 >
-                  <a href="#" data-el-toggle=".js-profile-toggle">
+                  <a href="/settings" data-el-toggle=".js-profile-toggle">
                     <Image
                       width={50}
                       height={50}
@@ -116,7 +116,7 @@ export default function Header() {
                     />
                   </a>
 
-                  <div
+                  {/* <div
                     className={`toggle-element js-profile-toggle ${
                       isOnProfile ? "-is-el-visible" : ""
                     } -`}
@@ -143,7 +143,7 @@ export default function Header() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 {/* <Link
                   href="/login"

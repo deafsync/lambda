@@ -19,9 +19,9 @@ export default function FooterNine() {
                   <Links />
                 </div>
 
-                <button className="button -md -rounded bg-light-4 text-light-1 ml-30">
+                {/* <button className="button -md -rounded bg-light-4 text-light-1 ml-30">
                   English
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

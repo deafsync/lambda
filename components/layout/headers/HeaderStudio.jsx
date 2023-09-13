@@ -36,7 +36,7 @@ export default function HeaderStudio() {
             <div className="header-right d-flex items-center">
                 <div className="header-right__buttons">
                     <a href="/course/1" className="button -sm -rounded -white text-dark-1">
-                    Back to Course
+                    Enrégistrer
                     </a>
                 </div>
                 <div className="header-right__buttons">

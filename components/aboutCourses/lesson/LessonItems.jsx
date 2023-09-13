@@ -16,11 +16,11 @@ export default function LessonItems({ rightPosition }) {
   return (
     <>
       <aside
-        className={`lesson-sidebar  ${
+        className={`lesson-sidebar--1 col-lg-3 col-md-4 ${
           rightPosition ? "-type-2 lg:order-2 " : "bg-light-3"
         } `}
       >
-        <div className="px-30 sm:px-20">
+        <div className="px-10 sm:pt-20 sm:px-10">
           {/* <form onSubmit={handleSubmit} className="lesson-sidebar-search">
             <input type="text" required placeholder="Search" />
             <button className="" type="submit">
@@ -28,7 +28,7 @@ export default function LessonItems({ rightPosition }) {
             </button>
           </form> */}
 
-          <div className="accordion -block-2 text-left js-accordion mt-30">
+          <div className="accordion -block-2 text-left js-accordion">
             {lessonItems.map((item, index) => (
               <div
                 className={`accordion__item ${

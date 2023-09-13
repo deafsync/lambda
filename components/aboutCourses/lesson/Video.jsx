@@ -7,28 +7,12 @@ export default function Video() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative">
-        {/* <Image
-          width={690}
-          height={330}
-          className="w-1/1 rounded-16"
-          src="/assets/img/lesson-single/1.png"
-          alt="image"
-        /> */}
-        {/* <div className="absolute-full-center d-flex justify-center items-center">
-          <span
-            style={{ cursor: "pointer" }}
-            onClick={() => setIsOpen(true)}
-            className="d-flex justify-center items-center size-60 rounded-full bg-white"
-          >
-            <span className="icon-play text-18"></span>
-          </span>
-        </div> */}
-        {/* <video src="/assets/img/general/video.mp4">
-
-        </video> */}
-        <video controls>
-          <source src="/assets/img/general/video.mp4" type="video/mp4" />
+      <div className="">
+        <video 
+          controls
+          style={{width: '100%', height: "auto"}}
+        >
+          <source src="/assets/img/general/video.mp4" type="video/mp4" style={{width: '100% !important'}}/>
           Votre navigateur ne prend pas en charge la lecture de vidéos.
         </video>
       </div>

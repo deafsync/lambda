@@ -2,14 +2,12 @@
 import Preloader from '@/components/common/Preloader'
 import MyCourses from '@/components/dashboard/MyCourses'
 import Sidebar from '@/components/dashboard/Sidebar'
-import HeaderDashboard from '@/components/layout/headers/HeaderDashboard'
+import Header from '@/components/layout/headers/Header'
 import React from 'react'
 
 export const metadata = {
   title: 'learning',
-  description:
-    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
-  
+  description: 'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
 }
 
 export default function page() {
@@ -18,7 +16,7 @@ export default function page() {
     <>
     <div className='main-content'>
       <Preloader/>
-      <HeaderDashboard/>
+      <Header/>
     </div>
     <div className="content-wrapper  js-content-wrapper overflow-hidden">
       <MyCourses/>

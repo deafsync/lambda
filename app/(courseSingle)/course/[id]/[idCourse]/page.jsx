@@ -25,17 +25,13 @@ export default function page({params}) {
         <HeaderTen/>
         <div  className="content-wrapper  js-content-wrapper overflow-hidden">
             <LessonItems/>
-            <section  className="layout-pt-lg layout-pb-lg lg:pt-40">
+            <section  className="layout-pt-lg layout-pb-lg md:pt-40">
                 <div  className="">
                     <div  className="row justify-end">
-                        <div  className="col-xxl-9 col-xl-8 col-lg-9">
+                        <div  className="col-lg-9 col-md-8">
                             <Video/>
-
-                            {/* <Descriptions/>
-                            <Reviews/> */}
                             
                             <CourseDetailsFive id={params.id} />
-
                         </div>
                     </div>
                 </div>

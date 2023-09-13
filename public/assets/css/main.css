@@ -1311,17 +1311,57 @@ button:focus {
 }
 
 .button.-sm {
-  padding: 6px 34px;
+  padding: 3px 20px;
   font-size: 15px;
   height: 40px;
 }
 
 .button.-md {
-  padding: 12px 55px;
+  padding: 8px 40px;
   font-size: 16px;
   line-height: 18px;
   font-weight: 500;
   height: 60px;
+}
+
+.stt__item {
+  background-color: #FFF;
+  border-top: 1px solid #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
+  padding: 20px;
+  font-weight: 700;
+  border-left: 4px solid #FFF;
+}
+
+.stt__item textarea{
+  width: 100%;
+  background-color: #fff;
+}
+
+.stt__item:hover {
+  background-color: #F7F9FA;
+  border-left: 4px solid var(--color-green-1);
+}
+
+.stt__item:hover textarea{
+  outline: none;
+  border: none;
+}
+
+.text__focus:focus,  .text__focus:active{
+  outline: none;
+  border: none;
+}
+
+.aside--stt {
+  overflow: scroll;
+  height: calc(100vh - 84px);
+}
+
+@media screen and (width : 775px) {
+  .aside--stt {
+    height: fit-content;
+  }
 }
 
 .button.-icon {
@@ -10456,8 +10496,17 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 120px;
 }
 
+.lesson-sidebar--1 {
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding-top: 120px;
+}
+
 @media (max-width: 1199px) {
-  .lesson-sidebar {
+  .lesson-sidebar{
     width: 320px;
   }
 }
@@ -10468,6 +10517,17 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
     width: 100%;
     padding-top: 141px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 775px) {
+
+  .lesson-sidebar--1 {
+    position: relative;
+    height: auto;
+    /* width: 100%; */
+    /* padding-top: 141px; */
     padding-bottom: 50px;
   }
 }

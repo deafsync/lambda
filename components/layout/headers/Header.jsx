@@ -157,7 +157,7 @@ export default function Header() {
                   href="/login"
                   className="button px-30 h-50 -outline-dark-1 text-dark-1 ml-20"
                 >
-                  Log in
+                  Log in        
                 </Link>
                 <Link
                   href="/signup"

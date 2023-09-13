@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 
 
 import { useEffect } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import Context from '@/context/Context';
 
 
@@ -25,6 +26,12 @@ export default function RootLayout({ children }) {
       once:true
     });
   }, []);
+
+  const router = useRouter()
+  const pathname = usePathname()
+
+  console.log("ROUTE", pathname)
+
   return (
     <html lang="en" className=''>
       <head>

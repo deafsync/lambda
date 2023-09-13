@@ -135,7 +135,7 @@ export default function CourseDetailsFive({ id }) {
         </section>
         <PinContentTwo pageItem={pageItem} /> */}
 
-        <section className="pt-30 layout-pb-md">
+        <section className="pt-30">
           <div className="">
             <div className="row">
               <div className="col-lg-12">
@@ -166,16 +166,8 @@ export default function CourseDetailsFive({ id }) {
                       </div>
 
                       <div
-                        className={`tabs__pane -tab-item-2 ${
-                          activeTab == 2 ? "is-active" : ""
-                        } `}
-                      >
-                        <CourseContent />
-                      </div>
-
-                      <div
                         className={`tabs__pane -tab-item-3 ${
-                          activeTab == 3 ? "is-active" : ""
+                          activeTab == 2 ? "is-active" : ""
                         } `}
                       >
                         <Instractor />
@@ -183,7 +175,7 @@ export default function CourseDetailsFive({ id }) {
 
                       <div
                         className={`tabs__pane -tab-item-4 ${
-                          activeTab == 4 ? "is-active" : ""
+                          activeTab == 3 ? "is-active" : ""
                         } `}
                       >
                         <Reviews />

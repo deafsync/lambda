@@ -180,7 +180,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
         )} */}
 
         <div className="py-20">
-          <div className=" -before-border py-3 pl-30 xl:pl-20 mr-10">
+          <div className="d-none xl:d-flex -before-border py-3 pl-30 xl:pl-20 mr-10">
             <Link
               href="/dashboard"
               className="title"

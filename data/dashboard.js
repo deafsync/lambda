@@ -36,7 +36,7 @@ export const states = [
 export const coursesData = [
   {
     id: 1,
-    imageSrc: "/assets/img/coursesCards/1.png",
+    imageSrc: "/assets/img/coursesCards/1.jpg",
     authorImageSrc: "/assets/img/general/avatar-1.png",
     title: "Learn Figma - UI/UX Design Essential Training",
     rating: 4.3,
@@ -57,7 +57,7 @@ export const coursesData = [
   },
   {
     id: 2,
-    imageSrc: "/assets/img/coursesCards/2.png",
+    imageSrc: "/assets/img/coursesCards/2.jpg",
     authorImageSrc: "/assets/img/general/avatar-1.png",
     title: "Complete Python Bootcamp From Zero to Hero in Python",
     rating: 4.7,
@@ -79,7 +79,7 @@ export const coursesData = [
   },
   {
     id: 3,
-    imageSrc: "/assets/img/coursesCards/3.png",
+    imageSrc: "/assets/img/coursesCards/2.jpg",
     authorImageSrc: "/assets/img/general/avatar-1.png",
     title: "Angular - The Complete Guide (2022 Edition)",
     rating: 4.5,
@@ -99,7 +99,7 @@ export const coursesData = [
   },
   {
     id: 4,
-    imageSrc: "/assets/img/coursesCards/4.png",
+    imageSrc: "/assets/img/coursesCards/8.jpg",
     authorImageSrc: "/assets/img/general/avatar-1.png",
     title: "The Ultimate Drawing Course Beginner to Advanced",
     rating: 4.2,
@@ -119,7 +119,7 @@ export const coursesData = [
   },
   {
     id: 5,
-    imageSrc: "/assets/img/coursesCards/5.png",
+    imageSrc: "/assets/img/coursesCards/7.jpg",
     authorImageSrc: "/assets/img/general/avatar-1.png",
     title: "Photography Masterclass: A Complete Guide to Photography",
     rating: 3.8,
@@ -139,7 +139,7 @@ export const coursesData = [
   },
   {
     id: 6,
-    imageSrc: "/assets/img/coursesCards/7.png",
+    imageSrc: "/assets/img/coursesCards/7.jpg",
     imageAlt: "image",
     rating: 4.6,
     textRatingCount: 1991,
@@ -161,7 +161,7 @@ export const coursesData = [
   },
   {
     id: 7,
-    imageSrc: "/assets/img/coursesCards/8.png",
+    imageSrc: "/assets/img/coursesCards/8.jpg",
     imageAlt: "image",
     rating: 3.5,
     textRatingCount: 1991,
@@ -183,7 +183,7 @@ export const coursesData = [
   },
   {
     id: 8,
-    imageSrc: "/assets/img/coursesCards/9.png",
+    imageSrc: "/assets/img/coursesCards/6.jpg",
     imageAlt: "image",
     rating: 4.8,
     textRatingCount: 1991,
@@ -205,7 +205,7 @@ export const coursesData = [
   },
   {
     id: 9,
-    imageSrc: "/assets/img/coursesCards/10.png",
+    imageSrc: "/assets/img/coursesCards/1.jpg",
     imageAlt: "image",
     rating: 3.9,
     textRatingCount: 1991,
@@ -227,7 +227,7 @@ export const coursesData = [
   },
   {
     id: 10,
-    imageSrc: "/assets/img/coursesCards/11.png",
+    imageSrc: "/assets/img/coursesCards/6.jpg",
     imageAlt: "image",
     rating: 4.2,
     textRatingCount: 1991,
@@ -249,7 +249,7 @@ export const coursesData = [
   },
   {
     id: 11,
-    imageSrc: "/assets/img/coursesCards/12.png",
+    imageSrc: "/assets/img/coursesCards/2.jpg",
     imageAlt: "image",
     rating: 5.0,
     textRatingCount: 1991,

@@ -86,23 +86,29 @@ export default function Header() {
               </div>
 
               <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
-                <Link
+                {/* <Link
                   href="/instructor-become"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
                   Enseigner
+                </Link> */}
+                <Link
+                  href="/dashboard"
+                  className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
+                >
+                  Enseigner
                 </Link>
-                <Link 
+                {/* <Link 
                   href="/learning"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
                   Mon apprentissage
-                </Link>
-                <CartToggle
+                </Link> */}
+                {/* <CartToggle
                   parentClassess={"relative ml-30 mr-25 xl:ml-20 xl:mr-15"}
                   allClasses={"d-flex items-center text-dark-1"}
-                />
-                <div
+                /> */}
+                {/* <div
                   className="relative d-flex items-center ml-10"
                   onClick={() => setIsOnProfile((pre) => !pre)}
                 >
@@ -152,8 +158,8 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* <Link
+                </div> */}
+                <Link
                   href="/login"
                   className="button px-30 h-50 -outline-dark-1 text-dark-1 ml-20"
                 >
@@ -164,7 +170,7 @@ export default function Header() {
                   className="button px-30 h-50 -purple-1 text-white ml-10"
                 >
                   Sign up
-                </Link> */}
+                </Link>
               </div>
             </div>
           </div>

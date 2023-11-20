@@ -118,7 +118,7 @@ export default function HeroSix() {
                     height={250}
                     className="js-mouse-move"
                     data-move="40"
-                    src="/assets/img/home-6/hero/2.png"
+                    src="/assets/img/home/hero/man.png"
                     alt="image"
                   />
                 </div>
@@ -128,7 +128,7 @@ export default function HeroSix() {
                     height={400}
                     className="js-mouse-move"
                     data-move="40"
-                    src="/assets/img/home-6/hero/1.png"
+                    src="/assets/img/home/hero/img.png"
                     alt="image"
                   />
                 </div>
@@ -138,7 +138,7 @@ export default function HeroSix() {
                     height={200}
                     className="js-mouse-move"
                     data-move="40"
-                    src="/assets/img/home-6/hero/3.png"
+                    src="/assets/img/home/hero/img1.png"
                     alt="image"
                   />
                 </div>

@@ -4,7 +4,7 @@
 
 import React from 'react'
 import Header from '@/components/layout/headers/Header'
-import HeroFour from '@/components/homes/heros/HeroSix'
+import Hero from '@/components/homes/heros/HeroSix'
 import Brands from '@/components/common/Brands'
 import StepsOne from '@/components/common/StepsOne'
 import Line from '@/components/common/Line'
@@ -39,7 +39,7 @@ export default function page() {
         <Header/>
       </div>
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroFour/>
+        <Hero/>
         {/* <Brands/> */}
         <CategoriesFour/>
         <Courses/>

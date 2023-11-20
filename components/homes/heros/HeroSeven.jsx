@@ -88,7 +88,7 @@ export default function HeroSeven() {
                 <Image
                   width={855}
                   height={655}
-                  src="/assets/img/home-8/hero/image.png"
+                  src="/assets/img/home-7/hero/image.png"
                   alt="image"
                 />
               </div>

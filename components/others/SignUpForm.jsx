@@ -61,7 +61,7 @@ export default function SignUpForm() {
                 </div>
               </form>
 
-              <div className="lh-12 text-dark-1 fw-500 text-center mt-20">
+              {/* <div className="lh-12 text-dark-1 fw-500 text-center mt-20">
                 Or sign in using
               </div>
 
@@ -76,7 +76,7 @@ export default function SignUpForm() {
                     Log In via Google+
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

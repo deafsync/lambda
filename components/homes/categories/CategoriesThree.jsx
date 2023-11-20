@@ -1,5 +1,5 @@
 import React from "react";
-import { topCategoriesTwo } from "../../../data/topCategories";
+import { topCatagoriesThree } from "../../../data/topCategories";
 import Image from "next/image";
 import Link from "next/link";
 export default function CategoriesTwo() {
@@ -26,7 +26,7 @@ export default function CategoriesTwo() {
         </div>
 
         <div className="row y-gap-50 pt-60 lg:pt-50">
-          {topCategoriesTwo.map((elm, i) => (
+          {topCatagoriesThree.map((elm, i) => (
             <Link
               href={`/courses-list-${elm.id > 8 ? 1 : elm.id}`}
               key={i}

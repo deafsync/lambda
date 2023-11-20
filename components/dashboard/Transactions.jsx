@@ -110,7 +110,7 @@ export default function Participants() {
                   {partcipents.map((elm, i) => (
                     <div key={i} className="px-30 border-bottom-light">
                       <div className="row x-gap-10 items-center py-15">
-                        <div className="col-lg-1">
+                        {/* <div className="col-lg-1">
                           <div className="d-flex items-center">
                             <Image
                               width={40}
@@ -120,7 +120,7 @@ export default function Participants() {
                               className="size-40 fit-cover"
                             />
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="col-lg-4">
                           <div className="ml-10">

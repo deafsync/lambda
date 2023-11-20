@@ -63,7 +63,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
           </Link>
         </div>
 
-        {showMenu && activeMobileMenu && (
+        {/* {showMenu && activeMobileMenu && (
           <div className="mobileMenu text-dark-1">
             {menuList.map((elm, i) => {
               if (elm.title) {
@@ -177,7 +177,18 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
               }
             })}
           </div>
-        )}
+        )} */}
+
+        <div className="py-20">
+          <div className=" -before-border py-3 pl-30 xl:pl-20 mr-10">
+            <Link
+              href="/dashboard"
+              className="title"
+            >
+              Enseigner
+            </Link>
+          </div>
+        </div>
 
         {/* mobile footer start */}
         <MobileFooter />

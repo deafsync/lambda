@@ -18,6 +18,8 @@ export const metadata = {
   
 }
 
+// Active course on a module/chapter
+
 export default function page({params}) {
   return (
     <div  className="main-content  " >
@@ -29,7 +31,9 @@ export default function page({params}) {
                 <div  className="">
                     <div  className="row justify-end">
                         <div  className="col-lg-9 col-md-8">
-                            <Video/>
+                            <Video/> {/*
+                              TODO: Put video depend on the id
+                            */}
                             
                             <CourseDetailsFive id={params.id} />
                         </div>

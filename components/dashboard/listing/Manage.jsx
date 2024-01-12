@@ -24,7 +24,7 @@ export default function Listing() {
       <div className="dashboard__content bg-light-4">
         <div className="row pb-10 mb-0">
           <div className="col-auto">
-            <h1 className="text-30 lh-12 fw-700">Gérer [titre de cours]</h1>
+            <h1 className="text-30 lh-12 fw-700">Gérer le cours</h1>
             <div className="mt-10">
               Lorem ipsum dolor sit amet, consectetur.
             </div>

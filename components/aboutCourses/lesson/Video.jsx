@@ -1,10 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalVideoComponent from "../../common/ModalVideo";
 import Image from "next/image";
 export default function Video() {
+
+  // TODO: have id for index
+  // TODO: Map and switch audio track
+
   const [isOpen, setIsOpen] = useState(false);
+
+  let recognition = null
+
   return (
     <>
       <div className="">
@@ -13,7 +20,6 @@ export default function Video() {
           style={{width: '100%', height: "auto"}}
         >
           <source src="/assets/img/general/video.mp4" type="video/mp4" style={{width: '100% !important'}}/>
-          Votre navigateur ne prend pas en charge la lecture de vidéos.
         </video>
       </div>
       <ModalVideoComponent

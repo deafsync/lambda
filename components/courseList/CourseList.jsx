@@ -1655,7 +1655,7 @@ export default function CourseList({idCategory}) {
                             <div className="col-xl-7 text-17 lh-15 fw-500 text-dark-1 mt-10">
                                 <Link
                                 className="linkCustom"
-                                href={`/courses/${elm.id}`}
+                                href={`/course/${elm.id}`}
                                 >
                                 {elm.title}
                                 </Link>

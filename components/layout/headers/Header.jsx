@@ -90,19 +90,19 @@ export default function Header() {
                   href="/instructor-become"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
-                  Enseigner
+                  Teach
                 </Link> */}
                 <Link
                   href="/dashboard"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
-                  Enseigner
+                  Teach
                 </Link>
                 <Link 
                   href="/learning"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
-                  Mon apprentissage
+                  My learning
                 </Link>
                 <CartToggle
                   parentClassess={"relative ml-30 mr-25 xl:ml-20 xl:mr-15"}

@@ -2,8 +2,8 @@ export const states = [
   {
     id: 1,
     title: "Total Sales",
-    value: 10800,
-    new: 50,
+    value: 0,
+    new: 0,
     iconClass: "icon-coupon",
     href: "/dashboard/transactions"
   },
@@ -18,8 +18,8 @@ export const states = [
   {
     id: 3,
     title: "Total Students",
-    value: 120,
-    new: 90,
+    value: 12,
+    new: 1,
     iconClass: "icon-graduate-cap",
     href: "/dashboard/students"
   },
@@ -27,7 +27,7 @@ export const states = [
     id: 4,
     title: "Total Instructors",
     value: 1,
-    new: 290,
+    new: 0,
     iconClass: "icon-online-learning",
     href: "/dashboard/users/instructors"
   },

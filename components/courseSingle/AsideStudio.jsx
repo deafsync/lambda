@@ -15,37 +15,74 @@ import React, { useState, useEffect } from "react";
 import PinContentTwo from "./PinContentTwo";
 import Preloader from '@/components/common/Preloader'
 import Link from 'next/link';
-import { data } from "@/data/stt";
+import { data, dataFr } from "@/data/stt";
+
+import { useRouter } from 'next/navigation';
 
 import ModalVideoComponent from "../common/ModalVideo";
 import Image from "next/image";
+
 const menuItems = [
   { id: 1, href: "#original", text: "Original", isActive: true },
   { id: 2, href: "#cible", text: "Cible", isActive: false },
 ];
 
+import {toast} from "react-hot-toast"
+
 export default function AsideStudio({ id }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(1);
   const [text, setText] = useState(data);
+  const [textFr, setTextFr] = useState();
   const [captions_arr, setCaptions] = useState([
     {kind: 'subtitles', src: 'farming.en.vtt', srcLang: 'en', default: true},
   ]);
 
-  let mySubtitle_arr = captions_arr.map((v) => ({
-    kind: v.kind,
-    src: v.src,
-    srcLang: v.file_lang_code,
-  }));
+  useEffect(() => {
+    setTextFr(JSON.parse(JSON.stringify(dataFr)))
+  }, [])
 
-  const handleChange = (index) => {
-    /* FETCH DATA --> MODIFY VTT FILE IN BACKEND*/
+  const router = useRouter()
+
+    //   let mySubtitle_arr = captions_arr.map((v) => ({
+    //     kind: v.kind,
+    //     src: v.src,
+    //     srcLang: v.file_lang_code,
+    //   }));
+
+  const handleChange = (event, index, original) => {
+    let infos
+
+    infos = [...textFr]
+    infos[index][1] = event.target.value
+
+    setTextFr(infos)
+
+    /* TODO: FETCH DATA --> MODIFY VTT FILE IN BACKEND*/
   }
 
   const handleSave = (event) => {
     event.preventDefault()
-    // SAVE UPDATE
-    alert("SAVE")
+
+    // Compare textFr to old sub data
+    let result = []
+
+    for(let i = 0; i < dataFr.length; i++) {
+        if(dataFr[i][1] != textFr[i][1]) {
+            result.push(textFr[i])
+        }
+    }
+
+    console.log(result)
+
+    // TODO: SAVE UPDATE & check id updated
+    if(result.length == 0) {
+        toast.success("Nothing to save")
+    } else {
+        toast.success("SAVE !!")
+        router.push('/dashboard/course/1')
+    }
+
   }
 
   return (
@@ -85,7 +122,7 @@ export default function AsideStudio({ id }) {
                             </span>
                         </div>
                         <div className="header-right__buttons">
-                            <a href="/course/1" className="button -sm -rounded -white--1 ml-10 text-dark-1">
+                            <a href="/dashboard/course/1" className="button -sm -rounded -white--1 ml-10 text-dark-1">
                                 Quitter
                             </a>
                         </div>
@@ -150,49 +187,46 @@ export default function AsideStudio({ id }) {
 
                                                 <div className="tabs__content   js-tabs-content">
                                                     <div
-                                                    className={`tabs__pane -tab-item-1 ${
-                                                        activeTab == 1 ? "is-active" : ""
-                                                    } `}
+                                                        className={`tabs__pane -tab-item-1 ${
+                                                            activeTab == 1 ? "is-active" : ""
+                                                        } `}
                                                     >
                                                         {text.map((el, index) => (
-                                                        <div className="stt__item">
-                                                            {el[0]}
-                                                            <div>
-                                                                <textarea
-                                                                    onClick={(event) => {
-                                                                        event.preventDefault()
-                                                                        handleChange(index)
-                                                                    }}
-                                                                    value={el[1]}
-                                                                    className='text__focus pt-10'
-                                                                    type="text"
-                                                                >
-                                                                </textarea>
-                                                            </div>
-                                                        </div>))}
+                                                            <div className="stt__item" key={`text-${index}`}>
+                                                                {el[0]}
+                                                                <div>
+                                                                    <textarea
+                                                                        value={text[index][1]}
+                                                                        className=' pt-10'
+                                                                        type="text"
+                                                                        disabled
+                                                                    >
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>))}
                                                     </div>
 
                                                     <div
-                                                    className={`tabs__pane -tab-item-2 ${
-                                                        activeTab == 2 ? "is-active" : ""
-                                                    } `}
+                                                        className={`tabs__pane -tab-item-2 ${
+                                                            activeTab == 2 ? "is-active" : ""
+                                                        } `}
                                                     >
-                                                        {text.map((el, index) => (
-                                                        <div className="stt__item">
-                                                            {el[0]}
-                                                            <div>
-                                                                <textarea
-                                                                    onClick={(event) => {
-                                                                        event.preventDefault()
-                                                                        handleChange(index)
-                                                                    }}
-                                                                    value={el[1]}
-                                                                    className='text__focus pt-10'
-                                                                    type="text"
-                                                                >
-                                                                </textarea>
-                                                            </div>
-                                                        </div>))}
+                                                        {textFr && textFr.map((el, index) => (
+                                                            <div className="stt__item" key={`textfr-${index}`}>
+                                                                {el[0]}
+                                                                <div>
+                                                                    <textarea
+                                                                        onChange={(event) => {
+                                                                            event.preventDefault()
+                                                                            handleChange(event, index, false)
+                                                                        }}
+                                                                        value={textFr[index][1]}
+                                                                        className='text__focus pt-10'
+                                                                        type="text"
+                                                                    >
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>))}
                                                     </div>
                                                 </div>
                                                 </div>

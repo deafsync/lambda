@@ -11,12 +11,14 @@ import Link from "next/link";
 
 import { sidebarItems } from "../../../data/homeSidebarItems";
 import { notifications } from "@/data/notifications";
+import MobileMenuHome from "../component/MobileMenuHome";
 
 export default function Header() {
 
   const [isOnNotification, setIsOnNotification] = useState(false);
   const [isOnProfile, setIsOnProfile] = useState(false);
 
+  // TODO: if connected redirect to home
 
   // sign up (new) : button h-50 px-25 bg-nav--purple-4 -rounded ml-20
   // login (new): button h-50 px-25 bg-nav--purple-3 -rounded text-purple-1 ml-20
@@ -74,6 +76,11 @@ export default function Header() {
                   activeMobileMenu={activeMobileMenu}
                 />
 
+                {/* <MobileMenuHome
+                  setActiveMobileMenu={setActiveMobileMenu}
+                  activeMobileMenu={activeMobileMenu}
+                /> */}
+
                 <div className="d-none xl:d-block ml-20">
                   <button
                     onClick={() => setActiveMobileMenu(true)}
@@ -85,18 +92,33 @@ export default function Header() {
                 </div>
               </div>
 
-              <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
-                {/* <Link
+              {/* <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
+                <Link
                   href="/instructor-become"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
-                  Teach
-                </Link> */}
+                  Become a teacher
+                </Link>
+                <Link
+                  href="/login"
+                  className="button px-30 h-50 -outline-dark-1 text-dark-1 ml-20"
+                >
+                  Log in        
+                </Link>
+                <Link
+                  href="/signup"
+                  className="button px-30 h-50 -purple-1 text-white ml-10"
+                >
+                  Sign up
+                </Link>
+              </div> */}
+
+              <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
                 <Link
                   href="/dashboard"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
-                  Teach
+                  Dashboard
                 </Link>
                 <Link 
                   href="/learning"
@@ -159,18 +181,6 @@ export default function Header() {
                     </div>
                   </div>
                 </div>
-                {/* <Link
-                  href="/login"
-                  className="button px-30 h-50 -outline-dark-1 text-dark-1 ml-20"
-                >
-                  Log in        
-                </Link>
-                <Link
-                  href="/signup"
-                  className="button px-30 h-50 -purple-1 text-white ml-10"
-                >
-                  Sign up
-                </Link> */}
               </div>
             </div>
           </div>

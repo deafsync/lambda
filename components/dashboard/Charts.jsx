@@ -11,19 +11,34 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+// const data = [
+//   { name: "Jan", value: 148 },
+//   { name: "Feb", value: 100 },
+//   { name: "Marc", value: 205 },
+//   { name: "April", value: 110 },
+//   { name: "May", value: 165 },
+//   { name: "Jun", value: 145 },
+//   { name: "July", value: 180 },
+//   { name: "Agust", value: 156 },
+//   { name: "Sept", value: 148 },
+//   { name: "Oct", value: 220 },
+//   { name: "Now", value: 180 },
+//   { name: "Dec", value: 245 },
+// ];
+
 const data = [
-  { name: "Jan", value: 148 },
-  { name: "Feb", value: 100 },
-  { name: "Marc", value: 205 },
-  { name: "April", value: 110 },
-  { name: "May", value: 165 },
-  { name: "Jun", value: 145 },
-  { name: "July", value: 180 },
-  { name: "Agust", value: 156 },
-  { name: "Sept", value: 148 },
-  { name: "Oct", value: 220 },
-  { name: "Now", value: 180 },
-  { name: "Dec", value: 245 },
+  { name: "Jan", value: 0 },
+  { name: "Feb", value: 0 },
+  { name: "Marc", value: 0 },
+  { name: "April", value: 0 },
+  { name: "May", value: 0 },
+  { name: "Jun", value: 0 },
+  { name: "July", value: 0 },
+  { name: "Agust", value: 0 },
+  { name: "Sept", value: 0 },
+  { name: "Oct", value: 0 },
+  { name: "Now", value: 0 },
+  { name: "Dec", value: 0 },
 ];
 
 const Charts = () => {

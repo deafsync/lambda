@@ -1,6 +1,8 @@
 "use client";
 
 import Star from "../common/Star";
+import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 import { coursesData } from "@/data/courses";
 import React, { useState, useEffect } from "react";
@@ -10,6 +12,8 @@ import Overview from "./Overview";
 import CourseContent from "./CourseContent";
 import Instractor from "./Instractor";
 import Reviews from "./Reviews";
+import { lessonItems } from "@/data/aboutcourses";
+
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
   { id: 2, href: "#course-content", text: "Course Content", isActive: false },
@@ -20,9 +24,21 @@ const menuItems = [
 export default function CourseDetailsThree({ id }) {
   const [pageItem, setPageItem] = useState(coursesData[0]);
 
+  const router = useRouter()
+  const pathname = usePathname()
+
   useEffect(() => {
     setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
   }, []);
+
+  const handleEnroll = () => {
+    // TODO: add formation to user's formation & redirection to course page
+
+    router.push(`${pathname}/lecture/${1}`)
+    
+  }
+
+  // TODO: get API data and provide to children
 
   return (
     <div id="js-pin-container" className="js-pin-container relative">
@@ -33,21 +49,21 @@ export default function CourseDetailsThree({ id }) {
             <div className="row y-gap-30 relative">
               <div className="col-xl-7 col-lg-8">
                 <div className="d-flex x-gap-15 y-gap-10 pb-20">
-                  <div>
+                  {/* <div>
                     <div className="badge px-15 py-8 text-11 bg-green-1 text-dark-1 fw-400">
                       BEST SELLER
                     </div>
-                  </div>
+                  </div> */}
                   <div>
                     <div className="badge px-15 py-8 text-11 bg-orange-1 text-white fw-400">
                       NEW
                     </div>
                   </div>
-                  <div>
+                  {/* <div>
                     <div className="badge px-15 py-8 text-11 bg-blue-1 text-white fw-400">
                       POPULAR
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div>
@@ -99,6 +115,12 @@ export default function CourseDetailsThree({ id }) {
                     {pageItem.authorName}
                   </div>
                 </div>
+
+                <div className="pt-20">
+                  <button className="button -md -green-1 text-dark-1" onClick={handleEnroll}>
+                    Enroll now
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -128,9 +150,9 @@ export default function CourseDetailsThree({ id }) {
               </div> */}
 
               <Overview />
-              <CourseContent />
+              <CourseContent lessonItems={lessonItems} />
               <Instractor />
-              <Reviews />
+              {/* <Reviews /> */}
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function CoursesFive({ tabBtnStyle }) {
             <div className="col-auto">
               <div className="sectionTitle ">
                 <h2 className="sectionTitle__title ">
-                  Les cours que nous vous recommandons pour ma catégorie Agriculture
+                  Our recommended courses
                 </h2>
 
                 <p className="sectionTitle__text ">

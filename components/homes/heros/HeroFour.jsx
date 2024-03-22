@@ -83,8 +83,8 @@ export default function HeroFour() {
                 <div className="masthead-search__searches mt-40">
                   Trending Search:
                   <Link href={`/courses/${6}`}>Development</Link>,
-                  <Link href="/courses-single-2/3">Business</Link>,
-                  <Link href="/courses-single-6/3">Design</Link>,
+                  <Link href="/ courses/3">Business</Link>,
+                  <Link href="/ courses/3">Design</Link>,
                   <a href="#">Merketing</a>
                 </div>
               </div>

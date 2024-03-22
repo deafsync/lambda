@@ -4,6 +4,9 @@ import FooterNine from "../../layout/footers/FooterNine";
 import Media from "./Media";
 import Curriculum from "./Curriculum";
 import React, { useState, useEffect } from "react";
+import CurriculumDub from "./CurriculumDub";
+
+import {toast} from "react-hot-toast" 
 
 const menuItems = [
     { id: 1, href: "#start", text: "Commencer", isActive: true },
@@ -13,43 +16,101 @@ const menuItems = [
     { id: 5, href: "#dubbing", text: "Doublage", isActive: false },
   ];
 
-export default function Listing() {
+const formation = {
+    titre: "Angular - The Complete Guide (2022 Edition)",
+    description: "Introductory course on web hosting, domain registration, and how you can easily publish and edit your website online.",
+    language: "english",
+    level: "intermediate",
+    category: 1,
+    requirements: "Become a UX designer. You will be able to add UX designer to your CV. Become a UI designer. Build & test a full website design. Create your first UX brief & persona. How to use premade UI kits.",
+    willLearn: "You will need a copy of Adobe XD 2019 or above. A free trial can be downloaded from Adobe. No previous design experience is needed. No previous Adobe XD skills are needed."
+
+    // profondeur
+}
+
+const category = [
+    { id: 1, titre: "Software & IT"},
+    { id: 2, titre: "Design"},
+    { id: 3, titre: "Finance"},
+    { id: 4, titre: "Business"}
+  ]  
+
+export default function Listing({id}) {
   const [activeTab, setActiveTab] = useState(1);
+
+  const [language, setLanguage] = useState("choose")
+  const [dubLanguage, setDubLanguage] = useState("choose")
+
+  const [state, setState] = useState({
+    titre: "",
+    description: "",
+    language: "",
+    level: "",
+    category: 1,
+    requirements: "",
+    willLearn: ""
+  })
+
+  useEffect(() => {
+    setState(formation)
+  }, [])
+
+// TODO: Retrive course data
+
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    setState({...state, [name]: value})
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    toast.success("Course information updated")
+    console.log(state)
   };
+
+  const handleAddLanguage = (e) => {
+    e.preventDefault();
+
+    if(language == "choose") {
+        toast.error("Choose a language else don't save!")
+    } else {
+        toast.success("Subtitle added")
+    }
+
+    console.log(language)
+  }
+
+
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
         <div className="row pb-10 mb-0">
           <div className="col-auto">
-            <h1 className="text-30 lh-12 fw-700">Gérer le cours</h1>
+            <h1 className="text-30 lh-12 fw-700">Manage your course</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+              Here you will manage your course structure, media, subtitles, dubs, ...
             </div>
           </div>
         </div>
 
         <section className="layout-pt-lg layout-pb-md">
-            <div className="">
             <div className="tabs -side js-tabs">
                 <div className="row y-gap-40">
                 <div className="col-lg-2">
                     <div className="tabs__controls y-gap-5 js-tabs-controls">
                     {menuItems.map((elm, i) => (
-                        <div key={i} className="my-20">
+                      <div key={i} className="my-20">
                         <button
                             key={i}
                             onClick={() => setActiveTab(elm.id)}
                             className={`tabs__button text-18 fw-500  js-tabs-button ${
-                            activeTab == elm.id ? "is-active" : ""
+                                activeTab == elm.id ? "is-active" : ""
                             } `}
                             type="button"
                         >
-                            {elm.text}
+                           {elm.text}
                         </button>
-                        </div>
+                      </div>
                     ))}
                     </div>
                 </div>
@@ -70,101 +131,122 @@ export default function Listing() {
 
                                 <div className="py-30 px-30">
                                     <form
-                                    onSubmit={handleSubmit}
-                                    className="contact-form row y-gap-30"
-                                    action="#"
+                                        onSubmit={handleSubmit}
+                                        className="contact-form row y-gap-30"
+                                        action="#"
                                     >
-                                    <div className="col-12">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Course Title*
-                                        </label>
+                                        <div className="col-12">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                                Course Title*
+                                            </label>
+                                            <input
+                                                required
+                                                name="titre"
+                                                value={state.titre}
+                                                type="text"
+                                                onChange={handleChange}
+                                                placeholder="Learn Figma - UI/UX Design Essential Training"
+                                            />
+                                        </div>
 
-                                        <input
-                                        required
-                                        type="text"
-                                        placeholder="Learn Figma - UI/UX Design Essential Training"
-                                        />
-                                    </div>
+                                        <div className="col-12">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                                Course Description*
+                                            </label>
 
-                                    <div className="col-12">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Short Description*
-                                        </label>
+                                            <textarea
+                                                required
+                                                name="description"
+                                                value={state.description}
+                                                placeholder="Description"
+                                                rows="7"
+                                                onChange={handleChange}
+                                            ></textarea>
+                                        </div>
 
-                                        <textarea
-                                        required
-                                        placeholder="Description"
-                                        rows="7"
-                                        ></textarea>
-                                    </div>
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                                What will students learn in your course?*
+                                            </label>
 
-                                    <div className="col-12">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Course Description*
-                                        </label>
+                                            <textarea
+                                                required
+                                                name="willLearn"
+                                                value={state.willLearn}
+                                                placeholder="Description"
+                                                rows="7"
+                                                onChange={handleChange}
+                                            ></textarea>
+                                        </div>
 
-                                        <textarea
-                                        required
-                                        placeholder="Description"
-                                        rows="7"
-                                        ></textarea>
-                                    </div>
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                                Requirements*
+                                            </label>
 
-                                    <div className="col-md-6">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        What will students learn in your course?*
-                                        </label>
+                                            <textarea
+                                            required
+                                            name="requirements"
+                                            value={state.requirements}
+                                            placeholder="Requirements"
+                                            rows="7"
+                                            onChange={handleChange}
+                                            ></textarea>
+                                        </div>
 
-                                        <textarea
-                                        required
-                                        placeholder="Description"
-                                        rows="7"
-                                        ></textarea>
-                                    </div>
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Course Level*
+                                            </label>
 
-                                    <div className="col-md-6">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Requirements*
-                                        </label>
+                                            <select 
+                                            name="level"
+                                            value={state.level}
+                                            onChange={handleChange}
+                                            >
+                                            <option value="">Select your level</option>
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="high">High</option>
+                                            </select>
+                                        </div>
 
-                                        <textarea
-                                        required
-                                        placeholder="Description"
-                                        rows="7"
-                                        ></textarea>
-                                    </div>
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Audio Language*
+                                            </label>
 
-                                    <div className="col-md-6">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Course Level*
-                                        </label>
+                                            <select 
+                                            name="language"
+                                            value={state.language}
+                                            onChange={handleChange}
+                                            >
+                                            <option value="">Select your language</option>
+                                            <option value="english">English</option>
+                                            </select>
+                                        </div>
 
-                                        <input required type="text" placeholder="Select" />
-                                    </div>
+                                        {/* <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Close Caption*
+                                            </label>
 
-                                    <div className="col-md-6">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Audio Language*
-                                        </label>
+                                            <input required type="text" placeholder="Select" />
+                                        </div> */}
 
-                                        <input required type="text" placeholder="Select" />
-                                    </div>
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Course Category*
+                                            </label>
 
-                                    <div className="col-md-6">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Close Caption*
-                                        </label>
-
-                                        <input required type="text" placeholder="Select" />
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                        Course Category*
-                                        </label>
-
-                                        <input required type="text" placeholder="Select" />
-                                    </div>
+                                            <select 
+                                            name="category"
+                                            value={state.category}
+                                            onChange={handleChange}
+                                            >
+                                            {category.map((elm, index) => <option key={`option-course-create-${index}`} value={elm.id}>{elm.titre}</option>)}
+                                            </select>
+                                        </div>
                                     </form>
 
                                     <div className="row y-gap-20 justify-between pt-15">
@@ -173,8 +255,13 @@ export default function Listing() {
                                     </div>
 
                                     <div className="col-auto">
-                                        <button className="button -md -purple-1 text-white">
-                                        Next
+                                        <button 
+                                            className="button -md -purple-1 text-white"
+                                            onClick={(e) => {
+                                                handleSubmit(e)
+                                            }}
+                                        >
+                                            Save
                                         </button>
                                     </div>
                                     </div>
@@ -216,7 +303,7 @@ export default function Listing() {
                         <div className="col-12">
                             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
                                 <div className="d-flex items-center py-20 px-30 border-bottom-light">
-                                    <h2 className="text-17 lh-1 fw-500">Curriculum</h2>
+                                    <h2 className="text-17 lh-1 fw-500">Subtitles</h2>
                                 </div>
 
                                 <div className="border-light rounded-8">
@@ -224,23 +311,23 @@ export default function Listing() {
                                     <div className="text-dark-1 mr-15">Language</div>
 
                                     <div
-                                    id="dd16button"
-                                    onClick={() => {
-                                        document
-                                        .getElementById("dd16button")
-                                        .classList.toggle("-is-dd-active");
-                                        document
-                                        .getElementById("dd16content")
-                                        .classList.toggle("-is-el-visible");
-                                    }}
-                                    className="dropdown js-dropdown js-category-active"
+                                        id="dd16button"
+                                        onClick={() => {
+                                            document
+                                            .getElementById("dd16button")
+                                            .classList.toggle("-is-dd-active");
+                                            document
+                                            .getElementById("dd16content")
+                                            .classList.toggle("-is-el-visible");
+                                        }}
+                                        className="dropdown js-dropdown js-category-active"
                                     >
                                     <div
                                         className="dropdown__button d-flex items-center text-14 bg-white -dark-bg-dark-2 border-light rounded-8 px-20 py-10 "
                                         data-el-toggle=".js-category-toggle"
                                         data-el-toggle-active=".js-category-active"
                                     >
-                                        <span className="js-dropdown-title">choisir</span>
+                                        <span className="js-dropdown-title">{language}</span>
                                         <i className="icon text-9 ml-40 icon-chevron-down"></i>
                                     </div>
 
@@ -249,24 +336,18 @@ export default function Listing() {
                                         className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-category-toggle"
                                     >
                                         <div className="text-14 y-gap-15 js-dropdown-list">
-                                        <div>
+                                        <div
+                                            onClick={() => setLanguage("Français")}
+                                        >
                                             <span className="d-block js-dropdown-link">
                                                 Français
                                             </span>
                                         </div>
-                                        <div>
+                                        <div
+                                            onClick={() => setLanguage("Fongbé")}
+                                        >
                                             <span className="d-block js-dropdown-link">
-                                                Yoruba
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span className="d-block js-dropdown-link">
-                                                Espagnol
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span className="d-block js-dropdown-link">
-                                                Allemand
+                                                Fongbé
                                             </span>
                                         </div>
 
@@ -287,10 +368,27 @@ export default function Listing() {
                                 </div>
 
                                 <div className="text-16 py-20 px-30 fw-500">
-                                Les apprenants, quel que soit leur niveau de maîtrise de la langue, apprécient grandement les sous-titres car ils les aident à suivre, comprendre et mémoriser le contenu. Il est également essentiel de proposer des sous-titres pour garantir l'accessibilité du contenu aux personnes sourdes ou malentendantes. 
+                                    Learners, whatever their level of language proficiency, greatly appreciate subtitles as they help them to follow, understand and remember the content.Subtitles are also essential to ensure that content is accessible to the deaf and hard-of-hearing. 
                                 </div>
 
-                                <Curriculum />
+                                {/* <Curriculum
+                                    setActiveTab={setActiveTab}
+                                /> */}
+
+                                <div className="row px-30 py-20  y-gap-20 justify-between pt-30">
+                                    <div className="col-auto sm:w-1/1">
+                                    
+                                    </div>
+
+                                    <div className="col-auto sm:w-1/1">
+                                        <button 
+                                            className="button -md -purple-1 text-white sm:w-1/1"
+                                            onClick={handleAddLanguage}
+                                        >
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -302,57 +400,44 @@ export default function Listing() {
                         <div className="col-12">
                             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
                                 <div className="d-flex items-center py-20 px-30 border-bottom-light">
-                                    <h2 className="text-17 lh-1 fw-500">Curriculum</h2>
+                                    <h2 className="text-17 lh-1 fw-500">Dubbing</h2>
                                 </div>
 
                                 <div className="border-light rounded-8">
-                                <div className="d-flex items-center py-25 px-30">
-                                    <div className="text-dark-1 mr-15">Langue de doublage</div>
+                                    <div className="d-flex items-center py-25 px-30">
+                                    <div className="text-dark-1 mr-15">Language</div>
 
                                     <div
-                                    id="dd16button"
-                                    onClick={() => {
-                                        document
-                                        .getElementById("dd16button")
-                                        .classList.toggle("-is-dd-active");
-                                        document
-                                        .getElementById("dd106content")
-                                        .classList.toggle("-is-el-visible");
-                                    }}
-                                    className="dropdown js-dropdown js-category-active"
+                                        id="dd17button"
+                                        onClick={() => {
+                                            document
+                                            .getElementById("dd17button")
+                                            .classList.toggle("-is-dd-active");
+                                            document
+                                            .getElementById("dd17content")
+                                            .classList.toggle("-is-el-visible");
+                                        }}
+                                        className="dropdown js-dropdown js-category-active"
                                     >
                                     <div
                                         className="dropdown__button d-flex items-center text-14 bg-white -dark-bg-dark-2 border-light rounded-8 px-20 py-10 "
                                         data-el-toggle=".js-category-toggle"
                                         data-el-toggle-active=".js-category-active"
                                     >
-                                        <span className="js-dropdown-title">choisir</span>
+                                        <span className="js-dropdown-title">{dubLanguage}</span>
                                         <i className="icon text-9 ml-40 icon-chevron-down"></i>
                                     </div>
 
                                     <div
-                                        id="dd106content"
+                                        id="dd17content"
                                         className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-category-toggle"
                                     >
                                         <div className="text-14 y-gap-15 js-dropdown-list">
-                                        <div>
+                                        <div
+                                            onClick={() => setDubLanguage("Français")}
+                                        >
                                             <span className="d-block js-dropdown-link">
                                                 Français
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span className="d-block js-dropdown-link">
-                                                Yoruba
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span className="d-block js-dropdown-link">
-                                                Espagnol
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <span className="d-block js-dropdown-link">
-                                                Allemand
                                             </span>
                                         </div>
 
@@ -366,21 +451,22 @@ export default function Listing() {
                                     </div>
                                     </div>
 
-                                    <div className="text-dark-1 ml-15">of the following:</div>
+                                    <div className="text-dark-1 ml-15">of the following : <b>English</b></div>
                                 </div>
 
                                 
                                 </div>
 
                                 <div className="text-16 py-20 px-30 fw-500">
-                                    Pour vous aider à créer des contenus de cours accessibles, nous avons fourni aux formateurs des recommandations et des bonnes pratiques à prendre en compte lors de la création de nouveaux cours ou de la mise à jour de contenus existants. Examinez ces recommandations d'accessibilité et ces listes de contrôle pour indiquer si votre cours est conforme aux recommandations.
+                                To help you create accessible course content, we have provided trainers with recommendations and best practices to consider when creating new courses or updating existing content. Review these accessibility recommendations and checklists to see if your course complies with the recommendations.
                                 </div>
 
-                                <Curriculum />
+                                <CurriculumDub
+                                    language={dubLanguage}
+                                />
                             </div>
                         </div>
-                    </div>
-                    </div>
+                    </div>                                        
                 </div>
                 </div>
             </div>

@@ -1179,6 +1179,12 @@ html.-dark-mode .-dark-border-dark-2 {
   border: 1px solid #2B1C55 !important;
 }
 
+.lessons-active {
+  border: 1px solid #7254ED;
+  border-radius: 10px;
+  background: #00000007;
+}
+
 html.-dark-mode .sidebar.-base-sidebar .sidebar__item.-is-active {
   color: var(--color-purple-1) !important;
 }
@@ -2820,21 +2826,35 @@ input[type="email"] {
 }
 
 .-dark-mode form.contact-form select,
-.-dark-mode form.contact-form input[type="text"],
-.-dark-mode form.contact-form input[type="password"],
-.-dark-mode form.contact-form input[type="search"],
+.-dark-mode .contact-form input[type="text"],
+.-dark-mode .contact-form input[type="url"],
+.-dark-mode .contact-form input[type="password"],
+.-dark-mode .contact-form input[type="search"],
 .-dark-mode form.contact-form textarea,
-.-dark-mode form.contact-form input[type="email"] {
+.-dark-mode .contact-form input[type="email"] {
   border-color: rgba(255, 255, 255, 0.2);
   color: white !important;
 }
 
+.course-input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 15px 10px;
+  transition: all 0.15s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
 form.contact-form select,
-form.contact-form input[type="text"],
-form.contact-form input[type="password"],
-form.contact-form input[type="search"],
+.contact-form input[type="text"],
+.contact-form input[type="url"],
+.contact-form input[type="password"],
+.contact-form input[type="search"],
 form.contact-form textarea,
-form.contact-form input[type="email"] {
+.contact-form input[type="email"] {
   border: 0;
   outline: none;
   width: 100%;
@@ -2848,20 +2868,21 @@ form.contact-form input[type="email"] {
 }
 
 form.contact-form select:focus,
-form.contact-form input[type="text"]:focus,
-form.contact-form input[type="password"]:focus,
-form.contact-form input[type="search"]:focus,
+.contact-form input[type="text"]:focus,
+.contact-form input[type="password"]:focus,
+.contact-form input[type="search"]:focus,
 form.contact-form textarea:focus,
-form.contact-form input[type="email"]:focus {
+.contact-form input[type="email"]:focus,
+.course-input:focus {
   outline: none;
 }
 
 form.contact-form select.-border-dark,
-form.contact-form input[type="text"].-border-dark,
-form.contact-form input[type="password"].-border-dark,
-form.contact-form input[type="search"].-border-dark,
+.contact-form input[type="text"].-border-dark,
+.contact-form input[type="password"].-border-dark,
+.contact-form input[type="search"].-border-dark,
 form.contact-form textarea.-border-dark,
-form.contact-form input[type="email"].-border-dark {
+.contact-form input[type="email"].-border-dark {
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
 }
 
@@ -10431,7 +10452,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.courses-single-info {
+.courseHover:hover {
+  /* border: 1px solid var(--color-purple-1); */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+.courses-info {
   position: absolute;
   top: 0;
   right: 0;
@@ -10441,25 +10468,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 1199px) {
-  .courses-single-info {
+  .courses-info {
     width: 300px;
   }
 }
 
 @media (max-width: 991px) {
-  .courses-single-info {
+  .courses-info {
     position: relative;
     width: 100%;
   }
 }
 
-.courses-single-info__content {
+.courses-info__content {
   height: 57vh;
   overflow-y: scroll;
 }
 
 @media (max-width: 991px) {
-  .courses-single-info__content {
+  .courses-info__content {
     height: auto;
     overflow-y: unset;
   }

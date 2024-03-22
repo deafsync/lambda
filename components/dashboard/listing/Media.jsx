@@ -4,13 +4,23 @@ import { mediaUpload } from "@/data/dashboard";
 import Image from "next/image";
 import React, { useState } from "react";
 
-export default function Media() {
+import {toast} from "react-hot-toast"
+
+export default function Media({setActiveTab}) {
   const [previewImage, setPreviewImage] = useState(mediaUpload[0].imgSrc);
   const [previewVideo, setPreviewVideo] = useState(mediaUpload[1].imgSrc);
+
+  const [state, setState] = useState({
+    image: ""
+  })
+  
   const handleImageChange = (event) => {
     const file = event.target.files[0];
 
     if (file) {
+
+      setState({...state, ["image"]: file})
+
       const reader = new FileReader();
 
       reader.onloadend = () => {
@@ -24,6 +34,8 @@ export default function Media() {
     const file = event.target.files[0];
 
     if (file) {
+      setState({...state, ["video"]: file})
+
       const reader = new FileReader();
 
       reader.onloadend = () => {
@@ -33,9 +45,20 @@ export default function Media() {
       reader.readAsDataURL(file);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(state.image != "") {
+      toast.success("Media successfully added")
+    } else {
+      toast.error("Your missed something")
+    }
+
+
+    console.log(state)
   };
+
   return (
     <div className="col-12">
       <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
@@ -47,7 +70,6 @@ export default function Media() {
           <div className="row y-gap-50">
             <div className="col-12">
               <form
-                onSubmit={handleSubmit}
                 className="contact-form d-flex lg:flex-column"
               >
                 <div
@@ -67,6 +89,7 @@ export default function Media() {
                         width: "250px",
                         height: "200px",
                         objectFit: "contain",
+                        borderRadius: 10
                       }}
                       src={previewImage}
                       alt="image"
@@ -127,7 +150,7 @@ export default function Media() {
                 </div>
               </form>
             </div>
-            <div className="col-12">
+            {/* <div className="col-12">
               <form
                 onSubmit={handleSubmit}
                 className="contact-form d-flex lg:flex-column"
@@ -207,18 +230,21 @@ export default function Media() {
                   </p>
                 </div>
               </form>
-            </div>
+            </div> */}
           </div>
 
           <div className="row y-gap-20 justify-between pt-30">
             <div className="col-auto">
-              <button className="button -md -outline-purple-1 text-purple-1">
-                Prev
-              </button>
+
             </div>
 
             <div className="col-auto">
-              <button className="button -md -purple-1 text-white">Next</button>
+              <button 
+                className="button -md -purple-1 text-white"
+                onClick={handleSubmit}
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>

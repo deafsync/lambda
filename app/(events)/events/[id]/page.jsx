@@ -21,18 +21,16 @@ export const metadata = {
 }
 export default function page({ params }) {
   return (
-    <div className="main-content  ">
+    <div className="main-content">
       <Preloader/>
+      <Header/>
+      <div className="content-wrapper js-content-wrapper overflow-hidden">
+          <PageLinks/>
 
-        <Header/>
-        <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
-
-            <EventDetails id={params.id} />
-       
-            <FooterOne/>
-        </div>
-
+          <EventDetails id={params.id} />
+      
+          <FooterOne/>
+      </div>
     </div>
   )
 }

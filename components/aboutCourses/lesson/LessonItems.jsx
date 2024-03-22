@@ -5,14 +5,35 @@ import { lessonItems } from "@/data/aboutcourses";
 
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function LessonItems({ rightPosition }) {
-  const [activeItemId, setActiveItemId] = useState(1);
+import { useRouter } from "next/navigation";
+
+import CourseDetailsFive from '@/components/courseSingle/CourseDetailsFive'
+import Video from '@/components/aboutCourses/lesson/Video'
+
+export default function LessonItems({ rightPosition, id }) {
+  const [openAccordion, setOpenAccordion] = useState(true);
   const [isOpen, setIsOpen] = useState(true);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  const [url, setUrl] = useState()
+
+  const router = useRouter()
+
+  const [language, setLanguage] = useState("choose")
+
+  useEffect(() => {
+    // TODO: get course data
+    setUrl("/assets/img/general/video.mp4")
+  }, [])
+
+  const handleSwitch = (index) => {
+    router.push(`${index+1}`)
+  }
+
+  const handleSwitchLanguage = () => {
+    setUrl(url == "/assets/img/general/video1.mp4" ? "/assets/img/general/video.mp4" : "/assets/img/general/video1.mp4")
+  }
+
   return (
     <>
       <aside
@@ -28,19 +49,77 @@ export default function LessonItems({ rightPosition }) {
             </button>
           </form> */}
 
+        <div className="d-flex items-center mb-10 px-30">
+            
+            <b>
+              <div 
+                className="text-dark-1 mr-15 text-17"
+              ><span className="text-30">👉</span> <u>Course language :</u></div>
+            </b>
+
+            <div
+                id="dd16button"
+                onClick={() => {
+                    document
+                    .getElementById("dd16button")
+                    .classList.toggle("-is-dd-active");
+                    document
+                    .getElementById("dd16content")
+                    .classList.toggle("-is-el-visible");
+                }}
+                className="dropdown js-dropdown js-category-active"
+            >
+            <div
+                className="dropdown__button d-flex items-center text-14 bg-white -dark-bg-dark-2 border-light rounded-8 px-20 py-10 "
+                data-el-toggle=".js-category-toggle"
+                data-el-toggle-active=".js-category-active"
+            >
+                <span className="js-dropdown-title">{language}</span>
+                <i className="icon text-9 ml-40 icon-chevron-down"></i>
+            </div>
+
+            <div
+                id="dd16content"
+                className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-category-toggle"
+            >
+                <div className="text-14 y-gap-15 js-dropdown-list">
+                <div
+                    onClick={() => {
+                      setLanguage("English")
+                      handleSwitchLanguage()
+                    }}
+                >
+                    <span className="d-block js-dropdown-link">
+                        English
+                    </span>
+                </div>
+                <div
+                    onClick={() => {
+                      setLanguage("Français")
+                      handleSwitchLanguage()
+                    }}
+                >
+                    <span className="d-block js-dropdown-link">
+                        Français
+                    </span>
+                </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+
           <div className="accordion -block-2 text-left js-accordion">
             {lessonItems.map((item, index) => (
               <div
-                className={`accordion__item ${
-                  activeItemId == item.id ? "is-active" : ""
-                } `}
+                className={`accordion__item`}
                 key={index}
               >
                 <div
-                  onClick={() =>
-                    setActiveItemId((pre) => (pre == item.id ? 0 : item.id))
-                  }
-                  className="accordion__button py-20 px-30 bg-light-4"
+                  className={`accordion__button py-20 px-30 bg-light-4`}
+                  onClick={() => {
+                    setOpenAccordion((pre) => !pre)
+                  }}
                 >
                   <div className="d-flex items-center">
                     <div className="accordion__icon">
@@ -58,13 +137,19 @@ export default function LessonItems({ rightPosition }) {
                 </div>
 
                 <div
-                  className="accordion__content"
-                  style={activeItemId == item.id ? { maxHeight: "700px" } : {}}
+                  className="accordion__content px-10 py-10"
+                  style={openAccordion ? { maxHeight: "700px" } : {}}
                 >
-                  <div className="accordion__content__inner px-30 py-30">
+                  <div className="accordion__content__inner ">
                     <div className="y-gap-30">
                       {item.lessons.map((lesson, index) => (
-                        <div className="" key={index}>
+                        <div 
+                          className={`px-20 py-20 mt-20 mb-20 ${
+                            id == lesson.id ? "lessons-active" : ""
+                          }`} 
+                          key={index}
+                          onClick={() => handleSwitch(index)}
+                        >
                           <div className="d-flex">
                             <div className="d-flex justify-center items-center size-30 rounded-full bg-purple-3 mr-10">
                               <div className="icon-play text-9"></div>
@@ -96,6 +181,19 @@ export default function LessonItems({ rightPosition }) {
           </div>
         </div>
       </aside>
+      <section  className="layout-pt-lg layout-pb-lg md:pt-40">
+          <div  className="">
+              <div  className="row justify-end">
+                  <div  className="col-lg-9 col-md-8">
+                      {url && <Video url={url} sub={["/subs/farming.vtt"]} />}
+                      {/*
+                        TODO: Put video depend on the id
+                      */}
+                      <CourseDetailsFive id={id} />
+                  </div>
+              </div>
+          </div>
+      </section>
     </>
   );
 }

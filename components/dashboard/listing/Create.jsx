@@ -5,6 +5,9 @@ import Media from "./Media";
 import Curriculum from "./Curriculum";
 import React, { useState, useEffect } from "react";
 
+import {toast} from "react-hot-toast"
+import { useRouter } from "next/navigation";
+
 const menuItems = [
     { id: 1, href: "#start", text: "Commencer", isActive: true },
     { id: 2, href: "#structure", text: "Structure", isActive: false },
@@ -13,12 +16,39 @@ const menuItems = [
     { id: 5, href: "#dubbing", text: "Doublage", isActive: false },
   ];
 
+const category = [
+  { id: 1, titre: "Software & IT"},
+  { id: 2, titre: "Design"},
+  { id: 3, titre: "Finance"},
+  { id: 4, titre: "Business"}
+]
+
 export default function Listing() {
   const [activeTab, setActiveTab] = useState(1);
+  const router = useRouter()
+
+  const [state, setState] = useState({
+    titre: "",
+    description: "",
+    language: "",
+    level: "",
+    category: 1,
+    requirements: "",
+    willLearn: ""
+  })
+
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    setState({...state, [name]: value})
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    toast.success('Course successfuly created')
+    router.push("/dashboard/course")
+    console.log(state)
   };
+
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -26,7 +56,7 @@ export default function Listing() {
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Create New Course</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+              Start creating your course here.
             </div>
           </div>
         </div>
@@ -43,7 +73,6 @@ export default function Listing() {
 
               <div className="py-30 px-30">
                 <form
-                  onSubmit={handleSubmit}
                   className="contact-form row y-gap-30"
                   action="#"
                 >
@@ -54,21 +83,12 @@ export default function Listing() {
 
                     <input
                       required
+                      name="titre"
+                      value={state.titre}
                       type="text"
+                      onChange={handleChange}
                       placeholder="Learn Figma - UI/UX Design Essential Training"
                     />
-                  </div>
-
-                  <div className="col-12">
-                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Short Description*
-                    </label>
-
-                    <textarea
-                      required
-                      placeholder="Description"
-                      rows="7"
-                    ></textarea>
                   </div>
 
                   <div className="col-12">
@@ -78,8 +98,11 @@ export default function Listing() {
 
                     <textarea
                       required
+                      name="description"
+                      value={state.description}
                       placeholder="Description"
                       rows="7"
+                      onChange={handleChange}
                     ></textarea>
                   </div>
 
@@ -90,8 +113,11 @@ export default function Listing() {
 
                     <textarea
                       required
+                      name="willLearn"
+                      value={state.willLearn}
                       placeholder="Description"
                       rows="7"
+                      onChange={handleChange}
                     ></textarea>
                   </div>
 
@@ -102,8 +128,11 @@ export default function Listing() {
 
                     <textarea
                       required
-                      placeholder="Description"
+                      name="requirements"
+                      value={state.requirements}
+                      placeholder="Requirements"
                       rows="7"
+                      onChange={handleChange}
                     ></textarea>
                   </div>
 
@@ -112,7 +141,16 @@ export default function Listing() {
                       Course Level*
                     </label>
 
-                    <input required type="text" placeholder="Select" />
+                    <select 
+                      name="level"
+                      value={state.level}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select your level</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="high">High</option>
+                    </select>
                   </div>
 
                   <div className="col-md-6">
@@ -120,23 +158,36 @@ export default function Listing() {
                       Audio Language*
                     </label>
 
-                    <input required type="text" placeholder="Select" />
+                    <select 
+                      name="language"
+                      value={state.language}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select your language</option>
+                      <option value="english">English</option>
+                    </select>
                   </div>
 
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Close Caption*
                     </label>
 
                     <input required type="text" placeholder="Select" />
-                  </div>
+                  </div> */}
 
                   <div className="col-md-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Course Category*
                     </label>
 
-                    <input required type="text" placeholder="Select" />
+                    <select 
+                      name="category"
+                      value={state.category}
+                      onChange={handleChange}
+                    >
+                      {category.map((elm, index) => <option key={`option-course-create-${index}`} value={elm.id}>{elm.titre}</option>)}
+                    </select>
                   </div>
                 </form>
 
@@ -146,7 +197,7 @@ export default function Listing() {
                   </div>
 
                   <div className="col-auto">
-                    <button className="button -md -purple-1 text-white">
+                    <button onClick={handleSubmit} className="button -md -purple-1 text-white">
                       Create
                     </button>
                   </div>

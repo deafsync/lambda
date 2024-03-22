@@ -220,7 +220,7 @@ export default function CourseCart() {
                   <div className="row justify-center pt-60 lg:pt-40">
                     <div className="col-auto">
                       <Link
-                        href="/courses-list-1"
+                        href="/courses"
                         className="button -md -outline-purple-1 text-purple-1"
                       >
                         Buy Course

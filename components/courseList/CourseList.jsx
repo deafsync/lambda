@@ -208,12 +208,12 @@ export default function CourseList({idCategory}) {
             <div className="row">
               <div className="col-auto">
                 <div>
-                  <h1 className="page-header__title">User Interface Courses</h1>
+                  <h1 className="page-header__title">Course list</h1>
                 </div>
 
                 <div>
                   <p className="page-header__text">
-                    Write an introductory description of the category.
+                    Here is the course list that you can filter by category or price or ...
                   </p>
                 </div>
               </div>
@@ -1755,23 +1755,23 @@ export default function CourseList({idCategory}) {
                                     : "Add To Cart"}
                                 </button>
                                 </div>
-                                <div className="col-auto">
-                                <button className="button size-50 rounded-full -purple-3 text-light-1">
-                                    <div
-                                    className="size-20  "
-                                    style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                    }}
-                                    >
-                                    <FontAwesomeIcon
-                                        style={{ fontSize: "20px" }}
-                                        icon={faHeart}
-                                    />
-                                    </div>
-                                </button>
-                                </div>
+                                {/* <div className="col-auto">
+                                  <button className="button size-50 rounded-full -purple-3 text-light-1">
+                                      <div
+                                      className="size-20  "
+                                      style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",
+                                      }}
+                                      >
+                                      <FontAwesomeIcon
+                                          style={{ fontSize: "20px" }}
+                                          icon={faHeart}
+                                      />
+                                      </div>
+                                  </button>
+                                </div> */}
                             </div>
                             </div>
                         </div>

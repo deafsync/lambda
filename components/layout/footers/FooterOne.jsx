@@ -15,14 +15,14 @@ export default function FooterOne() {
         <div className="footer-header">
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">
-              <div className="footer-header__logo">
+              <a href="/" className="footer-header__logo">
                 <Image
                   width={140}
                   height={50}
                   src="/assets/img/general/logo-dark-f.svg"
                   alt="logo"
                 />
-              </div>
+              </a>
             </div>
             <div className="col-auto">
               <div className="footer-header-socials">

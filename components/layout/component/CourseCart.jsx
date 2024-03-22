@@ -121,7 +121,7 @@ const CourseCart = () => {
           {!cartCourses.length && (
             <>
               <Link
-                href={"/courses-list-1"}
+                href={"#"}
                 style={{ textDecoration: "none" }}
                 className="col-12"
               >

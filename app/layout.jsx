@@ -15,7 +15,7 @@ import { useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Context from '@/context/Context';
 
-
+import { Toaster } from "react-hot-toast"
 
 export default function RootLayout({ children }) {
   useEffect(() => {
@@ -30,14 +30,13 @@ export default function RootLayout({ children }) {
   const router = useRouter()
   const pathname = usePathname()
 
-  console.log("ROUTE", pathname)
-
   return (
     <html lang="en" className=''>
       <head>
       
       </head>
       <body>
+        <Toaster/>
         <Context> {children}</Context>
       </body>
     </html>

@@ -13,7 +13,10 @@ export default function CoursesCardDashboard({ data }) {
     }
   }, []);
   return (
-    <div className="w-1/5 xl:w-1/3 lg:w-1/2 sm:w-1/1">
+    <a 
+      className="d-block courseHover w-1/5 xl:w-1/3 lg:w-1/2 sm:w-1/1"
+      href={`/course/${data.id}/lecture/${2}`}
+    >
       <div className="relative">
         <Image
           width={560}
@@ -80,6 +83,6 @@ export default function CoursesCardDashboard({ data }) {
           <div>25%</div>
         </div>
       </div>
-    </div>
+    </a>
   );
 }

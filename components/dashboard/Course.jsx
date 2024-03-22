@@ -44,9 +44,9 @@ export default function MyCourses() {
       <div className="dashboard__content bg-light-4">
         <div className="row pb-50 mb-10">
           <div className="col-auto">
-            <h1 className="text-30 lh-12 fw-700">Cours</h1>
+            <h1 className="text-30 lh-12 fw-700">Course</h1>
             <div className="mt-10">
-              Ici, vous allez gérer vos cours
+              You will manage your courses here.
             </div>
           </div>
         </div>
@@ -55,21 +55,21 @@ export default function MyCourses() {
           <div className="col-12">
             <div className="">
                 
-                  <div className="row y-gap-15 justify-between">
-                    <div className="col-auto">
-                    </div>
-
-                    <div className="col-auto">
-                      <Link href="course/create">
-                        <button className="button -md -narrow -purple-1 text-white">
-                          <i className="icon-calendar-2 mr-10"></i>
-                          New course
-                        </button>
-                      </Link>
-                    </div>
-
-                  </div>
+              <div className="row y-gap-15 justify-between">
+                <div className="col-auto">
                 </div>
+
+                <div className="col-auto">
+                  <Link href="course/create">
+                    <button className="button -md -narrow -purple-1 text-white">
+                      <i className="icon-calendar-2 mr-10"></i>
+                      New course
+                    </button>
+                  </Link>
+                </div>
+
+              </div>
+            </div>
         </div>
       </div>
 
@@ -90,21 +90,21 @@ export default function MyCourses() {
                   </button>
                   <button
                     className={`text-light-1 lh-12 tabs__button js-tabs-button ml-30 ${
-                      activeTab == 2 ? "is-active" : ""
-                    } `}
-                    data-tab-target=".-tab-item-2"
-                    type="button"
-                    onClick={() => setActiveTab(2)}
-                  >
-                    Finished
-                  </button>
-                  <button
-                    className={`text-light-1 lh-12 tabs__button fw-700 js-tabs-button ml-30 ${
                       activeTab == 3 ? "is-active" : ""
                     } `}
                     data-tab-target=".-tab-item-3"
                     type="button"
                     onClick={() => setActiveTab(3)}
+                  >
+                    Finished
+                  </button>
+                  <button
+                    className={`text-light-1 lh-12 tabs__button fw-700 js-tabs-button ml-30 ${
+                      activeTab == 4 ? "is-active" : ""
+                    } `}
+                    data-tab-target=".-tab-item-4"
+                    type="button"
+                    onClick={() => setActiveTab(4)}
                   >
                     Tous les cours
                   </button>
@@ -258,8 +258,8 @@ export default function MyCourses() {
                     </div>
                   </div>
 
-                  {/* <div className="tabs__pane -tab-item-2"></div>
-                  <div className="tabs__pane -tab-item-3"></div> */}
+                  <div className="tabs__pane -tab-item-2"></div>
+                  <div className="tabs__pane -tab-item-3"></div>
                 </div>
               </div>
             </div>

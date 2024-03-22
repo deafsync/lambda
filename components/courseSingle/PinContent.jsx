@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useContextElement } from "@/context/Context";
 import ModalVideoComponent from "../common/ModalVideo";
 import Image from "next/image";
+
 export default function PinContent({ pageItem }) {
   const { isAddedToCartCourses, addCourseToCart } = useContextElement();
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +23,8 @@ export default function PinContent({ pageItem }) {
     };
   }, []);
 
+  // TODO: Get pin data from parent
+
   return (
     <>
       <div
@@ -31,7 +34,7 @@ export default function PinContent({ pageItem }) {
             ? { height: "fit-content", right: "0%" }
             : { height: "100%", right: "7%", paddingTop: "80px" }
         }
-        className="courses-single-info js-pin-content"
+        className=" courses-info js-pin-content"
       >
         <div
           style={{ position: "sticky", top: "100px" }}
@@ -56,7 +59,7 @@ export default function PinContent({ pageItem }) {
             </div>
           </div>
 
-          <div className="courses-single-info__content scroll-bar-1 pt-30 pb-20 px-20">
+          <div className=" courses-info__content scroll-bar-1 pt-30 pb-20 px-20">
             <div className="d-flex justify-between items-center mb-30">
               {pageItem.paid ? (
                 <>
@@ -75,21 +78,21 @@ export default function PinContent({ pageItem }) {
               )}
             </div>
 
-            <button
-              className="button -md -purple-1 text-white w-1/1"
-              onClick={() => addCourseToCart(pageItem.id)}
-            >
-              {isAddedToCartCourses(pageItem.id)
-                ? "Already Added"
-                : "Add To Cart"}
-            </button>
-            <button className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">
-              Buy Now
-            </button>
-
-            <div className="text-14 lh-1 text-center mt-30">
-              30-Day Money-Back Guarantee
-            </div>
+            {pageItem.paid && (<><button
+                className="button -md -purple-1 text-white w-1/1"
+                onClick={() => addCourseToCart(pageItem.id)}
+              >
+                {isAddedToCartCourses(pageItem.id)
+                  ? "Already Added"
+                  : "Add To Cart"}
+              </button>
+              <button className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">
+                Buy Now
+              </button>
+              <div className="text-14 lh-1 text-center mt-30">
+                30-Day Money-Back Guarantee
+              </div></>
+            )}
 
             <div className="mt-25">
               <div className="d-flex justify-between py-8 ">
@@ -100,13 +103,13 @@ export default function PinContent({ pageItem }) {
                 <div>20</div>
               </div>
 
-              <div className="d-flex justify-between py-8 border-top-light">
+              {/* <div className="d-flex justify-between py-8 border-top-light">
                 <div className="d-flex items-center text-dark-1">
                   <div className="icon-puzzle"></div>
                   <div className="ml-10">Quizzes</div>
                 </div>
                 <div>3</div>
-              </div>
+              </div> */}
 
               <div className="d-flex justify-between py-8 border-top-light">
                 <div className="d-flex items-center text-dark-1">
@@ -134,10 +137,18 @@ export default function PinContent({ pageItem }) {
 
               <div className="d-flex justify-between py-8 border-top-light">
                 <div className="d-flex items-center text-dark-1">
+                  <div className="icon-translate"></div>
+                  <div className="ml-10">Other languages</div>
+                </div>
+                <div>Fongbé</div>
+              </div>
+
+              <div className="d-flex justify-between py-8 border-top-light">
+                <div className="d-flex items-center text-dark-1">
                   <div className="icon-badge"></div>
                   <div className="ml-10">Certificate</div>
                 </div>
-                <div>Yes</div>
+                <div>No</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">

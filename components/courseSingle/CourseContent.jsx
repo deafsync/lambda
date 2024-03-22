@@ -1,24 +1,32 @@
 "use client";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { lessonItems } from "@/data/aboutcourses";
 
 import React, { useState } from "react";
 import ModalVideoComponent from "../common/ModalVideo";
 
-export default function CourseContent() {
+export default function CourseContent({lessonItems}) {
   const [activeItemId, setActiveItemId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [videoId, setVideoId] = useState("LlCwHnp3kL4");
+
+  // TODO: Get data from parent
+
+  const handleOpen = (open, videoId) => {
+    setIsOpen(open)
+    setVideoId(videoId)
+  }
+
   return (
     <>
       <div id="course-content" className="pt-60 lg:pt-40">
         <h2 className="text-20 fw-500">Course Content</h2>
 
         <div className="d-flex justify-between items-center mt-30">
-          <div className="">27 sections • 95 lectures</div>
-          <a href="#" className="underline text-purple-1">
+          <div className="">{lessonItems[0].lessons.length} lectures</div>
+          {/* <a href="#" className="underline text-purple-1">
             Expand All Sections
-          </a>
+          </a> */}
         </div>
 
         <div className="mt-10">
@@ -71,24 +79,17 @@ export default function CourseContent() {
                           </div>
 
                           <div className="d-flex x-gap-20 items-center">
-                            <span
-                              onClick={() => setIsOpen(true)}
+                            {!index && <span
+                              onClick={() => handleOpen(true, "LlCwHnp3kL4")}
                               className="text-14 lh-1 text-purple-1 underline cursor "
                             >
                               Preview
-                            </span>
-                            <a
-                              href="#"
-                              className="text-14 lh-1 text-purple-1 underline"
+                            </span>}
+                            <div
+                              className="text-14 lh-1 text-purple-1"
                             >
-                              {elm.duration} question
-                            </a>
-                            <a
-                              href="#"
-                              className="text-14 lh-1 text-purple-1 underline"
-                            >
-                              {elm.duration}
-                            </a>
+                              {itm.duration}
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -103,7 +104,7 @@ export default function CourseContent() {
       <ModalVideoComponent
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        videoId={"LlCwHnp3kL4"}
+        videoId={videoId} 
       />
     </>
   );

@@ -47,7 +47,7 @@ export default function CourseCardSix({ data, index }) {
             Titre du cours
           </div>
           <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
-            <Link className="linkCustom" href={`/courses/${data.id}`}>
+            <Link className="linkCustom" href={`/course/${data.id}/lecture/1`}>
               {data.title}
             </Link>
           </div>

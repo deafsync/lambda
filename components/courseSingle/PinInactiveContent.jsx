@@ -11,7 +11,7 @@ export default function PinInactiveContent({ pageItem }) {
 
   return (
     <>
-      <div id="js-pin-content" className="courses-single-info js-pin-content">
+      <div id="js-pin-content" className=" courses-info js-pin-content">
         <div className="bg-white shadow-2 rounded-8 border-light py-10 px-10">
           <div className="relative">
             <Image
@@ -32,7 +32,7 @@ export default function PinInactiveContent({ pageItem }) {
             </div>
           </div>
 
-          <div className="courses-single-info__content scroll-bar-1 pt-30 pb-20 px-20">
+          <div className=" courses-info__content scroll-bar-1 pt-30 pb-20 px-20">
             <div className="d-flex justify-between items-center mb-30">
               {pageItem.paid ? (
                 <>

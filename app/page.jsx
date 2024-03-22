@@ -22,6 +22,7 @@ import EventsFour from '@/components/homes/events/EventsFour'
 import LearningSelection from '@/components/homes/LearningSelection'
 import Footer from '@/components/layout/footers/FooterOne'
 import Preloader from '@/components/common/Preloader'
+import HeaderAuth from '@/components/layout/headers/HeaderAuth'
 export const metadata = {
   title: 'lambda',
   description:

@@ -22,12 +22,12 @@ const masthead_info = [
   {
     id: 1,
     icon: masthead_icon_1,
-    text: "Over 12 million students",
+    text: "Over 12 students",
   },
   {
     id: 2,
     icon: masthead_icon_2,
-    text: "More than 60,000 courses",
+    text: "More than 6 courses",
   },
   {
     id: 3,
@@ -132,7 +132,7 @@ const HomeHero = () => {
                   <div className="col-12 col-sm-auto">
                     <Link
                       data-barba
-                      href="/courses-list-1"
+                      href="/courses"
                       className="button -md -outline-green-1 text-green-1"
                     >
                       Find Courses
@@ -184,7 +184,7 @@ const HomeHero = () => {
                     </div>
                     <div className="ml-20">
                       <div className="text-orange-1 text-16 fw-500 lh-1">
-                        3.000 +
+                        6 +
                       </div>
                       <div className="mt-3">Free Courses</div>
                     </div>

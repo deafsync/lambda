@@ -105,7 +105,7 @@ const EventCart = () => {
           {!cartEvents.length && (
             <>
               <Link
-                href={"/event-list-1"}
+                href={"#"}
                 style={{ textDecoration: "none" }}
                 className="col-12"
               >

@@ -9,7 +9,7 @@ export default function FooterLinks({ allClasses }) {
           <div className={`${allClasses ? allClasses : ""}`}>{elm.title}</div>
           <div className="d-flex y-gap-10 flex-column">
             {elm.links.map((itm, index) => (
-              <Link key={index} href={itm.href}>
+              <Link key={index} href={`${itm.href}`}>
                 {itm.label}
               </Link>
             ))}

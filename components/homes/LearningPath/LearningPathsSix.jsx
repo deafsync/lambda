@@ -16,7 +16,7 @@ export default function LearningPathsSix() {
               <br className="lg:d-none" /> differentiator.
             </p>
             <div className="d-inline-block mt-30">
-              <a href="#" className="button -md -dark-1 text-white">
+              <a href="login" className="button -md -dark-1 text-white">
                 Join Free
               </a>
             </div>

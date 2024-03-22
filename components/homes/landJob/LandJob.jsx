@@ -15,7 +15,7 @@ export default function LandJob() {
             </p>
             <div className="d-inline-block mt-30">
               <a
-                href="#"
+                href="/about"
                 className="button -md -outline-purple-1 text-purple-1"
               >
                 Learn More

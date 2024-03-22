@@ -28,12 +28,12 @@ export default function InstractorFour() {
             </p>
             <div className="d-flex x-gap-15 y-gap-15 pt-30">
               <div>
-                <a href="#" className="button -md -purple-1 text-white">
+                <a href="/instructor-become" className="button -md -purple-1 text-white">
                   Start Teaching Today
                 </a>
               </div>
               <div>
-                <a href="#" className="button -md -outline-dark-1 text-dark-1">
+                <a href="/instructor-become" className="button -md -outline-dark-1 text-dark-1">
                   Browse Teacher
                 </a>
               </div>

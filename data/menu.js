@@ -36,11 +36,11 @@ export const menuList = [
 
         links: [
           { href: "/courses/3", label: "Course Single v1" },
-          { href: "/courses-single-2/2", label: "Course Single v2" },
-          { href: "/courses-single-3/3", label: "Course Single v3" },
-          { href: "/courses-single-4/4", label: "Course Single v4" },
-          { href: "/courses-single-5/4", label: "Course Single v5" },
-          { href: "/courses-single-6/7", label: "Course Single v6" },
+          { href: "/ courses/2", label: "Course Single v2" },
+          { href: "/ courses/3", label: "Course Single v3" },
+          { href: "/ courses/4", label: "Course Single v4" },
+          { href: "/ courses/4", label: "Course Single v5" },
+          { href: "/ courses/7", label: "Course Single v6" },
           { href: "/course-cart", label: "Course Cart" },
           { href: "/course-checkout", label: "Course Checkout" },
         ],

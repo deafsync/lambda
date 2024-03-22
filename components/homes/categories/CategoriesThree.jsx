@@ -28,7 +28,7 @@ export default function CategoriesTwo() {
         <div className="row y-gap-50 pt-60 lg:pt-50">
           {topCatagoriesThree.map((elm, i) => (
             <Link
-              href={`/courses-list-${elm.id > 8 ? 1 : elm.id}`}
+              href={`/courses/${elm.id > 8 ? 1 : elm.id}`}
               key={i}
               className="col-xl-3 col-lg-4 col-sm-6 linkCustomTwo"
             >

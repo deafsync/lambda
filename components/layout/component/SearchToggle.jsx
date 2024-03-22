@@ -58,19 +58,19 @@ const SearchToggle = ({ allClasses, color }) => {
                   <Link href={`/courses/${5}`} className="text-dark-1">
                     The Ultimate Drawing Course - Beginner to Advanced
                   </Link>
-                  <Link href="/courses-single-2/3" className="text-dark-1">
+                  <Link href="/ courses/3" className="text-dark-1">
                     Character Art School: Complete Character Drawing Course
                   </Link>
-                  <Link href="/courses-single-3/3" className="text-dark-1">
+                  <Link href="/ courses/3" className="text-dark-1">
                     Complete Blender Creator: Learn 3D Modelling for Beginners
                   </Link>
-                  <Link href="/courses-single-4/3" className="text-dark-1">
+                  <Link href="/ courses/3" className="text-dark-1">
                     User Experience Design Essentials - Adobe XD UI UX Design
                   </Link>
-                  <Link href="/courses-single-5/3" className="text-dark-1">
+                  <Link href="/ courses/3" className="text-dark-1">
                     Graphic Design Masterclass - Learn GREAT Design
                   </Link>
-                  <Link href="/courses-single-6/3" className="text-dark-1">
+                  <Link href="/ courses/3" className="text-dark-1">
                     Adobe Photoshop CC – Essentials Training Course
                   </Link>
                 </div>

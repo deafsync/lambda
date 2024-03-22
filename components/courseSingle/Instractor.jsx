@@ -20,7 +20,7 @@ export default function Instractor() {
 
           <div className="">
             <h5 className="text-17 lh-14 fw-500">Floyd Miles</h5>
-            <p className="mt-5">President of Sales</p>
+            <p className="mt-5">Author of this course; Expert</p>
 
             <div className="d-flex x-gap-20 y-gap-10 flex-wrap items-center pt-10">
               <div className="d-flex items-center">
@@ -31,19 +31,19 @@ export default function Instractor() {
                 <div className="text-13 lh-1">Instructor Rating</div>
               </div>
 
-              <div className="d-flex items-center text-light-1">
+              {/* <div className="d-flex items-center text-light-1">
                 <div className="icon-comment text-13 mr-8"></div>
                 <div className="text-13 lh-1">23,987 Reviews</div>
-              </div>
+              </div> */}
 
               <div className="d-flex items-center text-light-1">
                 <div className="icon-person-3 text-13 mr-8"></div>
-                <div className="text-13 lh-1">692 Students</div>
+                <div className="text-13 lh-1">1 Students</div>
               </div>
 
               <div className="d-flex items-center text-light-1">
                 <div className="icon-wall-clock text-13 mr-8"></div>
-                <div className="text-13 lh-1">15 Course</div>
+                <div className="text-13 lh-1">3 Course</div>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function Instractor() {
 
         <div className="mt-30">
           <p>
-            Back in 2010, I started brainspin with a desire to design compelling
+            Back in 2022, I started brainspin with a desire to design compelling
             and engaging apps. For over 7 years, I have designed many high
             profile web and iPhone applications. The applications range from 3D
             medical aided web applications to project management applications

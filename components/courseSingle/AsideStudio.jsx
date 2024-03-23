@@ -69,7 +69,7 @@ export default function AsideStudio({ id }) {
 
     for(let i = 0; i < dataFr.length; i++) {
         if(dataFr[i][1] != textFr[i][1]) {
-            result.push(textFr[i])
+            result.push([...textFr[i], i])
         }
     }
 

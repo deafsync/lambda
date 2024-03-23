@@ -86,7 +86,7 @@ export default function MyCourses() {
                     type="button"
                     onClick={() => setActiveTab(1)}
                   >
-                    En cours
+                    In progress
                   </button>
                   <button
                     className={`text-light-1 lh-12 tabs__button js-tabs-button ml-30 ${
@@ -106,7 +106,7 @@ export default function MyCourses() {
                     type="button"
                     onClick={() => setActiveTab(4)}
                   >
-                    Tous les cours
+                    All courses
                   </button>
                 </div>
 

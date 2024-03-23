@@ -24,6 +24,12 @@ export const sidebarItems = [
   //   iconClass: "text-20 icon-person-2",
   // },
   {
+    id: 30,
+    href: "/dashboard/categories",
+    text: "Categories",
+    iconClass: "text-20 icon-bookmark",
+  },
+  {
     id: 24,
     href: "/dashboard/students",
     text: "Students",

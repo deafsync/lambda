@@ -11,7 +11,7 @@ export default function StepsOne() {
               <h2 className="sectionTitle__title ">How it works?</h2>
 
               <p className="sectionTitle__text ">
-                10,000+ unique online course list designs
+                10 + unique online course list designs
               </p>
             </div>
           </div>

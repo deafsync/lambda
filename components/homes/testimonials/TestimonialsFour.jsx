@@ -21,7 +21,7 @@ export default function TestimonialsFour() {
               </h2>
 
               <p className="sectionTitle__text text-white">
-                10,000+ unique online course list designs
+                10 + unique online course list designs
               </p>
             </div>
           </div>

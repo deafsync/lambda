@@ -464,47 +464,32 @@ export const messageList = [
 export const partcipents = [
   {
     id: 1,
-    name: "Heather Reyes",
-    date: "10 Nov 2014",
-    role: "Student",
-    team: "Team South",
-    duration: "1 year 31 days",
-    imgSrc: "/assets/img/misc/2.png",
+    lastname: "Heather",
+    surname: "Reyes",
+    email: "gilles@gmail.com"
   },
   {
     id: 2,
-    name: "John Doe",
-    date: "15 Jan 2015",
-    role: "Teacher",
-    team: "Team North",
-    duration: "2 years 15 days",
-    imgSrc: "/assets/img/misc/2.png",
+    lastname: "Doe",
+    surname: "John",
+    email: "marius@gmail.com"
   },
   {
     id: 3,
-    name: "Jane Smith",
-    date: "22 Mar 2016",
-    role: "Administrator",
-    team: "Team East",
-    duration: "3 years 281 days",
-    imgSrc: "/assets/img/misc/2.png",
+    lastname: "Smith",
+    surname: "Jane",
+    email: "gilles@gmail.com"
   },
   {
     id: 4,
-    name: "David Johnson",
-    date: "5 Jul 2017",
-    role: "Student",
-    team: "Team West",
-    duration: "4 years 2 days",
-    imgSrc: "/assets/img/misc/2.png",
+    lastname: "Johnson",
+    surname: "David",
+    email: "osee@gmail.com"
   },
   {
     id: 5,
-    name: "Emily Davis",
-    date: "12 Sep 2018",
-    role: "Teacher",
-    team: "Team South",
-    duration: "5 years 298 days",
-    imgSrc: "/assets/img/misc/2.png",
+    lastname: "Davis",
+    surname: "Emily",
+    email: "ferdiand@gmail.com"
   },
 ];

@@ -23,8 +23,7 @@ export default function InstractorFour() {
               <br className="lg:d-none" /> leaders around the world
             </h3>
             <p className="mt-30">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt.
+              Our courses is taught by industry leaders around the world. Join us by teaching course.
             </p>
             <div className="d-flex x-gap-15 y-gap-15 pt-30">
               <div>

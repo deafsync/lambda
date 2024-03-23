@@ -153,7 +153,7 @@ export default function LearningSolutions() {
                 </div>
                 <div className="ml-20">
                   <div className="text-orange-1 text-16 fw-500 lh-1">
-                    3.000 +
+                    10 +
                   </div>
                   <div className="mt-3">Free Courses</div>
                 </div>

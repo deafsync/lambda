@@ -24,7 +24,7 @@ export default function CoursesSlider() {
               <h2 className="sectionTitle__title ">Top courses</h2>
 
               <p className="sectionTitle__text ">
-                10,000+ unique online course list designs
+                10 + unique online course list designs
               </p>
             </div>
           </div>

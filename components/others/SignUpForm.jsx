@@ -1,12 +1,56 @@
 "use client";
 
+import { signup } from "@/services/auth.service";
 import Link from "next/link";
-import React from "react";
+import React, {useState} from "react";
+import { useRouter } from 'next/navigation';
+
+import {toast} from "react-hot-toast"
 
 export default function SignUpForm() {
+
+  const router = useRouter();
+
+  const [error, setError] = useState(0)
+  const [state, setState] = useState({
+      "password": "",
+      "re_password": "",
+      "email": ""
+  })
+
+  const handleChange = (event) => {
+      const name = event.target.name
+      const value = event.target.value;
+      setState({...state, [name] : value});
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(state)
+
+    if(state.password != state.password) {
+      setError(1)
+    } else {
+      signup(state)
+        .then(res => {
+          if(res) {
+            if(res == 1) {
+              toast.success("Check your email to continue")
+              router.push('/otp');
+            } else if(res == 2) {
+              setError(2)
+            } else if(res == 3) {
+              setError(3)
+            }
+          } else {
+            toast.error("An error occured")
+          }
+        })
+      
+    }
+
   };
+
   return (
     <div className="form-page__content lg:py-50">
       <div className="container">
@@ -25,39 +69,57 @@ export default function SignUpForm() {
                 className="contact-form respondForm__form row y-gap-20 pt-30"
                 onSubmit={handleSubmit}
               >
-                <div className="col-lg-6">
+                <div className="col-lg-12">
                   <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                     Email address *
                   </label>
-                  <input required type="text" name="title" placeholder="Name" />
+                  <input 
+                    required 
+                    type="text" 
+                    name="email" 
+                    placeholder="Email" 
+                    value={state.email}
+                    onChange={handleChange}
+                  />
                 </div>
-                <div className="col-lg-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                    Username *
-                  </label>
-                  <input required type="text" name="title" placeholder="Name" />
-                </div>
-                <div className="col-lg-6">
+                <div className="col-lg-12">
                   <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                     Password *
                   </label>
-                  <input required type="text" name="title" placeholder="Name" />
+                  <input 
+                    required 
+                    type="text" 
+                    name="password" 
+                    placeholder="Password"
+                    value={state.password} 
+                    onChange={handleChange}
+                  />
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-12">
                   <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                     Confirm Password *
                   </label>
-                  <input required type="text" name="title" placeholder="Name" />
+                  <input 
+                    required 
+                    type="text" 
+                    name="re_password" 
+                    placeholder="Confirm password" 
+                    value={state.re_password}
+                    onChange={handleChange}
+                  />
                 </div>
+                <label className="text-16 lh-1 fw-500 text-red-1 my-10">
+                  {error == 1 ? "non-compliant passwords" : error == 2 ? "existed email" : error == 3 ? "not robust password" : ""}
+                </label>
                 <div className="col-12">
                   <button
                     type="submit"
                     name="submit"
                     id="submit"
-                    className="button -md -green-1 text-dark-1 fw-500 w-1/1"
+                    className={`button -md -green-1 text-dark-1 fw-500 w-1/1`}
                   >
                     Register
-                  </button>
+                  </button> 
                 </div>
               </form>
 

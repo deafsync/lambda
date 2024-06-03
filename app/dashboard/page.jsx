@@ -10,8 +10,7 @@ import React from 'react'
 export const metadata = {
   title: 'Cashboard ',
   description:
-    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
-  
+    'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.', 
 }
 
 export default function page() {

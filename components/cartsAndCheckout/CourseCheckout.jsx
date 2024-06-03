@@ -79,7 +79,7 @@ export default function CourseCheckOut() {
                   </div>
                   <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                      Company name
+                      City / town
                     </label>
                     <input
                       required
@@ -89,7 +89,7 @@ export default function CourseCheckOut() {
                     />
                   </div>
 
-                  <div className="col-12">
+                  {/* <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Country / Region *
                     </label>
@@ -99,9 +99,9 @@ export default function CourseCheckOut() {
                       <option value="France">France</option>
                       <option value="Greece">Greece</option>
                     </select>
-                  </div>
+                  </div> */}
 
-                  <div className="col-12">
+                  {/* <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       House number adn street name
                     </label>
@@ -111,9 +111,9 @@ export default function CourseCheckOut() {
                       name="address"
                       placeholder="House number adn street name"
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-sm-6">
+                  {/* <div className="col-sm-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Apartment, suite, unit etc. (optional)
                     </label>
@@ -123,9 +123,9 @@ export default function CourseCheckOut() {
                       name="apartment"
                       placeholder="Apartment, suite, unit etc. (optional)"
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-sm-6">
+                  {/* <div className="col-sm-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Town / City *
                     </label>
@@ -135,9 +135,9 @@ export default function CourseCheckOut() {
                       name="city"
                       placeholder="Town / City *"
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-sm-6">
+                  {/* <div className="col-sm-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       State *
                     </label>
@@ -147,9 +147,9 @@ export default function CourseCheckOut() {
                       name="state"
                       placeholder="State *"
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-sm-6">
+                  {/* <div className="col-sm-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       ZIP *
                     </label>
@@ -159,9 +159,9 @@ export default function CourseCheckOut() {
                       name="zip"
                       placeholder="ZIP *"
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-sm-6">
+                  {/* <div className="col-sm-6">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                       Phone *
                     </label>
@@ -171,7 +171,7 @@ export default function CourseCheckOut() {
                       name="phone"
                       placeholder="Phone *"
                     />
-                  </div>
+                  </div> */}
 
                   <div className="col-12">
                     <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
@@ -185,7 +185,7 @@ export default function CourseCheckOut() {
                     />
                   </div>
 
-                  <div className="col-12">
+                  {/* <div className="col-12">
                     <h5 className="text-20 fw-500 pt-30">
                       Additional information
                     </h5>
@@ -201,7 +201,7 @@ export default function CourseCheckOut() {
                       rows="8"
                       placeholder="Order notes (optional)"
                     ></textarea>
-                  </div>
+                  </div> */}
                 </form>
               </div>
             </div>
@@ -259,7 +259,7 @@ export default function CourseCheckOut() {
                   </div>
                 </div>
 
-                <div className="py-30 px-30 bg-white mt-30 border-light rounded-8 bg-light-4">
+                {/* <div className="py-30 px-30 bg-white mt-30 border-light rounded-8 bg-light-4">
                   <h5 className="text-20 fw-500">Payment</h5>
 
                   <div className="mt-30">
@@ -321,10 +321,10 @@ export default function CourseCheckOut() {
                       <h5 className="ml-15 text-15 lh-1 text-dark-1">PayPal</h5>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="mt-30">
-                  <button className="button -md -accent col-12 -uppercase text-white">
+                  <button className="button -md -green-1 text-dark-1 fw-500 w-1/1 -uppercase">
                     Place order
                   </button>
                 </div>

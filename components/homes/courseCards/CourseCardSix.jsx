@@ -43,9 +43,9 @@ export default function CourseCardSix({ data, index }) {
         </div>
 
         <div className="coursesCard__content pl-20 sm:pl-10 pr-10">
-          <div className="text-15 lh-13 sm:mt-20 mt-0 fw-900 text-light-1">
+          {/* <div className="text-15 lh-13 sm:mt-20 mt-0 fw-900 text-light-1">
             Titre du cours
-          </div>
+          </div> */}
           <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
             <Link className="linkCustom" href={`/course/${data.id}/lecture/1`}>
               {data.title}

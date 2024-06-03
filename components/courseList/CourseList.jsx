@@ -24,8 +24,42 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../common/PaginationTwo";
+import toast from "react-hot-toast";
+import { get_categories } from "@/services/core.service";
+import { retrive_course_infos } from "@/utils/course";
 
 export default function CourseList({idCategory}) {
+
+  const [categories, setCategories] = useState([]);
+  const [coursesData, setCoursesData] = useState([]);
+
+  useEffect(() => {
+    get_categories()
+      .then(res => {
+        let data = []
+        let courses_data = []
+
+        for(let i = 0; i < res.length; i++) {
+          data.push({
+            id: `categories-list-${i}`,
+            title: res[i].titre
+          })
+
+          if(res[i].formations.length > 0)
+            courses_data.push(...retrive_course_infos(res[i].formations, res[i].titre))
+        }
+
+        console.log(data)
+
+        setCategories(data)
+        setCoursesData(courses_data)
+      }).catch(err => {
+        console.log(err)
+        toast.error("Geting categories make error")
+      })
+  }, [])
+
+
   const [categoryOpen, setCategoryOpen] = useState(true);
   const [ratingOpen, setRatingOpen] = useState(true);
   const [instractorOpen, setInstractorOpen] = useState(true);
@@ -43,6 +77,7 @@ export default function CourseList({idCategory}) {
   const [filterLevels, setFilterLevels] = useState([]);
   const [filterlanguange, setFilterlanguange] = useState([]);
   const [filterDuration, setFilterDuration] = useState([]);
+  const [filterDublanguange, setFilterDublanguange] = useState([]);
 
   const [currentSortingOption, setCurrentSortingOption] = useState("Default");
 
@@ -85,7 +120,13 @@ export default function CourseList({idCategory}) {
     }
     if (filterlanguange.length > 0) {
       const filtered = refItems.filter((elm) =>
-        filterlanguange.includes(elm.languange),
+        filterlanguange.includes(elm.language),
+      );
+      filteredArrays = [...filteredArrays, filtered];
+    }
+    if (filterDublanguange.length > 0) {
+      const filtered = refItems.filter((elm) =>
+        filterlanguange.includes(elm.dub_language),
       );
       filteredArrays = [...filteredArrays, filtered];
     }
@@ -119,6 +160,7 @@ export default function CourseList({idCategory}) {
     filterLevels,
     filterlanguange,
     filterDuration,
+    filterDublanguange
   ]);
 
   useEffect(() => {
@@ -196,6 +238,14 @@ export default function CourseList({idCategory}) {
       setFilterlanguange((pre) => [...pre, item]);
     }
   };
+  const handleFilterDublanguange = (item) => {
+    if (filterDublanguange.includes(item)) {
+      const filtered = filterDublanguange.filter((elm) => elm != item);
+      setFilterDublanguange([...filtered]);
+    } else {
+      setFilterDublanguange((pre) => [...pre, item]);
+    }
+  }; 
   const handleFilterDuration = (item) => {
     setFilterDuration(item);
   };
@@ -690,7 +740,7 @@ export default function CourseList({idCategory}) {
                           className="accordion__button items-center"
                           onClick={() => setOpenLanguage((pre) => !pre)}
                         >
-                          <h5 className="sidebar__title">Langage & doublage</h5>
+                          <h5 className="sidebar__title">Language</h5>
 
                           <div className="accordion__icon">
                             <div className="icon icon-chevron-down"></div>
@@ -729,14 +779,14 @@ export default function CourseList({idCategory}) {
                                   key={i}
                                   className="sidebar-checkbox__item cursor"
                                   onClick={() =>
-                                    handleFilterlanguange(elm.title)
+                                    handleFilterlanguange(elm.infos)
                                   }
                                 >
                                   <div className="form-checkbox">
                                     <input
                                       type="checkbox"
                                       checked={
-                                        filterlanguange.includes(elm.title)
+                                        filterlanguange.includes(elm.infos)
                                           ? true
                                           : false
                                       }
@@ -750,11 +800,11 @@ export default function CourseList({idCategory}) {
                                   </div>
                                   <div className="sidebar-checkbox__count">
                                     (
-                                    {
-                                      coursesData.filter(
-                                        (itm) => itm.languange == elm.title,
-                                      ).length
-                                    }
+                                      {
+                                        coursesData.filter(
+                                          (itm) => itm.language == elm.infos,
+                                        ).length
+                                      }
                                     )
                                   </div>
                                 </div>
@@ -785,7 +835,7 @@ export default function CourseList({idCategory}) {
                           className="accordion__button items-center"
                           onClick={() => setOpenLanguage((pre) => !pre)}
                         >
-                          <h5 className="sidebar__title">Sous-titre</h5>
+                          <h5 className="sidebar__title">Dubbing language</h5>
 
                           <div className="accordion__icon">
                             <div className="icon icon-chevron-down"></div>
@@ -801,13 +851,13 @@ export default function CourseList({idCategory}) {
                             <div className="sidebar-checkbox">
                               <div
                                 className="sidebar-checkbox__item cursor"
-                                onClick={() => setFilterlanguange([])}
+                                onClick={() => setFilterDublanguange([])}
                               >
                                 <div className="form-checkbox">
                                   <input
                                     type="checkbox"
                                     checked={
-                                      filterlanguange.length ? false : true
+                                      filterDublanguange.length ? false : true
                                     }
                                   />
                                   <div className="form-checkbox__mark">
@@ -824,14 +874,14 @@ export default function CourseList({idCategory}) {
                                   key={i}
                                   className="sidebar-checkbox__item cursor"
                                   onClick={() =>
-                                    handleFilterlanguange(elm.title)
+                                    handleFilterDublanguange(elm.infos)
                                   }
                                 >
                                   <div className="form-checkbox">
                                     <input
                                       type="checkbox"
                                       checked={
-                                        filterlanguange.includes(elm.title)
+                                        filterDublanguange.includes(elm.infos)
                                           ? true
                                           : false
                                       }
@@ -847,7 +897,7 @@ export default function CourseList({idCategory}) {
                                     (
                                     {
                                       coursesData.filter(
-                                        (itm) => itm.languange == elm.title,
+                                        (itm) => itm.dub_language == elm.infos,
                                       ).length
                                     }
                                     )
@@ -1404,17 +1454,17 @@ export default function CourseList({idCategory}) {
 
                         <div className="col-xl-3 col-lg-4 col-sm-6">
                           <div className="sidebar__item">
-                            <h5 className="sidebar__title">Langage & doublage</h5>
+                            <h5 className="sidebar__title">Langage</h5>
                             <div className="sidebar-checkbox">
                               <div
-                                className="sidebar-checkbox__item"
+                                className="sidebar-checkbox__item cursor"
                                 onClick={() => setFilterlanguange([])}
                               >
                                 <div className="form-checkbox">
                                   <input
                                     type="checkbox"
                                     checked={
-                                      filterlanguange.length ? false : true
+                                      filterlanguange.length < 1 ? true : false
                                     }
                                   />
                                   <div className="form-checkbox__mark">
@@ -1430,16 +1480,14 @@ export default function CourseList({idCategory}) {
                               {languages.map((item, index) => (
                                 <div
                                   className="sidebar-checkbox__item cursor"
-                                  key={index}
-                                  onClick={() =>
-                                    handleFilterlanguange(item.title)
-                                  }
+                                  key={`langauge-${index}`}
+                                  onClick={() => handleFilterlanguange(item.infos)}
                                 >
                                   <div className="form-checkbox">
                                     <input
                                       type="checkbox"
                                       checked={
-                                        filterlanguange.includes(item.title)
+                                        filterlanguange.includes(item.infos)
                                           ? true
                                           : false
                                       }
@@ -1456,32 +1504,88 @@ export default function CourseList({idCategory}) {
                                     (
                                     {
                                       coursesData.filter(
-                                        (itm) => itm.languange == item.title,
+                                        (itm) => itm.language == item.infos,
                                       ).length
                                     }
                                     )
                                   </div>
                                 </div>
                               ))}
-                            </div>
-                            <div className="sidebar__more mt-15">
-                              <a
-                                href="#"
-                                className="text-14 fw-500 underline text-purple-1"
-                              >
-                                Show more
-                              </a>
                             </div>
                           </div>
                         </div>
 
                         <div className="col-xl-3 col-lg-4 col-sm-6">
                           <div className="sidebar__item">
+                            <h5 className="sidebar__title">Dubbing language</h5>
+                            <div className="sidebar-checkbox">
+                              <div
+                                className="sidebar-checkbox__item cursor"
+                                onClick={() => setFilterDublanguange([])}
+                              >
+                                <div className="form-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    checked={
+                                      filterDublanguange.length < 1 ? true : false
+                                    }
+                                  />
+                                  <div className="form-checkbox__mark">
+                                    <div className="form-checkbox__icon icon-check"></div>
+                                  </div>
+                                </div>
+
+                                <div className="sidebar-checkbox__title">
+                                  All
+                                </div>
+                                <div className="sidebar-checkbox__count"></div>
+                              </div>
+                              {languages.map((item, index) => (
+                                <div
+                                  className="sidebar-checkbox__item cursor"
+                                  key={`dub-langauge-${index}`}
+                                  onClick={() => handleFilterDublanguange(item.infos)}
+                                >
+                                  <div className="form-checkbox">
+                                    <input
+                                      type="checkbox"
+                                      checked={
+                                        filterDublanguange.includes(item.infos)
+                                          ? true
+                                          : false
+                                      }
+                                    />
+                                    <div className="form-checkbox__mark">
+                                      <div className="form-checkbox__icon icon-check"></div>
+                                    </div>
+                                  </div>
+
+                                  <div className="sidebar-checkbox__title">
+                                    {item.title}
+                                  </div>
+                                  <div className="sidebar-checkbox__count">
+                                    (
+                                    {
+                                      coursesData.filter(
+                                        (itm) => itm.dub_language == item.infos,
+                                      ).length
+                                    }
+                                    )
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+
+                        {/* <div className="col-xl-3 col-lg-4 col-sm-6">
+                          <div className="sidebar__item">
                             <h5 className="sidebar__title">Sous-titre</h5>
                             <div className="sidebar-checkbox">
                               <div
                                 className="sidebar-checkbox__item"
-                                onClick={() => setFilterlanguange([])}
+                                onClick={() => setFilterDublanguange([])}
                               >
                                 <div className="form-checkbox">
                                   <input
@@ -1505,7 +1609,7 @@ export default function CourseList({idCategory}) {
                                   className="sidebar-checkbox__item cursor"
                                   key={index}
                                   onClick={() =>
-                                    handleFilterlanguange(item.title)
+                                    handleFilterDublanguange(item.title)
                                   }
                                 >
                                   <div className="form-checkbox">
@@ -1546,7 +1650,7 @@ export default function CourseList({idCategory}) {
                               </a>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
 
                         {/* <div className="col-xl-3 col-lg-4 col-sm-6">
                           <div className="sidebar__item">
@@ -1628,14 +1732,15 @@ export default function CourseList({idCategory}) {
                         <div className="coursesCard -type-1 row y-gap-20 flex-row items-center">
                             <div className="col-xl-3 col-lg-4">
                             <div className="coursesCard__image rounded-8 relative">
-                                <Image
+                              <Image
                                 width={510}
                                 height={360}
                                 className="w-1/1 rounded-8"
-                                src={elm.imageSrc}
+                                style={{ height: "150px", width: "100%", objectFit: "cover" }}
+                                src={elm.imageSrc ? elm.imageSrc : "assets/img/auth/img_2.png"}
                                 alt="image"
-                                />
-                                <div className="coursesCard__image_overlay rounded-8"></div>
+                              />
+                              <div className="coursesCard__image_overlay rounded-8"></div>
                             </div>
                             </div>
 
@@ -1648,7 +1753,7 @@ export default function CourseList({idCategory}) {
                                 <Star star={elm.rating} />
                                 </div>
                                 <div className="text-13 lh-1 ml-10">
-                                ({elm.ratingCount})
+                                ({7})
                                 </div>
                             </div>
 
@@ -1668,7 +1773,7 @@ export default function CourseList({idCategory}) {
                                     <Image
                                     width={30}
                                     height={30}
-                                    src={elm.authorImageSrc}
+                                    src={elm.authorImageSrc ? elm.authorImageSrc : "/assets/img/auth/img_2.png"}
                                     alt="image"
                                     />
                                     <div className="ml-10">{elm.authorName}</div>
@@ -1691,7 +1796,7 @@ export default function CourseList({idCategory}) {
                                 </div>
 
                                 <div className="col-auto">
-                                <div className="d-flex items-center">
+                                {/* <div className="d-flex items-center">
                                     <Image
                                     width={16}
                                     height={17}
@@ -1702,7 +1807,7 @@ export default function CourseList({idCategory}) {
                                     <div className="text-14 lh-1">{`${Math.floor(
                                     elm.duration / 60,
                                     )}h ${Math.floor(elm.duration % 60)}m`}</div>
-                                </div>
+                                </div> */}
                                 </div>
 
                                 <div className="col-auto">

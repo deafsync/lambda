@@ -4,17 +4,12 @@ import FooterNine from "../../layout/footers/FooterNine";
 import Media from "./Media";
 import Curriculum from "./Curriculum";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 import {toast} from "react-hot-toast"
 import { useRouter } from "next/navigation";
-
-const menuItems = [
-    { id: 1, href: "#start", text: "Commencer", isActive: true },
-    { id: 2, href: "#structure", text: "Structure", isActive: false },
-    { id: 3, href: "#medias", text: "Médias", isActive: false },
-    { id: 4, href: "#subtitle", text: "Sous-titre", isActive: false },
-    { id: 5, href: "#dubbing", text: "Doublage", isActive: false },
-  ];
+import { mediaUpload } from "@/data/dashboard";
+import { create_formation, get_categories } from "@/services/core.service";
 
 const category = [
   { id: 1, titre: "Software & IT"},
@@ -27,26 +22,85 @@ export default function Listing() {
   const [activeTab, setActiveTab] = useState(1);
   const router = useRouter()
 
+  const [previewImage, setPreviewImage] = useState(mediaUpload[0].imgSrc);
+  const [category, setCategory] = useState([])
+
   const [state, setState] = useState({
     titre: "",
     description: "",
-    language: "",
+    langue: "",
     level: "",
-    category: 1,
-    requirements: "",
-    willLearn: ""
+    categorie: 0,
+    prerequis: "",
+    will_learn: "",
+    image: "",
+    langue_dub: "",
+    montant:'',
+    langue_subtitles: ""
   })
+
+  useEffect(() => {
+    get_categories()
+      .then(res => {
+        let data = []
+        for(let i = 0; i < res.length; i++) {
+          data.push({
+            id: res[i].id,
+            title: res[i].titre,
+          })
+        }
+        setCategory(data)
+      }).catch(err => {
+        console.log(err)
+        toast.error("Geting categories make error")
+      })
+  }, [])
 
   const handleChange = (event) => {
     const {name, value} = event.target
     setState({...state, [name]: value})
   }
 
-  const handleSubmit = (e) => {
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+
+      setState({...state, ["image"]: file})
+
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setPreviewImage(reader.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    toast.success('Course successfuly created')
-    router.push("/dashboard/course")
     console.log(state)
+
+    let data = {...state}
+
+    if(data.categorie == 0) {
+      data["categorie"] = category[0].id
+      console.log("ID ", category[0].id)
+    }
+
+    create_formation(data)
+      .then(res => {
+        if(res) {
+          toast.success('Course successfuly created')
+          router.push("/dashboard/course")
+        } else {
+          toast.error("An error occured")
+        }
+      }).catch(err => {
+        console.log(err)
+          
+      })
   };
 
   return (
@@ -113,8 +167,8 @@ export default function Listing() {
 
                     <textarea
                       required
-                      name="willLearn"
-                      value={state.willLearn}
+                      name="will_learn"
+                      value={state.will_learn}
                       placeholder="Description"
                       rows="7"
                       onChange={handleChange}
@@ -128,8 +182,8 @@ export default function Listing() {
 
                     <textarea
                       required
-                      name="requirements"
-                      value={state.requirements}
+                      name="prerequis"
+                      value={state.prerequis}
                       placeholder="Requirements"
                       rows="7"
                       onChange={handleChange}
@@ -147,9 +201,9 @@ export default function Listing() {
                       onChange={handleChange}
                     >
                       <option value="">Select your level</option>
-                      <option value="beginner">Beginner</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="high">High</option>
+                      <option value="Beginner">Beginner</option>
+                      <option value="Intermediate">Intermediate</option>
+                      <option value="Expert">Expert</option>
                     </select>
                   </div>
 
@@ -159,13 +213,67 @@ export default function Listing() {
                     </label>
 
                     <select 
-                      name="language"
-                      value={state.language}
+                      name="langue"
+                      value={state.langue}
                       onChange={handleChange}
                     >
                       <option value="">Select your language</option>
-                      <option value="english">English</option>
+                      <option value="anglais">English</option>
+                      <option value="français">Français</option>
+                      <option value="fongbé">Fongbé</option>
+                      <option value="yoruba">Yoruba</option>
                     </select>
+                  </div>
+
+                  <div className="col-md-6">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Dubbing Language*
+                    </label>
+
+                    <select 
+                      name="langue_dub"
+                      value={state.langue_dub}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select your language</option>
+                      <option value="anglais">English</option>
+                      <option value="français">Français</option>
+                      <option value="fongbé">Fongbé</option>
+                      <option value="yoruba">Yoruba</option>
+                    </select>
+                  </div>
+
+                  <div className="col-md-6">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Subtitle Language*
+                    </label>
+
+                    <select 
+                      name="langue_subtitles"
+                      value={state.langue_subtitles}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select your language</option>
+                      <option value="anglais">English</option>
+                      <option value="français">Français</option>
+                      <option value="fongbé">Fongbé</option>
+                      <option value="yoruba">Yoruba</option>
+                    </select>
+                  </div>
+
+                  <div className="col-md-6">
+                    <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                      Amount
+                    </label>
+
+                    <input
+                      required
+                      name="montant"
+                      type="number"
+                      value={state.montant}
+                      placeholder="10"
+                      onChange={handleChange}
+                    />
                   </div>
 
                   {/* <div className="col-md-6">
@@ -183,12 +291,91 @@ export default function Listing() {
 
                     <select 
                       name="category"
-                      value={state.category}
+                      value={state.categorie}
                       onChange={handleChange}
                     >
-                      {category.map((elm, index) => <option key={`option-course-create-${index}`} value={elm.id}>{elm.titre}</option>)}
+                      {category.map((elm, index) => <option key={`option-course-create-${index}`} value={elm.id}>{elm.title}</option>)}
                     </select>
                   </div>
+
+                  <div
+                    className="relative shrink-0"
+                    style={
+                      previewImage
+                        ? {}
+                        : { backgroundColor: "#f2f3f4", width: 250, height: 200 }
+                    }
+                  >
+                    {previewImage && (
+                      <Image
+                        width={735}
+                        height={612}
+                        className="w-1/1"
+                        style={{
+                          width: "250px",
+                          height: "200px",
+                          objectFit: "contain",
+                          borderRadius: 10
+                        }}
+                        src={previewImage}
+                        alt="image"
+                      />
+                    )}
+
+                    <div className="absolute-full-center d-flex justify-end py-20 px-20">
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          document.getElementById("imageUpload1").value = "";
+                          setPreviewImage("");
+                        }}
+                        className="d-flex justify-center items-center bg-white size-40 rounded-8 shadow-1"
+                      >
+                        <i className="icon-bin text-16"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="form-upload col-12">
+                      <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                        Course thumbnail*
+                      </label>
+                      <div className="form-upload__wrap">
+                        <input
+                          type="text"
+                          disabled
+                          placeholder={"Cover-1.png"}
+                        />
+                        <button className="button -dark-3 text-white">
+                          <label
+                            style={{ cursor: "pointer" }}
+                            htmlFor="imageUpload1"
+                          >
+                            Upload Files
+                          </label>
+                          <input
+                            required
+                            id="imageUpload1"
+                            type="file"
+                            accept="image/*"
+                            name="image"
+                            onChange={handleImageChange}
+                            style={{ display: "none" }}
+                          />
+                        </button>
+                      </div>
+                    </div>
+
+                    <p className="mt-10">
+                      Upload your course image here. It must meet our course image
+                      quality standards to be accepted. Important guidelines:
+                      750x440 pixels; .jpg, .jpeg,. gif, or .png. no text on the
+                      image.
+                    </p>
+                  </div>
+
+
                 </form>
 
                 <div className="row y-gap-20 justify-between pt-15">

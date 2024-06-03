@@ -25,7 +25,7 @@ export default function Settings() {
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Settings</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+              Manage your informations
             </div>
           </div>
         </div>

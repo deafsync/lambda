@@ -10,6 +10,9 @@ export default function CourseCardSix({ data, index }) {
       setRating((pre) => [...pre, "star"]);
     }
   }, []);
+
+  console.log("course ", data)
+
   return (
     <div className="col-12 course--hover">
       <div className="coursesCard -type-4 d-flex sm:d-block items-center border-light rounded-8 px-10 py-10">
@@ -27,9 +30,9 @@ export default function CourseCardSix({ data, index }) {
 
         <div className="coursesCard__content pl-20 sm:pl-10 pr-10">
           <div className="col-auto">
-            <div className="text-15 lh-13 sm:mt-20 mt-0 fw-900 text-light-1">
-                Titre du cours
-            </div>
+            {/* <div className="text-15 lh-13 sm:mt-20 mt-0 fw-900 text-light-1">
+                Course
+            </div> */}
             <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
                 <Link className="linkCustom" href={`/courses/${data.id}`}>
                 {data.title}

@@ -1,7 +1,45 @@
-import React from "react";
+'use client'
+
+import React, { useEffect, useState } from "react";
 import { topCatagoriesFour } from "../../../data/topCategories";
 import Link from "next/link";
+import { get_categories } from "@/services/core.service";
+import toast from "react-hot-toast";
+
 export default function CategoriesFour() {
+
+  const [category, setCategory] = useState([])
+
+  useEffect(() => {
+    /*
+    
+    {
+      id: 1,
+      title: "Digital Marketing",
+      iconClass: "icon icon-announcement text-35",
+      courses: "553+ Courses",
+    },
+    
+    */
+
+    get_categories()
+      .then(res => {
+        let data = []
+        for(let i = 0; i < res.length; i++) {
+          data.push({
+            id: `category-${i}`,
+            title: res[i].titre,
+            icone: res[i].icone,
+            courses: `${res[i].formations.length}+ Courses`,
+          })
+        }
+        setCategory(data)
+      }).catch(err => {
+        console.log(err)
+        toast.error("Geting categories make error")
+      })
+  }, [])
+
   return (
     <section className="layout-pt-lg layout-pb-lg">
       <div className="container">
@@ -18,15 +56,16 @@ export default function CategoriesFour() {
         </div>
 
         <div className="row y-gap-30 pt-60 lg:pt-50">
-          {topCatagoriesFour.map((elm, i) => (
+          {category.length > 0 && category.map((elm, i) => (
             <Link
               href={`/courses/${elm.id > 8 ? 1 : elm.id}`}
               key={i}
               className="col-xl-3 col-lg-4 col-md-6 linkCustomTwo"
             >
               <div className="categoryCard -type-3">
-                <div className="categoryCard__icon bg-light-3 mr-20">
-                  <i className={elm.iconClass}></i>
+                <div className="categoryCard__icon bg-light-3 mr-20" style={{fontSize: '34px'}}>
+                  {/* <i className={elm.iconClass}></i> */}
+                  {elm.icone}
                 </div>
                 <div className="categoryCard__content">
                   <h4 className="categoryCard__title text-17 fw-500">

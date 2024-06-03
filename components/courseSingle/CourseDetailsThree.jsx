@@ -7,12 +7,14 @@ import { usePathname } from 'next/navigation'
 import { coursesData } from "@/data/courses";
 import React, { useState, useEffect } from "react";
 
+
 import PinContent from "./PinContent";
 import Overview from "./Overview";
 import CourseContent from "./CourseContent";
 import Instractor from "./Instractor";
 import Reviews from "./Reviews";
 import { lessonItems } from "@/data/aboutcourses";
+import { useContextElement } from "@/context/Context";
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
@@ -24,6 +26,8 @@ const menuItems = [
 export default function CourseDetailsThree({ id }) {
   const [pageItem, setPageItem] = useState(coursesData[0]);
 
+  const { isAddedToCartCourses, addCourseToCart } = useContextElement();
+
   const router = useRouter()
   const pathname = usePathname()
 
@@ -31,7 +35,7 @@ export default function CourseDetailsThree({ id }) {
     setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
   }, []);
 
-  const handleEnroll = () => {
+  const handleContinue = () => {
     // TODO: add formation to user's formation & redirection to course page
 
     router.push(`${pathname}/lecture/${1}`)
@@ -117,9 +121,14 @@ export default function CourseDetailsThree({ id }) {
                 </div>
 
                 <div className="pt-20">
-                  <button className="button -md -green-1 text-dark-1" onClick={handleEnroll}>
+                  {!true ? <button className="button -md -green-1 text-dark-1" onClick={handleContinue}>
+                    Already enroll
+                  </button> : <button
+                      className="button -md -green-1 text-dark-1"
+                      onClick={() => addCourseToCart(id)}
+                  >
                     Enroll now
-                  </button>
+                  </button>}
                 </div>
               </div>
             </div>

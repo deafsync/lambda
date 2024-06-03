@@ -7,11 +7,12 @@ import React, { useState, useEffect } from "react";
 import CurriculumDub from "./CurriculumDub";
 
 import {toast} from "react-hot-toast" 
+import { get_categories, get_one_formations } from "@/services/core.service";
 
 const menuItems = [
     { id: 1, href: "#start", text: "Commencer", isActive: true },
+    // { id: 3, href: "#medias", text: "Médias", isActive: false },
     { id: 2, href: "#structure", text: "Structure", isActive: false },
-    { id: 3, href: "#medias", text: "Médias", isActive: false },
     { id: 4, href: "#subtitle", text: "Sous-titre", isActive: false },
     { id: 5, href: "#dubbing", text: "Doublage", isActive: false },
   ];
@@ -37,25 +38,55 @@ const category = [
 
 export default function Listing({id}) {
   const [activeTab, setActiveTab] = useState(1);
+  
 
   const [language, setLanguage] = useState("choose")
   const [dubLanguage, setDubLanguage] = useState("choose")
+  const [category, setCategory] = useState([])
 
   const [state, setState] = useState({
     titre: "",
     description: "",
-    language: "",
+    langue: "",
     level: "",
-    category: 1,
-    requirements: "",
-    willLearn: ""
+    categorie: 1,
+    prerequis: "",
+    will_learn: "",
+    langue_dub: "",
+    langue_subtitles: "",
+    montant: 0
   })
 
   useEffect(() => {
-    setState(formation)
+    get_categories()
+      .then(res => {
+        let data = []
+        for(let i = 0; i < res.length; i++) {
+          data.push({
+            id: res[i].id,
+            title: res[i].titre,
+          })
+        }
+        setCategory(data)
+      }).catch(err => {
+        console.log(err)
+        toast.error("Geting categories make error")
+      })
   }, [])
 
-// TODO: Retrive course data
+  console.log("ID : ", id)
+
+  useEffect(() => {
+    get_one_formations(id.id)
+        .then(res => {
+            setState(res)
+        }).catch(err => {
+            console.log(err)
+            toast.error("something happen")
+        })
+  }, [])
+
+    // TODO: Retrive course data
 
   const handleChange = (event) => {
     const {name, value} = event.target
@@ -64,6 +95,7 @@ export default function Listing({id}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     toast.success("Course information updated")
     console.log(state)
   };
@@ -137,7 +169,7 @@ export default function Listing({id}) {
                                     >
                                         <div className="col-12">
                                             <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                                Course Title*
+                                                Course Title
                                             </label>
                                             <input
                                                 required
@@ -151,7 +183,7 @@ export default function Listing({id}) {
 
                                         <div className="col-12">
                                             <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                                Course Description*
+                                                Course Description
                                             </label>
 
                                             <textarea
@@ -171,8 +203,8 @@ export default function Listing({id}) {
 
                                             <textarea
                                                 required
-                                                name="willLearn"
-                                                value={state.willLearn}
+                                                name="will_learn"
+                                                value={state.will_learn}
                                                 placeholder="Description"
                                                 rows="7"
                                                 onChange={handleChange}
@@ -181,13 +213,13 @@ export default function Listing({id}) {
 
                                         <div className="col-md-6">
                                             <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                                                Requirements*
+                                                Requirements
                                             </label>
 
                                             <textarea
                                             required
-                                            name="requirements"
-                                            value={state.requirements}
+                                            name="prerequis"
+                                            value={state.prerequis}
                                             placeholder="Requirements"
                                             rows="7"
                                             onChange={handleChange}
@@ -204,10 +236,10 @@ export default function Listing({id}) {
                                             value={state.level}
                                             onChange={handleChange}
                                             >
-                                            <option value="">Select your level</option>
-                                            <option value="beginner">Beginner</option>
-                                            <option value="intermediate">Intermediate</option>
-                                            <option value="high">High</option>
+                                                <option value="">Select your level</option>
+                                                <option value="Beginner">Beginner</option>
+                                                <option value="Intermediate">Intermediate</option>
+                                                <option value="Expert">Expert</option>
                                             </select>
                                         </div>
 
@@ -217,13 +249,67 @@ export default function Listing({id}) {
                                             </label>
 
                                             <select 
-                                            name="language"
-                                            value={state.language}
+                                                name="langue"
+                                                value={state.langue}
+                                                onChange={handleChange}
+                                            >
+                                            <option value="">Select your language</option>
+                                            <option value="anglais">English</option>
+                                            <option value="français">Français</option>
+                                            <option value="fongbé">Fongbé</option>
+                                            <option value="yoruba">Yoruba</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Dubbing Language*
+                                            </label>
+
+                                            <select 
+                                                name="langue_dub"
+                                                value={state.langue_dub}
+                                                onChange={handleChange}
+                                            >
+                                            <option value="">Select your language</option>
+                                            <option value="anglais">English</option>
+                                            <option value="français">Français</option>
+                                            <option value="fongbé">Fongbé</option>
+                                            <option value="yoruba">Yoruba</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Subtitle Language*
+                                            </label>
+
+                                            <select 
+                                            name="langue_subtitles"
+                                            value={state.langue_subtitles}
                                             onChange={handleChange}
                                             >
                                             <option value="">Select your language</option>
-                                            <option value="english">English</option>
+                                            <option value="anglais">English</option>
+                                            <option value="français">Français</option>
+                                            <option value="fongbé">Fongbé</option>
+                                            <option value="yoruba">Yoruba</option>
                                             </select>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                                            Amount
+                                            </label>
+
+                                            <input
+                                            required
+                                            name="montant"
+                                            type="number"
+                                            value={state.montant}
+                                            placeholder="10"
+                                            onChange={handleChange}
+                                            />
                                         </div>
 
                                         {/* <div className="col-md-6">
@@ -240,11 +326,11 @@ export default function Listing({id}) {
                                             </label>
 
                                             <select 
-                                            name="category"
-                                            value={state.category}
+                                            name="categorie"
+                                            value={state.categorie}
                                             onChange={handleChange}
                                             >
-                                            {category.map((elm, index) => <option key={`option-course-create-${index}`} value={elm.id}>{elm.titre}</option>)}
+                                            {category.map((elm, index) => <option key={`option-course-create-${index}`} value={elm.id}>{elm.title}</option>)}
                                             </select>
                                         </div>
                                     </form>
@@ -287,13 +373,13 @@ export default function Listing({id}) {
                         </div>
                     </div>
 
-                    <div
+                    {/* <div
                         className={`tabs__pane -tab-item-3 ${
                         activeTab == 3 ? "is-active" : ""
                         } `}
                     >
                         <Media />
-                    </div>
+                    </div> */}
 
                     <div
                         className={`tabs__pane -tab-item-4 ${
@@ -308,9 +394,9 @@ export default function Listing({id}) {
 
                                 <div className="border-light rounded-8">
                                 <div className="d-flex items-center py-25 px-30">
-                                    <div className="text-dark-1 mr-15">Language</div>
+                                    <div className="text-dark-1 mr-5">Subtitle language</div>
 
-                                    <div
+                                    {/* <div
                                         id="dd16button"
                                         onClick={() => {
                                             document
@@ -351,17 +437,17 @@ export default function Listing({id}) {
                                             </span>
                                         </div>
 
-                                        {/* <div>
+                                        <div>
                                             <a href="users/instructors" className="d-block js-dropdown-link">
                                             Enseignants
                                             </a>
-                                        </div> */}
+                                        </div>
 
                                         </div>
                                     </div>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="text-dark-1 ml-15">of the following:</div>
+                                    <div className="text-dark-1 ml-15"><b>{state && state.langue}</b> - to - <b>{state && state.langue_subtitles}</b></div>
                                 </div>
 
                                 
@@ -405,9 +491,9 @@ export default function Listing({id}) {
 
                                 <div className="border-light rounded-8">
                                     <div className="d-flex items-center py-25 px-30">
-                                    <div className="text-dark-1 mr-15">Language</div>
+                                    <div className="text-dark-1 mr-5">Dubbing language</div>
 
-                                    <div
+                                    {/* <div
                                         id="dd17button"
                                         onClick={() => {
                                             document
@@ -441,17 +527,17 @@ export default function Listing({id}) {
                                             </span>
                                         </div>
 
-                                        {/* <div>
+                                        <div>
                                             <a href="users/instructors" className="d-block js-dropdown-link">
                                             Enseignants
                                             </a>
-                                        </div> */}
+                                        </div>
 
                                         </div>
                                     </div>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="text-dark-1 ml-15">of the following : <b>English</b></div>
+                                    <div className="text-dark-1 ml-15"><b>{state && state.langue}</b> - to - <b>{state && state.langue_dub}</b></div>
                                 </div>
 
                                 

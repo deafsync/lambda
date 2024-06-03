@@ -10,34 +10,53 @@ import { coursesData } from "@/data/dashboard";
 import Pagination from "../common/Pagination";
 import CourseCard from "@/components/homes/courseCards/CourseCardH";
 import Link from "next/link";
+import { get_admin_formations, get_categories } from "@/services/core.service";
+import toast from "react-hot-toast";
+import { retrive_course_infos } from "@/utils/course";
+
 
 export default function MyCourses() {
+  const [coursesData, setCoursesData ] = useState([])
+
   const [currentCategory, setCurrentCategory] = useState("All Categories");
   const [pageItems, setPageItems] = useState([]);
   const [activeTab, setActiveTab] = useState(1);
   const [pageData, setPageData] = useState(coursesData);
+
+  // useEffect(() => {
+  //   if (activeTab == 1) {
+  //     setPageData(coursesData);
+  //   } else if (activeTab == 2) {
+  //     setPageData(coursesData.filter((elm) => elm.status == "Finished"));
+  //   } else if (activeTab == 3) {
+  //     setPageData(coursesData.filter((elm) => elm.status == "Not enrolled"));
+  //   }
+  // }, [activeTab]);
+
   useEffect(() => {
-    if (activeTab == 1) {
-      setPageData(coursesData);
-    } else if (activeTab == 2) {
-      setPageData(coursesData.filter((elm) => elm.status == "Finished"));
-    } else if (activeTab == 3) {
-      setPageData(coursesData.filter((elm) => elm.status == "Not enrolled"));
-    }
-  }, [activeTab]);
+    get_admin_formations()
+      .then(res => {
+        // setCoursesData(...retrive_course_infos(res, "", true))
+        setPageItems([...retrive_course_infos(res, "", true)]);
+      }).catch(err => {
+        console.log(err)
+        toast.error("Somethink happen")
+      })
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  useEffect(() => {
-    if (currentCategory == "All Categories") {
-      setPageItems(pageData);
-    } else {
-      setPageItems([
-        ...pageData.filter((elm) => elm.category == currentCategory),
-      ]);
-    }
-  }, [currentCategory, pageData]);
+
+  // useEffect(() => {
+    // if (currentCategory == "All Categories") {
+    //   setPageItems(pageData);
+    // } else {
+    //   setPageItems([
+    //     ...pageData.filter((elm) => elm.category == currentCategory),
+    //   ]);
+    // }
+  // }, [currentCategory, pageData]);
 
   return (
     <div className="dashboard__main">
@@ -86,9 +105,9 @@ export default function MyCourses() {
                     type="button"
                     onClick={() => setActiveTab(1)}
                   >
-                    In progress
+                    Course list
                   </button>
-                  <button
+                  {/* <button
                     className={`text-light-1 lh-12 tabs__button js-tabs-button ml-30 ${
                       activeTab == 3 ? "is-active" : ""
                     } `}
@@ -107,7 +126,7 @@ export default function MyCourses() {
                     onClick={() => setActiveTab(4)}
                   >
                     All courses
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="tabs__content py-30 px-30 js-tabs-content">
@@ -244,9 +263,9 @@ export default function MyCourses() {
                     </div> */}
 
                     <div className="row y-gap-30 pt-30">
-                      {pageItems.slice(0, 5).map((data, i) => (
-                        <Link href={`course/${i}`}>
-                          <CourseCard data={data} key={i} />
+                      {pageItems.length > 0 && pageItems.map((data, i) => (
+                        <Link href={`course/${data.id}`}>
+                          <CourseCard data={data} key={`course-admin-${i}`} />
                         </Link>
                       ))}
                     </div>

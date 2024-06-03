@@ -103,11 +103,39 @@ export default function Curriculum() {
                     className="accordion__content"
                     style={
                       currentOpenItem == `${index}`
-                        ? { maxHeight: "100px" }
+                        ? { maxHeight: "370px" }
                         : {}
                     }
                   >
                     <div className="accordion__content__inner px-30">
+                      <div className="col-12 mb-20 contact-form">
+                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                          Short description
+                        </label>
+
+                        <input
+                          required
+                          value={""}
+                          name="description"
+                          onChange={(event) => handleChange(event, index)}
+                          type="text"
+                          placeholder="Put description here"
+                        />
+                      </div>
+                      <div className="col-12 mb-20 contact-form">
+                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                          Course link
+                        </label>
+
+                        <input
+                          required
+                          value={cv[index].videoUrl}
+                          name="videoUrl"
+                          onChange={(event) => handleChange(event, index)}
+                          type="url"
+                          placeholder="https://www.youtube.com/watch?v=nBpPe9UweWs"
+                        />
+                      </div>
                       <div className="col-12 mb-20 contact-form">
                         <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
                           Course link

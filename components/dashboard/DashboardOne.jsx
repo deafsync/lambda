@@ -4,14 +4,93 @@ import { resentCourses } from "@/data/courses";
 import { states } from "@/data/dashboard";
 import { teamMembers } from "@/data/instractors";
 import { notifications } from "@/data/notifications";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FooterNine from "../layout/footers/FooterNine";
 import Charts from "./Charts";
 import PieChartComponent from "./PieCharts";
 import Image from "next/image";
 import Link from "next/link";
+import { get_formations_number, get_users_number } from "@/services/core.service";
+import toast from "react-hot-toast";
+import { auth } from "@/services/auth.service";
+
+import { useRouter } from "next/navigation";
 
 export default function DashboardOne() {
+
+  const router = useRouter()
+
+  /*
+  
+  const states = [
+  {
+    id: 1,
+    title: "Total Sales",
+    value: 0,
+    new: 0,
+    iconClass: "icon-coupon",
+    href: "/dashboard/transactions"
+  },
+  {
+    id: 2,
+    title: "Total Courses",
+    value: 10,
+    new: 40,
+    iconClass: "icon-play-button",
+    href: "/dashboard/course"
+  },
+  {
+    id: 3,
+    title: "Total Students",
+    value: 12,
+    new: 1,
+    iconClass: "icon-graduate-cap",
+    href: "/dashboard/students"
+  },
+  {
+    id: 4,
+    title: "Total Instructors",
+    value: 1,
+    new: 0,
+    iconClass: "icon-online-learning",
+    href: "/dashboard/users/instructors"
+  },
+];
+  
+  */
+
+  useEffect(() => {
+    auth()
+      .then(res => {
+        console.log(res, "  AUTH")
+        if(!res)
+          router.push('/login')
+      })
+  }, [])
+
+  const [number, setNumber] = useState(0)
+  const [user, setUser] = useState(0)
+
+  useEffect(() => {
+    get_formations_number()
+      .then(res => {
+        setNumber(res)
+      })
+      .catch(err => {
+        console.log(err)
+        toast.error("Error while getting course number")
+      })
+
+    get_users_number()
+      .then(res => {
+        setUser(res)
+      })
+      .catch(err => {
+        console.log(err)
+        toast.error("Error while getting course number")
+      })
+  }, [])
+
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -19,7 +98,7 @@ export default function DashboardOne() {
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Dashboard</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+              See the review
             </div>
           </div>
         </div>
@@ -31,7 +110,7 @@ export default function DashboardOne() {
                 <div>
                   <div className="lh-1 fw-500">{elm.title}</div>
                   <div className="text-30 lh-1 fw-800 text-dark-1 mt-20">
-                    {i == 0 && "$"}{elm.value}
+                    {i == 0 && "$"}{i == 1 ? number : i == 2 ? user : elm.value}
                   </div>
                   <div className="lh-1 mt-25">
                   <Link href={elm.href}>{i !== 3 && <span className="text-purple-1 fw-700 underline">See details</span>}</Link>

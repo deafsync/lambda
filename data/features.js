@@ -47,7 +47,7 @@ export const featureSix = [
   {
     id: 2,
     imageSrc: "/assets/img/home-6/hero/icons/2.svg",
-    text: "More than 60 courses",
+    text: "More than 10 courses",
   },
   {
     id: 3,

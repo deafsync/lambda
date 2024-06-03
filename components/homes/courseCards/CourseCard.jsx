@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+
+
 export default function CourceCard({ data, index }) {
   const [rating, setRating] = useState([]);
   useEffect(() => {
@@ -20,14 +22,14 @@ export default function CourceCard({ data, index }) {
               <Image
                 width={500}
                 height={500}
-                style={{ height: "100%", width: "100%" }}
-                className="w-1/1"
-                src={data.imageSrc}
+                style={{ height: "250px", width: "100%", objectFit: "cover" }}
+                className="w-1/1 "
+                src={data.imageSrc ? data.imageSrc : "assets/img/auth/img_2.png"}
                 alt="image"
               />
               <div className="coursesCard__image_overlay rounded-8"></div>
             </div>
-            {data.popular && (
+            {/* {data.popular && (
               <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
                 <div>
                   <div className="px-15 rounded-200 bg-purple-1">
@@ -45,7 +47,7 @@ export default function CourceCard({ data, index }) {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
             <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3"></div>
           </div>
 
@@ -59,7 +61,7 @@ export default function CourceCard({ data, index }) {
                   <div key={i} className="icon-star text-9 text-yellow-1"></div>
                 ))}
               </div>
-              <div className="text-13 lh-1 ml-10">({data.ratingCount})</div>
+              <div className="text-13 lh-1 ml-10">({7})</div>
             </div>
 
             <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
@@ -81,7 +83,7 @@ export default function CourceCard({ data, index }) {
                 <div className="text-14 lh-1">{data.lessonCount} lesson</div>
               </div>
 
-              <div className="d-flex items-center">
+              {/* <div className="d-flex items-center">
                 <div className="mr-8">
                   <Image
                     width={16}
@@ -93,7 +95,7 @@ export default function CourceCard({ data, index }) {
                 <div className="text-14 lh-1">{`${Math.floor(
                   data.duration / 60,
                 )}h ${Math.floor(data.duration % 60)}m`}</div>
-              </div>
+              </div> */}
 
               <div className="d-flex items-center">
                 <div className="mr-8">
@@ -113,7 +115,7 @@ export default function CourceCard({ data, index }) {
                 <Image
                   width={30}
                   height={30}
-                  src={data.authorImageSrc}
+                  src={data.authorImageSrc ? data.authorImageSrc : "/assets/img/auth/img_2.png"}
                   alt="image"
                 />
                 <div>{data.authorName}</div>

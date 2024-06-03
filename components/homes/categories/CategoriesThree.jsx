@@ -1,8 +1,35 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import { topCatagoriesThree } from "../../../data/topCategories";
 import Image from "next/image";
 import Link from "next/link";
+import { get_categories } from "@/services/core.service";
+import toast from "react-hot-toast";
+
 export default function CategoriesTwo() {
+
+  const [category, setCategory] = useState([])
+
+  useEffect(() => {
+    get_categories()
+      .then(res => {
+        let data = []
+        for(let i = 0; i < res.length; i++) {
+          data.push({
+            id: `category-${i}`,
+            title: res[i].titre,
+            icone: res[i].icone,
+            courses: `${res[i].formations.length}+ Courses`,
+          })
+        }
+        setCategory(data)
+      }).catch(err => {
+        console.log(err)
+        toast.error("Geting categories make error")
+      })
+  }, [])
+
   return (
     <section className="layout-pt-lg layout-pb-lg">
       <div className="container">
@@ -26,20 +53,17 @@ export default function CategoriesTwo() {
         </div>
 
         <div className="row y-gap-50 pt-60 lg:pt-50">
-          {topCatagoriesThree.map((elm, i) => (
+          {category.map((elm, i) => (
             <Link
               href={`/courses/${elm.id > 8 ? 1 : elm.id}`}
               key={i}
               className="col-xl-3 col-lg-4 col-sm-6 linkCustomTwo"
             >
-              <div className="categoryCard -type-2">
+              <div className="categoryCard -type-3">
                 <div className="categoryCard__image mr-20">
-                  <Image
-                    width={80}
-                    height={80}
-                    src={elm.imageSrc}
-                    alt="image"
-                  />
+                  <div className="categoryCard__icon bg-light-3 mr-20" style={{fontSize: '34px'}}>
+                    {elm.icone}
+                  </div>
                 </div>
 
                 <div className="categoryCard__content">

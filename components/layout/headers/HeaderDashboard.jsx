@@ -8,13 +8,16 @@ import { notifications } from "@/data/notifications";
 import Messages from "../component/Messages";
 import MyCourses from "../component/MyCourses";
 import Link from "next/link";
-
+import { logout } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 export default function HeaderDashboard() {
   const [messageOpen, setMessageOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const router = useRouter()
 
   const [isfullScreen, setIsfullScreen] = useState(false);
   const [isOnNotification, setIsOnNotification] = useState(false);
@@ -85,6 +88,15 @@ export default function HeaderDashboard() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleLogOut = async () => {
+    logout()
+      .then(res => {
+        if(res == 1) {
+          router.push('/')
+        }
+      })
+  }
 
   return (
     <>
@@ -287,7 +299,7 @@ export default function HeaderDashboard() {
                       width={50}
                       height={50}
                       className="size-50"
-                      src="/assets/img/misc/user-profile.png"
+                      src="/assets/img/user.png"
                       alt="image"
                     />
                   </span>
@@ -316,7 +328,7 @@ export default function HeaderDashboard() {
                             >
                               <span
                                 onClick={() => {
-                                  alert("logout")
+                                  handleLogOut()
                                 }}
                                 className="d-flex items-center text-17 lh-1 fw-500 "
                               >

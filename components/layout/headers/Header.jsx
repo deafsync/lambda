@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { use, useEffect } from "react";
 import { HeaderExplore } from "../component/header-explore";
 import CartToggle from "../component/CartToggle";
 import Menu from "../component/Menu";
@@ -12,11 +12,17 @@ import Link from "next/link";
 import { sidebarItems } from "../../../data/homeSidebarItems";
 import { notifications } from "@/data/notifications";
 import MobileMenuHome from "../component/MobileMenuHome";
+import { auth, logout } from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
 
+  const router = useRouter()
+
   const [isOnNotification, setIsOnNotification] = useState(false);
   const [isOnProfile, setIsOnProfile] = useState(false);
+  const [isAuth, setIsAuth] = useState(false)
+  const [isLog,setIsLog] = useState(false)
 
   // TODO: if connected redirect to home
 
@@ -25,11 +31,31 @@ export default function Header() {
   // sign up (old) : button px-30 h-50 -purple-1 text-white ml-10
   // login (old) : button px-30 h-50 -outline-dark-1 text-dark-1
 
+  useEffect(() => {
+    auth()
+      .then(res => {
+        if(!res) {
+          router.push('/')
+        } else {
+          setIsAuth(true)
+        }
+      })
+  }, [isLog])
 
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const handleLogOut = async (e) => {
+    logout()
+      .then(res => {
+        if(res == 1) {
+          setIsAuth(!isAuth)
+        }
+      })
+  }
+
   return (
     <header className="header -type-3 js-header">
       <div className="header__container py-10">
@@ -92,7 +118,7 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
+              { !isAuth ? <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
                 <Link
                   href="/instructor-become"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
@@ -111,9 +137,7 @@ export default function Header() {
                 >
                   Sign up
                 </Link>
-              </div> */}
-
-              <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
+              </div>  : <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
                 <Link
                   href="/dashboard"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
@@ -139,7 +163,7 @@ export default function Header() {
                       width={50}
                       height={50}
                       className="size-50"
-                      src="/assets/img/misc/user-profile.png"
+                      src="/assets/img/user.png"
                       alt="image"
                     />
                   </span>
@@ -167,9 +191,7 @@ export default function Header() {
                               className={`sidebar__item`}
                             >
                               <span
-                                onClick={() => {
-                                  alert("logout")
-                                }}
+                                onClick={handleLogOut}
                                 className="d-flex items-center text-17 lh-1 fw-500 "
                               >
                                 <i className='icon-power mr-10'></i>
@@ -181,8 +203,8 @@ export default function Header() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div> }
+            </div> 
           </div>
         </div>
       </div>

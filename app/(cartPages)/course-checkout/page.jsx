@@ -1,13 +1,5 @@
 
 
-
-
-
-
-
-
-
-
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 
@@ -30,7 +22,8 @@ export default function page() {
 
         <Header/>
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
+            {/*<PageLinks/>*/}
+            <div className="mt-4"></div>
 
             <CourseCheckOut/>
             

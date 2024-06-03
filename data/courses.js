@@ -1014,10 +1014,10 @@ export const instractorNames = [
 ];
 
 export const languages = [
-  { id: 1, title: "English",  },
-  { id: 2, title: "French",  },
-  { id: 3, title: "German", },
-  { id: 4, title: "Italian", },
+  { id: 1, title: "English",  infos: "anglais"},
+  { id: 2, title: "French",  infos: 'français'},
+  { id: 3, title: "Fongbé", infos: "fongbe"},
+  { id: 4, title: "Yoruba", infos: 'yoruba'},
 ];
 
 export const levels = [

@@ -37,11 +37,11 @@ export default function CoursesSeven() {
             <div className="col-lg-6">
               <div className="sectionTitle ">
                 <h2 className="sectionTitle__title ">
-                  Commençons notre apprentissage
+                  Start your learning
                 </h2>
 
                 <p className="sectionTitle__text ">
-                  Vous avez 3 cours en instance
+                  YOu have {3} course in progress
                 </p>
               </div>
             </div>

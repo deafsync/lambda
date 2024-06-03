@@ -9,23 +9,46 @@ import Image from "next/image";
 import PageLinksTwo from "../common/PageLinksTwo";
 
 import {toast} from "react-hot-toast"
-
-const categories = [
-    {titre: "Development", tag:"#development", icone:"🖥"},
-    {titre: "Business", tag:"#business", icone:"💼"}
-]
+import { create_category, get_categories } from "@/services/core.service";
 
 export default function Categories() {
   const [currentLetter, setCurrentLetter] = useState("A");
+  const [load, setLoad] = useState(false)
+  const [categories, setCategories] = useState([])
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    get_categories()
+      .then(res => {
+        if(res) {
+          setCategories(res)
+        }
+      })
+      .catch(err => {
+        toast.error("Somethin happened")
+      })
+  }, [load])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if(state.icone == "" || state.icone == "" || state.icone == "") 
+    if(state.icone == "" || state.tag == "" || state.titre == "") 
         toast.error('Somthing is missed')
     else
         toast.success('Course successfuly created')
     console.log(state)
+
+    create_category(state)
+      .then(res => {
+        if(res) {
+          toast.success("Category successfully added")
+          setLoad(!load)
+        } else {
+          toast.error("An error occured")
+        }
+      })
+      .catch(err => {
+        toast.error("Somethin happened")
+      })
   };
 
   const [state, setState] = useState({
@@ -142,8 +165,8 @@ export default function Categories() {
                     </div>
                   </div>
 
-                  {categories.map((elm, i) => (
-                    <div key={i} className="px-30 border-bottom-light">
+                  {(categories && categories.length > 0) ? <div>{categories.map((elm, i) => (
+                    <div key={`category-${i}`} className="px-30 border-bottom-light">
                       <div className="row x-gap-10 items-center py-15">
                         {/* <div className="col-lg-1">
                           <div className="d-flex items-center">
@@ -158,12 +181,12 @@ export default function Categories() {
                         </div> */}
                         <div className="col">
                           <div className="text-15 lh-12 mt-5">
-                            <span className="text-17 mt-5">{elm.icone}</span>{elm.titre} : {elm.tag}
+                            <span className="text-17 mt-5">{elm.icone}</span> {elm.titre} : {elm.tag}
                           </div>
                         </div>
                       </div>
                     </div>
-                  ))}
+                  ))}</div> : <div>No category found</div>}
                 </div>
               </div>
         </div>

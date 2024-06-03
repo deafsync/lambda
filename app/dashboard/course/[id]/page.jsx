@@ -15,7 +15,8 @@ export const metadata = {
   
 }
 
-export default function page({id}) {
+export default function page({params}) {
+
   return (
     <div  className="barba-container" data-barba="container">
         <main  className="main-content">
@@ -26,9 +27,7 @@ export default function page({id}) {
                 <div  className="dashboard__sidebar scroll-bar-1">
                     <Sidebar/>
                 </div>
-                <Listing 
-                  id={id}
-                />
+                <Listing id={params}/>
               </div>
           </div>
         </main>

@@ -6,8 +6,13 @@ import { featureSix } from "../../../data/features";
 import ModalVideo from "@/components/common/ModalVideo";
 import gsap from "gsap";
 import Link from "next/link";
+import { get_formations_number } from "@/services/core.service";
+import toast from "react-hot-toast";
 export default function HeroSix() {
+
   const [isOpen, setIsOpen] = useState(false);
+  const [number, setNumber] = useState(0)
+
   useEffect(() => {
     const parallaxIt = () => {
       const target = document.querySelectorAll(".js-mouse-move-container");
@@ -38,6 +43,18 @@ export default function HeroSix() {
 
     parallaxIt();
   }, []);
+
+  useEffect(() => {
+    get_formations_number()
+      .then(res => {
+        setNumber(res)
+      })
+      .catch(err => {
+        console.log(err)
+        toast.error("Formation number error :>)")
+      })
+  }, [])
+
   return (
     <>
       <section className="masthead -type-5">
@@ -57,7 +74,7 @@ export default function HeroSix() {
               <div className="masthead__content">
                 <h1 className="masthead__title">
                   More Than{" "}
-                  <span className="text-purple-1">3.500+</span>{" "}
+                  <span className="text-purple-1">{number}+</span>{" "}
                   <br className="md:d-none" /> Education Courses
                   <br className="md:d-none" /> Online Join Us Today
                 </h1>

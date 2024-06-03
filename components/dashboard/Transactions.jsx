@@ -23,7 +23,7 @@ export default function Participants() {
           </div>
         </div>
 
-        <div className="row y-gap-30">
+        <div className="row y-gap-30" style={{height: "400px"}}>
           <div className="col-12">
             <div className="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
               <div className="d-flex items-center py-30 px-30 border-bottom-light">

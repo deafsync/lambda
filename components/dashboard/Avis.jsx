@@ -14,7 +14,7 @@ export default function Reviews() {
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">Reviews</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+              Manage review
             </div>
           </div>
         </div>
@@ -26,8 +26,9 @@ export default function Reviews() {
                 <h2 className="text-17 lh-1 fw-500">All Reviews</h2>
               </div>
 
-              <div className="py-30 px-30">
-                <div className="row y-gap-30">
+              <div className="py-30 px-30" style={{height: "400px"}}>
+                <h2 className="text-30 lh-1 ml-10 fw-700">No review</h2>
+                {/* <div className="row y-gap-30">
                   {reviews.map((elm, i) => (
                     <div key={i} className="md:direction-column">
                       <div
@@ -72,7 +73,7 @@ export default function Reviews() {
                       </div>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

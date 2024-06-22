@@ -103,6 +103,7 @@ export default function Curriculum({id}) {
                           className="course-input text-16 lh-14 fw-500 text-dark-1" 
                           value={cv[index].titre}
                           type="text"
+                          style={{width: '500px'}}
                           name="titre"
                           onChange={(event) => handleChange(event, index)}
                           required

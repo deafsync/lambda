@@ -13,7 +13,10 @@ export function convertWebVTTToJsArray(webVTTString) {
       console.log(parts)
       const [start, end] = parts.map(part => part.trim());
 
-      const text = lines[i + 1].trim(); // get the text content
+      let text = lines[i + 1].trim(); // get the text content
+      if (i + 2 < lines.length && lines[i + 2] != '\n') {
+        text += " " + lines[i + 2].trim()
+      }
   
       subtitles.push([start + ' --> ' + end, text ]);
     }

@@ -69,6 +69,7 @@ export default function AsideStudio({ id }) {
                     if(el.description == "original subtitles") {
                         setData(convertWebVTTToJsArray(subtitleText))
                     } else if(el.description == "dubbed subtitles") {
+                        console.log("----->------->------>", convertWebVTTToJsArray(subtitleText))
                         setDataFr(convertWebVTTToJsArray(subtitleText))
                     }
 
@@ -166,7 +167,7 @@ export default function AsideStudio({ id }) {
                             </span>
                         </div>
                         <div className="header-right__buttons">
-                            <a href="/dashboard/course/1" className="button -sm -rounded -white--1 ml-10 text-dark-1">
+                            <a href="/dashboard/course" className="button -sm -rounded -white--1 ml-10 text-dark-1">
                                 Quitter
                             </a>
                         </div>

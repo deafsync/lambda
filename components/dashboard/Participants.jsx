@@ -11,6 +11,7 @@ import { get_users } from "@/services/user.service";
 export default function Participants() {
 
   const [currentLetter, setCurrentLetter] = useState("A");
+  
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -135,10 +136,10 @@ export default function Participants() {
                     </div>
                   </div>
 
-                  {partcipents.map((elm, i) => (
+                  {/* {partcipents.map((elm, i) => (
                     <div key={i} className="px-30 border-bottom-light">
                       <div className="row x-gap-10 items-center py-15">
-                        {/* <div className="col-lg-1">
+                        <div className="col-lg-1">
                           <div className="d-flex items-center">
                             <Image
                               width={40}
@@ -148,7 +149,7 @@ export default function Participants() {
                               className="size-40 fit-cover"
                             />
                           </div>
-                        </div> */}
+                        </div>
 
                         <div className="col-lg-4">
                           <div className="ml-10">
@@ -166,7 +167,7 @@ export default function Participants() {
                         <div className="col-lg-3">{elm.duration}</div>
                       </div>
                     </div>
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>

@@ -59,6 +59,7 @@ export default function Header() {
       .then(res => {
         if(res == 1) {
           setIsAuth(!isAuth)
+          router.push('/')
         }
       })
   }

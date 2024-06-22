@@ -45,7 +45,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
 
   const handleSwitchLanguage = (check) => {
     if(check) {
-      setUrl(`${BASE_URL}/${res.cours[videoId].video}`)
+      setUrl(`${BASE_URL}/${state.cours[videoId].video}`)
       setDub(false)
     } else {
       let video = state.cours[videoId].ressources.filter(el => el.description == "dubbed video")
@@ -60,7 +60,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
       let video = state.cours[videoId].ressources.filter(el => el.description == "dubbed video")
       setUrl(video[0].file_link)
     } else {
-      setUrl(`${BASE_URL}/${res.cours[videoId].video}`)
+      setUrl(`${BASE_URL}/${state.cours[videoId].video}`)
     }
   }
 

@@ -24,6 +24,7 @@ export default function Header() {
   const [isOnProfile, setIsOnProfile] = useState(false);
   const [isAuth, setIsAuth] = useState(false)
   const [isLog,setIsLog] = useState(false)
+  const [staff, setStaff] = useState(false)
 
   // TODO: if connected redirect to home
 
@@ -42,7 +43,10 @@ export default function Header() {
         }
       })
 
-    get_user().then(() => {})
+    get_user().then((res) => {
+      console.log("-------------------------------------->", res.staff)
+      setStaff(res.staff)
+    })
   }, [isLog])
 
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
@@ -141,12 +145,12 @@ export default function Header() {
                   Sign up
                 </Link>
               </div>  : <div className="header-right__buttons d-flex items-center ml-30 xl:ml-20 md:d-none">
-                <Link
+                {staff && <Link
                   href="/dashboard"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"
                 >
                   Dashboard
-                </Link>
+                </Link>}
                 <Link 
                   href="/learning"
                   className="text-nav-1 -before-border py-3 pl-30 xl:pl-20 mr-10"

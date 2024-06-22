@@ -18,7 +18,7 @@ import OtpForm from '@/components/others/OtpForm'
 import Terms from '@/components/terms/Terms'
 import React from 'react'
 export const metadata = {
-  title: 'Login ',
+  title: 'Otp ',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

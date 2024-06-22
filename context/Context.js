@@ -26,11 +26,13 @@ export default function Context({ children }) {
         get_formations_list()
             .then(res => {
                 console.log('-=-=-=-> ', res)
-                setCoursesData(res[0])
+                setCoursesData(res)
             })
     }, [])
 
     const addCourseToCart = (id)=>{
+
+        console.log("ID : " , id)
 
         if (!cartCourses.filter((elm)=>elm.id == id)[0]) {
 

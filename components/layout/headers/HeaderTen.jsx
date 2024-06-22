@@ -29,7 +29,7 @@ export default function HeaderTen({id}) {
           <div className="col-auto">
             <div className="header-left">
               <div className="header__logo">
-                <Link data-barba href="/">
+                <Link data-barba href="/home">
                   <Image
                     width={140}
                     height={50}

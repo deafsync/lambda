@@ -43,14 +43,14 @@ export default function Video({url, sub}) {
             style={{width: '100% !important'}}
           />
           
-          {sub && sub.map((link, id) => <track
+          {/* {sub && sub.map((link, id) => <track
               label="English"
               kind="subtitles"
               srclang="en"
               src={link}
               default={id==0}
               key={id}
-          />)}
+          />)} */}
         </video>
       </div>
       {/* <ModalVideoComponent

@@ -119,7 +119,7 @@ export default function HeaderDashboard() {
                 </div> */}
 
                 <div className="header__logo ml-30 md:ml-20">
-                  <Link data-barba href="/">
+                  <Link data-barba href="/home">
                     <Image
                       width={140}
                       height={50}

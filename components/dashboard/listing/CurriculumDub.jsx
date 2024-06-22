@@ -6,14 +6,27 @@ import React, { useEffect, useState } from "react";
 import {toast} from "react-hot-toast"
 
 import { useRouter } from "next/navigation";
+import { get_one_formations } from "@/services/core.service";
 
-export default function CurriculumDub({language}) {
+export default function CurriculumDub({language, id}) {
   const [currentOpenItem, setCurrentOpenItem] = useState();
   const router = useRouter()
   const [cv, setCv] = useState()
 
   useEffect(() => {
-    setCv(courses)
+    get_one_formations(id)
+      .then(res => {
+        if(res) {
+          console.log("res ", res)
+          setCv(res.cours)
+        } else {
+          toast.error("An error occured")
+        }
+      }).catch(err => {
+        console.log(err)
+        toast.error("Somthing happen")
+      })
+
   }, [])
 
   const handleFinish = (event) => {
@@ -22,11 +35,11 @@ export default function CurriculumDub({language}) {
     router.push('/dashboard/course')
   }
 
-  const handleDub = (id, ) => {
-    // TODO: inititate dubbign
+  // const handleDub = (id, ) => {
+  //   // TODO: inititate dubbing
 
-    toast.success(`Dubbing start ${id} in ${language}`)
-  }
+  //   toast.success(`Dubbing start ${id} in ${language}`)
+  // }
  
   return (
     <div className="py-30 px-30">
@@ -51,27 +64,18 @@ export default function CurriculumDub({language}) {
                       <div className="">
                         <div 
                           className="course-input text-16 lh-14 fw-500 text-dark-1" 
-                        >{cv[index].title}</div>
+                        >{cv[index].titre}</div>
                       </div>
                     </div>
 
                     {/* ellipsis */}
 
-                    {cv[index].dub ? (cv[index].ressource.step ? <div className="d-flex x-gap-20 items-center">
+                    {cv[index] && <div className="d-flex x-gap-20 items-center">
                             <span style={{color: "green"}}>finished</span>
                             <b style={{borderRadius: 50, width: "40px", height: "40px", background: "#7254ED", color: "white", padding: "auto", display: "flex", alignItems: "center", justifyContent: "center", marginLeft: "20px"}}><a href={`/dashboard/studio/${cv[index].id}`} className="icon icon-arrow-top-right text-13"></a></b>
-                        </div> : <div className="d-flex x-gap-10 items-center">
-                            <span style={{color: "blue"}}>in progress</span>
-                        </div>) : <div className="d-flex x-gap-20 items-center">
-                            <span>not dubed</span>
-                            {language != "choose" && <b style={{borderRadius: 50, width: "40px", height: "40px", background: "#7254ED", color: "white", padding: "auto", display: "flex", alignItems: "center", justifyContent: "center", marginLeft: "20px"}}>
-                                <div 
-                                    className="icon icon-play text-13"
-                                    onClick={() => handleDub(cv[index].id)}
-                                ></div>
-                            </b>}
-                        </div>
+                        </div> 
                     }
+
                   </div>
                 </div>
               ))}
@@ -97,3 +101,16 @@ export default function CurriculumDub({language}) {
     </div>
   );
 }
+
+
+// : <div className="d-flex x-gap-10 items-center">
+//         <span style={{color: "blue"}}>in progress</span>
+//     </div>) : <div className="d-flex x-gap-20 items-center">
+//         <span>not dubed</span>
+//         {language != "choose" && <b style={{borderRadius: 50, width: "40px", height: "40px", background: "#7254ED", color: "white", padding: "auto", display: "flex", alignItems: "center", justifyContent: "center", marginLeft: "20px"}}>
+//             <div 
+//                 className="icon icon-play text-13"
+//                 onClick={() => handleDub(cv[index].id)}
+//             ></div>
+//         </b>}
+//     </div>

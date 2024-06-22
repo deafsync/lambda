@@ -7,9 +7,27 @@ import React, { useState, useEffect } from "react";
 import FooterNine from "../layout/footers/FooterNine";
 import Image from "next/image";
 import PageLinksTwo from "../common/PageLinksTwo";
+import { get_users } from "@/services/user.service";
+import toast from "react-hot-toast";
 
 export default function Participants() {
-  const [currentLetter, setCurrentLetter] = useState("A");
+  const [partcipents, setPartcipents] = useState([])
+
+  useEffect(() => { 
+    get_users()
+      .then(res => {
+        if(res) {
+          setPartcipents(res)
+        } else {
+          toast.error("An error occured")
+        }
+      }).catch(err => {
+        console.log(err)
+        toast.error("Somthing happen")
+      })
+
+  }, [])
+
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -69,13 +87,13 @@ export default function Participants() {
                         <div className="col-lg-4">
                           <div className="ml-10">
                               <div className="text-dark-1 lh-12 fw-500">
-                                {elm.lastname}
+                                {elm.last_name}
                               </div>
                             </div>
                         </div>
                         <div className="col-lg-4">
                           <div className="text-14 lh-12 mt-5">
-                            {elm.surname}
+                            {elm.first_name}
                           </div>
                         </div>
                         <div className="col-lg-4">

@@ -15,7 +15,6 @@ import React, { useState, useEffect } from "react";
 import PinContentTwo from "./PinContentTwo";
 import Preloader from '@/components/common/Preloader'
 import Link from 'next/link';
-import { data, dataFr } from "@/data/stt";
 
 import { useRouter } from 'next/navigation';
 
@@ -28,18 +27,64 @@ const menuItems = [
 ];
 
 import {toast} from "react-hot-toast"
+import { get_course } from '@/services/core.service';
+import axios from 'axios';
+import { convertWebVTTToJsArray } from '@/utils/vtt';
 
 export default function AsideStudio({ id }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(1);
-  const [text, setText] = useState(data);
-  const [textFr, setTextFr] = useState();
   const [captions_arr, setCaptions] = useState([
     {kind: 'subtitles', src: 'farming.en.vtt', srcLang: 'en', default: true},
   ]);
 
+  const [data, setData] = useState([])
+  const [dataFr, setDataFr] = useState([])
+
+  const [dub, setDub] = useState([])
+  const [sub, setSub] = useState([])
+
+  const [state, setState] = useState(null)
+
+//   useEffect(() => {
+//     setTextFr(JSON.parse(JSON.stringify(dataFr)))
+//   }, [])
+
   useEffect(() => {
-    setTextFr(JSON.parse(JSON.stringify(dataFr)))
+    get_course(id)
+        .then( res => {
+            if(res) {
+                toast.success('Course successfuly created')
+                setDub(res.ressources.filter(el => el.type_ressource == "Dubbing"))
+
+                let data = res.ressources.filter(el => el.type_ressource == "Subtitle")
+
+                data.map(async el => {
+                    const response = await axios.get(el.file_link);
+                    const subtitleText = response.data;
+
+                    // Extract subtitle content from response
+                    el.sub = subtitleText
+
+                    if(el.description == "original subtitles") {
+                        setData(convertWebVTTToJsArray(subtitleText))
+                    } else if(el.description == "dubbed subtitles") {
+                        setDataFr(convertWebVTTToJsArray(subtitleText))
+                    }
+
+                    return el
+                })
+
+                setSub(data)
+                setState(res)
+
+                console.log("SUB ===> ", res.ressources.filter(el => el.type_ressource == "Subtitle"))
+            } else {
+                toast.error("An error occured")
+            }
+        }).catch(err => {
+            console.log(err)    
+        })
   }, [])
 
   const router = useRouter()
@@ -82,7 +127,6 @@ export default function AsideStudio({ id }) {
         toast.success("SAVE !!")
         router.push('/dashboard/course/1')
     }
-
   }
 
   return (
@@ -110,7 +154,7 @@ export default function AsideStudio({ id }) {
 
                 <div className="col-auto lg:d-none">
                     <div className="text-20 lh-1 text-white fw-500">
-                    The Ultimate Drawing Course Beginner to Advanced
+                    {state && state.titre}
                     </div>
                 </div>
 
@@ -131,34 +175,31 @@ export default function AsideStudio({ id }) {
                 </div>
             </div>
         </header>
-        <div  className="content-wrapper  js-content-wrapper overflow-hidden" style={{marginTop: '84px'}}>
-            <section  className="">
-              <div  className="overflow-hidden">
-                <div  className="row justify-start flex-column flex-lg-row">
+        <div className="content-wrapper  js-content-wrapper overflow-hidden" style={{marginTop: '84px'}}>
+            <section className="">
+              <div className="overflow-hidden">
+                <div className="row justify-start flex-column flex-lg-row">
                     <>
-                        <div  className="col col-xxl-8 col-xl-7 col-lg-8 justify-center p-0">
+                        <div className="col col-xxl-8 col-xl-7 col-lg-8 justify-center p-0">
 
                             <div className="video--size">
-                                <video 
+                                {dub.length && sub.length && <video 
                                     controls
                                     width='100%'
                                     height='100%'
                                 >
-                                    <source src="/assets/img/general/video.mp4" type="video/mp4" />
-                                    <track
-                                        label="English"
-                                        kind="subtitles"
-                                        srclang="en"
-                                        src="/subs/farming.vtt"
-                                        default 
+                                    <source 
+                                        src={dub && dub.length > 0 ? dub[0].file_link : "/assets/img/general/video.mp4" }
+                                        type="video/mp4"
                                     />
-                                    <track
-                                        label="English"
-                                        kind="subtitles"
-                                        srclang="en"
-                                        src="/subs/farming.vtt"
-                                    />
-                                </video>
+                                    {/* {sub.length > 0 && sub.map((el, i) => (<track
+                                            label={el.titre}
+                                            kind="subtitles"
+                                            srclang={el.titre}
+                                            src=""
+                                            // default={i == 0}
+                                        >{el.sub}</track>))} */}
+                                </video>}
 
                             </div>
                         </div>
@@ -191,12 +232,12 @@ export default function AsideStudio({ id }) {
                                                             activeTab == 1 ? "is-active" : ""
                                                         } `}
                                                     >
-                                                        {text.map((el, index) => (
+                                                        {data.length > 0 && data.map((el, index) => (
                                                             <div className="stt__item" key={`text-${index}`}>
                                                                 {el[0]}
                                                                 <div>
                                                                     <textarea
-                                                                        value={text[index][1]}
+                                                                        value={data[index][1]}
                                                                         className=' pt-10'
                                                                         type="text"
                                                                         disabled
@@ -211,7 +252,7 @@ export default function AsideStudio({ id }) {
                                                             activeTab == 2 ? "is-active" : ""
                                                         } `}
                                                     >
-                                                        {textFr && textFr.map((el, index) => (
+                                                        {dataFr.length > 0 && dataFr.map((el, index) => (
                                                             <div className="stt__item" key={`textfr-${index}`}>
                                                                 {el[0]}
                                                                 <div>
@@ -220,7 +261,7 @@ export default function AsideStudio({ id }) {
                                                                             event.preventDefault()
                                                                             handleChange(event, index, false)
                                                                         }}
-                                                                        value={textFr[index][1]}
+                                                                        value={dataFr[index][1]}
                                                                         className='text__focus pt-10'
                                                                         type="text"
                                                                     >

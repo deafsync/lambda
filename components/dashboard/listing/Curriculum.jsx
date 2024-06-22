@@ -1,23 +1,28 @@
 "use client";
 
 import { courses } from "@/data/curriculum";
+import { create_course } from "@/services/core.service";
+import { extractYouTubeID } from "@/utils/link";
+import { CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 import {toast} from "react-hot-toast"
 
-export default function Curriculum() {
+export default function Curriculum({id}) {
   const [currentOpenItem, setCurrentOpenItem] = useState();
 
-  const [cv, setCv] = useState()
+  const [cv, setCv] = useState([])
 
-  useEffect(() => {
-    setCv(courses)
-  }, [])
+  const [loading, setLoading] = useState(false)
+
+  // useEffect(() => {
+  //   setCv(courses)
+  // }, [])
 
   const handleAdd = () => {
     let data = [...cv]
     data.push(
-      {id: 3, title: "Hello World Project from GitHub"}
+      {id: 0, titre: "Hello World Project from GitHub", duree: 0, video_url: "https://www.youtube.com/watch?v=fLeJJPxua3E"}
     )
 
     setCv(data)
@@ -32,19 +37,44 @@ export default function Curriculum() {
     setCv(data)
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     for(let i = 0; i < cv.length; i++) {
-      if(cv[i].videoUrl == "" || cv[i].title == "") {
+      if(cv[i].video_url == "" || cv[i].titre == "" || cv[i].duree == 0) {
         toast.error("Your missed an input")
         return 
       }
     }
 
-    toast.success("course structure saved")
+    if(!extractYouTubeID(cv[0].video_url)) {
+      toast.error("VideoUrl is missed")
+      return
+    }
 
-    console.log(cv)
+    let data = cv[0]
+
+    data.video_url = extractYouTubeID(data.video_url)
+    data["formation"]  = id
+    delete data['id']
+    toast.success("course structure sent")
+
+    setLoading(true)
+
+    create_course(data)
+      .then(res => {
+        if(res) {
+          toast.success('Course successfuly created')
+        } else {
+          toast.error("An error occured")
+        }
+        setLoading(false)
+      }).catch(err => {
+        console.log(err)
+        toast.error("Somthing happen")
+        setLoading(false)
+      })
+
   }
  
   return (
@@ -71,9 +101,9 @@ export default function Curriculum() {
                       <div className="">
                         <input 
                           className="course-input text-16 lh-14 fw-500 text-dark-1" 
-                          value={cv[index].title}
+                          value={cv[index].titre}
                           type="text"
-                          name="title"
+                          name="titre"
                           onChange={(event) => handleChange(event, index)}
                           required
                           placeholder="put the lessons name"
@@ -103,23 +133,23 @@ export default function Curriculum() {
                     className="accordion__content"
                     style={
                       currentOpenItem == `${index}`
-                        ? { maxHeight: "370px" }
+                        ? { maxHeight: "250px" }
                         : {}
                     }
                   >
                     <div className="accordion__content__inner px-30">
                       <div className="col-12 mb-20 contact-form">
                         <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                          Short description
+                          Duration
                         </label>
 
                         <input
                           required
-                          value={""}
-                          name="description"
+                          value={cv[index].duree}
+                          name="duree"
                           onChange={(event) => handleChange(event, index)}
                           type="text"
-                          placeholder="Put description here"
+                          placeholder="Put duree here"
                         />
                       </div>
                       <div className="col-12 mb-20 contact-form">
@@ -129,22 +159,8 @@ export default function Curriculum() {
 
                         <input
                           required
-                          value={cv[index].videoUrl}
-                          name="videoUrl"
-                          onChange={(event) => handleChange(event, index)}
-                          type="url"
-                          placeholder="https://www.youtube.com/watch?v=nBpPe9UweWs"
-                        />
-                      </div>
-                      <div className="col-12 mb-20 contact-form">
-                        <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                          Course link
-                        </label>
-
-                        <input
-                          required
-                          value={cv[index].videoUrl}
-                          name="videoUrl"
+                          value={cv[index].video_url}
+                          name="video_url"
                           onChange={(event) => handleChange(event, index)}
                           type="url"
                           placeholder="https://www.youtube.com/watch?v=nBpPe9UweWs"
@@ -179,12 +195,12 @@ export default function Curriculum() {
         </div>
 
         <div className="col-auto sm:w-1/1">
-          <button 
+          {loading ? <CircularProgress color="inherit" /> : <button 
             className="button -md -purple-1 text-white sm:w-1/1"
             onClick={handleSubmit}
           >
             Save
-          </button>
+          </button> }
         </div>
       </div>
     </div>

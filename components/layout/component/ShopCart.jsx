@@ -15,6 +15,7 @@ const ShopCart = () => {
     setCartProducts((pre) => [...pre.filter((elm) => elm !== item)]);
   };
   useEffect(() => {
+    console.log("-----> ", cartProducts)
     const sum = cartProducts.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.price * currentValue.quantity;
     }, 0);

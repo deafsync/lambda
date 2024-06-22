@@ -135,7 +135,7 @@ export default function HeroSix() {
                     height={250}
                     className="js-mouse-move"
                     data-move="40"
-                    src="/assets/img/home/hero/man.png"
+                    src="/assets/img/home-5/cta/img.png"
                     alt="image"
                   />
                 </div>
@@ -155,7 +155,7 @@ export default function HeroSix() {
                     height={200}
                     className="js-mouse-move"
                     data-move="40"
-                    src="/assets/img/home/hero/img1.png"
+                    src="/assets/img/home-4/dreamJob/1.png"
                     alt="image"
                   />
                 </div>

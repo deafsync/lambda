@@ -21,9 +21,9 @@ export const metadata = {
   
 }
 
-export default function page() {
+export default function page({params}) {
 
   return (
-    <AsideStudio />
+    <AsideStudio id={params.id} />
   )
 }

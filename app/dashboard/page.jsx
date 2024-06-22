@@ -8,7 +8,7 @@ import HeaderDashboard from '@/components/layout/headers/HeaderDashboard'
 import React from 'react'
 
 export const metadata = {
-  title: 'Cashboard ',
+  title: 'Dashboard ',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.', 
 }

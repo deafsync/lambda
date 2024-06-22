@@ -10,6 +10,7 @@ export default function CourseCardSix({ data, index }) {
       setRating((pre) => [...pre, "star"]);
     }
   }, []);
+  console.log("-------------> DATA", data)
   return (
     <div className="col">
       <div className="coursesCard -type-4 d-flex sm:d-block items-center border-light rounded-8 px-10 py-10">
@@ -27,7 +28,7 @@ export default function CourseCardSix({ data, index }) {
               width={250}
               height={175}
               className="w-1/1"
-              src={data.imageSrc}
+              src={data.image}
               alt="image"
             />
             <div className="absolute-full-center d-flex justify-center items-center">
@@ -47,14 +48,14 @@ export default function CourseCardSix({ data, index }) {
             Titre du cours
           </div> */}
           <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
-            <Link className="linkCustom" href={`/course/${data.id}/lecture/1`}>
-              {data.title}
+            <Link className="linkCustom" href={`/course/${data.id}/lecture/${data.cours[0].id}`}>
+              {data.titre}
             </Link>
           </div>
-          <div className="progress sm:mt-10 mt-30">
+          <div className="progress sm:mt-10 mt-30" style={{width: "200px"}}>
             <div className="progress-bar" style={{width: "70%"}}></div>
           </div>
-          <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900">Cours n°2:</div> 57min restant</div>
+          <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900">Cours n°1:</div> ...</div>
         </div>
       </div>
     </div>

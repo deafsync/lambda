@@ -1,12 +1,5 @@
 
 
-
-
-
-
-
-
-
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 
@@ -35,8 +28,6 @@ export default function page() {
                 <LoginForm/>
             </section>
            
-            
-            
         </div>
 
     </div>

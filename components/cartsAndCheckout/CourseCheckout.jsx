@@ -3,10 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { useContextElement } from "@/context/Context";
 import Link from "next/link";
+import { proceed_course } from "@/services/core.service";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 export default function CourseCheckOut() {
   const { cartCourses } = useContextElement();
   const [totalPrice, setTotalPrice] = useState(0);
   const [shiping, setShiping] = useState(0);
+
+  const router = useRouter()
+
   useEffect(() => {
     const sum = cartCourses.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.discountedPrice * currentValue.quantity;
@@ -17,9 +23,27 @@ export default function CourseCheckOut() {
     setShiping(sumQuantity * 10);
     setTotalPrice(sum);
   }, [cartCourses]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const handleProceed = async () => {
+    proceed_course(cartCourses[0].id)
+      .then(res => {
+        if(res) {
+          toast.success("Course successfully enroled")
+          router.push("/learning")
+        } else {
+          toast.error("An error occured")
+        }
+      })
+      .catch(err => {
+        toast.error("Something happen")
+        console.log(err)
+      })
+  }
+
   return (
     <>
       <section className="page-header -type-1">
@@ -232,29 +256,27 @@ export default function CourseCheckOut() {
                         </Link> x {elm.quantity}
                       </div>
                       <div className="py-15 text-grey">
-                        $
-                        {(elm.discountedPrice * elm.quantity).toFixed(2) ||
-                          "Free"}
+                      ${ 0 } {/* "Free" || (elm.discountedPrice * elm.quantity).toFixed(2) */}
                       </div>
                     </div>
                   ))}
 
                   <div className="d-flex justify-between border-top-dark px-30">
                     <div className="py-15 fw-500">Subtotal</div>
-                    <div className="py-15 fw-500">${totalPrice.toFixed(2)}</div>
+                    <div className="py-15 fw-500">${0}{/* totalPrice.toFixed(2) */}</div>
                   </div>
 
                   <div className="d-flex justify-between border-top-dark px-30">
                     <div className="py-15 fw-500 text-dark-1">Shipping</div>
                     <div className="py-15 fw-500 text-dark-1">
-                      ${shiping.toFixed(2)}
+                      ${0} {/* shiping.toFixed(2) */}
                     </div>
                   </div>
 
                   <div className="d-flex justify-between border-top-dark px-30">
                     <div className="py-15 fw-500 text-dark-1">Total</div>
                     <div className="py-15 fw-500 text-dark-1">
-                      ${(totalPrice + shiping).toFixed(2)}
+                      ${0} {/* (totalPrice + shiping).toFixed(2) */}
                     </div>
                   </div>
                 </div>
@@ -324,7 +346,11 @@ export default function CourseCheckOut() {
                 </div> */}
 
                 <div className="mt-30">
-                  <button className="button -md -green-1 text-dark-1 fw-500 w-1/1 -uppercase">
+                  <button 
+                    disabled={cartCourses.length == 0}
+                    className="button -md -green-1 text-dark-1 fw-500 w-1/1 -uppercase"
+                    onClick={handleProceed}
+                  >
                     Place order
                   </button>
                 </div>

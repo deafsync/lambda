@@ -57,10 +57,8 @@ export default function HeroSeven() {
                   <br /> <span className="text-purple-1">online</span>
                 </h1>
                 <p className="mt-5">
-                  Data drives everything. Get the skills you need for the future
+                In today's rapidly evolving digital landscape, data stands as the cornerstone of innovation and decision-making across industries. From guiding strategic business decisions to fueling breakthroughs in healthcare and technology, the ability to harness, analyze, and interpret data is paramount
                   <br className="lg:d-none" />
-                  of work. Des compétences pour aujourd'hui (et demain).Nous vous accompagnons
-                  dans vos premiers pas.
                 </p>
                 {/* <div className="row items-center x-gap-20 y-gap-20 pt-20">
                   <div className="col-auto">
@@ -86,10 +84,11 @@ export default function HeroSeven() {
             <div className="col-lg-6 align-self-end" data-aos="fade-up" data-aos-delay="750">
               <div className="masthead__image relative">
                 <Image
-                  width={855}
-                  height={655}
-                  src="/assets/img/home-7/hero/image.png"
+                  width={455}
+                  height={455}
+                  src="/assets/img/home-6/learn/1.png"
                   alt="image"
+                  style={{borderRadius: '15px', width: '600px', marginLeft: "50px"}}
                 />
               </div>
             </div>

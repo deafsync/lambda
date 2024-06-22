@@ -68,21 +68,22 @@ export default function AuthImageMove() {
             width={488}
             height={485}
             data-move="40"
+            style={{marginTop:'100px'}}
             className="js-mouse-move"
-            src="/assets/img/auth/img.png"
+            src="/assets/img/home-5/masthead/bg.svg"
             alt="icon"
           />
         </div>
-        <div className="-el-3">
+        {/* <div className="-el-3">
           <Image
             width={108}
             height={108}
             data-move="40"
             className="js-mouse-move"
-            src="/assets/img/auth/img_1.png"
+            src="/assets/img/auth/img_2.png"
             alt="icon"
           />
-        </div>
+        </div> */}
         <div className="-el-4">
           <Image
             width={108}

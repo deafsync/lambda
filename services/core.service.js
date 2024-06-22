@@ -213,3 +213,185 @@ export const get_one_formations = async (id) => {
 
   return response 
 }
+
+export const create_course = async (credentials) => {
+
+  const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
+  // console.log(token.refresh)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token.refresh}`,
+    }
+  };
+
+  const response = await URL.post(`/formations/cours/`,
+   credentials,
+   config
+  )
+  .then((res) => {
+      console.log(res.data)
+      if(res.status == 201 || res.status == 200) {
+        return true
+      } else if(res.status == 400) {
+          return false
+      }
+  })
+    .catch((err) => {
+      return false
+    })
+
+  // console.log("RESPONSE", response)
+
+  return response 
+}
+
+export const get_course = async (id) => {
+
+  const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
+  // console.log(token.refresh)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token.refresh}`,
+      'Accept': 'application/json'
+    }
+  };
+
+  const response = await URL.get(`/formations/cours/${id}/`,
+   config
+  )
+  .then((res) => {
+      console.log(res.status)
+      if(res.status == 201 || res.status == 200) {
+        return res.data
+      } else if(res.status == 400) {
+          return false
+      }
+  })
+    .catch((err) => {
+      return false
+    })
+
+  // console.log("RESPONSE", response)
+
+  return response 
+}
+
+export const get_formations_list = async () => {
+
+  const response = await URL.get(`/formations/categorie_formations/`)
+  .then((res) => {
+      if(res.status == 201 || res.status == 200) {
+        console.log(res.data)
+        let data = []
+        res.data.map(el => data.push(...el.formations))
+        return data
+      } else if(res.status == 400) {
+          return false
+      }
+  })
+    .catch((err) => {
+      return false
+    })
+
+  console.log("RESPONSE ??", response)
+
+  return response 
+}
+
+export const proceed_course = async (id) => {
+
+  const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
+  // console.log(token.refresh)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token.refresh}`,
+      'Accept': 'application/json'
+    }
+  };
+
+  const user = JSON.parse(localStorage.getItem("NiI.sInR5-cCI-6I?kpX-@6I?kpX"))
+
+  const response = await URL.post(`/formations/user_formations/`, {
+      user: user.id,
+      formation: id
+    },
+   config
+  )
+    .then((res) => {
+        console.log(res.status)
+        if(res.status == 201 || res.status == 200) {
+          return res.data
+        } else if(res.status == 400) {
+            return false
+        }
+    })
+      .catch((err) => {
+        return false
+      })
+
+  // console.log("RESPONSE", response)
+
+  return response 
+}
+
+export const get_user_formations = async () => {
+
+  const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
+  // console.log(token.refresh)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token.refresh}`,
+      'Accept': 'application/json'
+    }
+  };
+
+  const response = await URL.get(`/formations/user_formations/`, config)
+    .then((res) => {
+        if(res.status == 201 || res.status == 200) {
+          console.log("__________________", res.data)
+          let data = res.data.map(el => {
+            el.formation["form_id"] = el.id
+
+            return el.formation
+          })
+          return data
+        } else if(res.status == 400) {
+            return false
+        }
+    })
+    .catch((err) => {
+      return false
+    })
+
+  // console.log("RESPONSE USER FORMATION", response)
+
+  return response 
+}
+
+export const get_user_formation = async (id) => {
+
+  const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
+  // console.log(token.refresh)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token.refresh}`,
+      'Accept': 'application/json'
+    }
+  };
+
+  const response = await URL.get(`/formations/user_formations/${id}/`, config)
+    .then((res) => {
+        if(res.status == 201 || res.status == 200) {
+          return res.data.formation
+        } else if(res.status == 400) {
+            return false
+        }
+    })
+    .catch((err) => {
+      return false
+    })
+
+  console.log("RESPONSE USER FORMATION", response)
+
+  return response 
+}

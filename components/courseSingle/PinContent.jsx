@@ -45,10 +45,10 @@ export default function PinContent({ pageItem }) {
               width={368}
               height={238}
               className="w-1/1"
-              src={pageItem.imageSrc}
+              src={pageItem.image}
               alt="image"
             />
-            <div className="absolute-full-center d-flex justify-center items-center">
+            {/* <div className="absolute-full-center d-flex justify-center items-center">
               <div
                 onClick={() => setIsOpen(true)}
                 className="d-flex justify-center items-center size-60 rounded-full bg-white js-gallery cursor"
@@ -56,12 +56,12 @@ export default function PinContent({ pageItem }) {
               >
                 <div className="icon-play text-18"></div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className=" courses-info__content scroll-bar-1 pt-30 pb-20 px-20">
             <div className="d-flex justify-between items-center mb-30">
-              {pageItem.paid ? (
+              {parseInt(pageItem.montant) != 0 ? (
                 <>
                   <div className="text-24 lh-1 text-dark-1 fw-500">
                     ${pageItem.discountedPrice}
@@ -78,7 +78,7 @@ export default function PinContent({ pageItem }) {
               )}
             </div>
 
-            {pageItem.paid && (<><button
+            {parseInt(pageItem.montant) != 0 && (<><button
                 className="button -md -purple-1 text-white w-1/1"
                 onClick={() => addCourseToCart(pageItem.id)}
               >
@@ -100,7 +100,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-video-file"></div>
                   <div className="ml-10">Lessons</div>
                 </div>
-                <div>20</div>
+                <div>{pageItem.cours.length}</div>
               </div>
 
               {/* <div className="d-flex justify-between py-8 border-top-light">
@@ -116,7 +116,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-clock-2"></div>
                   <div className="ml-10">Duration</div>
                 </div>
-                <div>13 Hours</div>
+                <div>1 Hours</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">
@@ -124,7 +124,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-bar-chart-2"></div>
                   <div className="ml-10">Skill level</div>
                 </div>
-                <div>Beginner</div>
+                <div>{pageItem.level}</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">
@@ -132,7 +132,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-translate"></div>
                   <div className="ml-10">Language</div>
                 </div>
-                <div>English</div>
+                <div>{pageItem.langue}</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">
@@ -140,7 +140,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-translate"></div>
                   <div className="ml-10">Other languages</div>
                 </div>
-                <div>Fongbé</div>
+                <div>{pageItem.langue_dub}</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">

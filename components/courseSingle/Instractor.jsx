@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-export default function Instractor() {
+export default function Instractor({data}) {
   return (
     <div id="instructors" className="pt-60 lg:pt-40">
       <h2 className="text-20 fw-500">Instructor</h2>
@@ -13,13 +13,13 @@ export default function Instractor() {
               width={100}
               height={100}
               className="object-cover"
-              src="/assets/img/misc/verified/1.png"
+              src="/assets/img/masthead/4.png"
               alt="image"
             />
           </div>
 
           <div className="">
-            <h5 className="text-17 lh-14 fw-500">Floyd Miles</h5>
+            <h5 className="text-17 lh-14 fw-500">{data.first_name + " " + data.last_name}</h5>
             <p className="mt-5">Author of this course; Expert</p>
 
             <div className="d-flex x-gap-20 y-gap-10 flex-wrap items-center pt-10">
@@ -49,7 +49,7 @@ export default function Instractor() {
           </div>
         </div>
 
-        <div className="mt-30">
+        {/* <div className="mt-30">
           <p>
             Back in 2022, I started brainspin with a desire to design compelling
             and engaging apps. For over 7 years, I have designed many high
@@ -62,7 +62,7 @@ export default function Instractor() {
             cultivate the talents of up and coming UX designers through
             workshops and panel discussions.
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ import Footer from '@/components/layout/footers/FooterOne'
 import { coursesData } from "@/data/dashboard";
 import Pagination from "../common/Pagination";
 import CoursesCardDashboard from "./DashBoardCards/CoursesCardDashboard";
+import { get_user_formation, get_user_formations } from "@/services/core.service";
+import toast from "react-hot-toast";
 const ddItems = [
   { id: 1, label: "All Categories" },
   { id: 2, label: "Animation" },
@@ -17,28 +19,44 @@ export default function MyCourses() {
   const [pageItems, setPageItems] = useState([]);
   const [activeTab, setActiveTab] = useState(1);
   const [pageData, setPageData] = useState(coursesData);
+
   useEffect(() => {
-    if (activeTab == 1) {
-      setPageData(coursesData);
-    } else if (activeTab == 2) {
-      setPageData(coursesData.filter((elm) => elm.status == "Finished"));
-    } else if (activeTab == 3) {
-      setPageData(coursesData.filter((elm) => elm.status == "Not enrolled"));
-    }
-  }, [activeTab]);
+    get_user_formations()
+      .then(res => {
+        if(!res) {
+          toast.error("An error occured")
+        } else {
+          setPageItems(res)
+        }
+      })
+      .catch(err => {
+        toast.error("Something happen")
+      })
+  }, [])
+
+  // useEffect(() => {
+  //   if (activeTab == 1) {
+  //     setPageData(coursesData);
+  //   } else if (activeTab == 2) {
+  //     setPageData(coursesData.filter((elm) => elm.status == "Finished"));
+  //   } else if (activeTab == 3) {
+  //     setPageData(coursesData.filter((elm) => elm.status == "Not enrolled"));
+  //   }
+  // }, [activeTab]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  useEffect(() => {
-    if (currentCategory == "All Categories") {
-      setPageItems(pageData);
-    } else {
-      setPageItems([
-        ...pageData.filter((elm) => elm.category == currentCategory),
-      ]);
-    }
-  }, [currentCategory, pageData]);
+
+  // useEffect(() => {
+  //   if (currentCategory == "All Categories") {
+  //     setPageItems(pageData);
+  //   } else {
+  //     setPageItems([
+  //       ...pageData.filter((elm) => elm.category == currentCategory),
+  //     ]);
+  //   }
+  // }, [currentCategory, pageData]);
 
   return (
     <div className="dashboard__main1">
@@ -47,7 +65,7 @@ export default function MyCourses() {
           <div className="col-auto">
             <h1 className="text-30 lh-12 fw-700">My Learning</h1>
             <div className="mt-10">
-              Lorem ipsum dolor sit amet, consectetur.
+              Your learning informations
             </div>
           </div>
         </div>
@@ -67,7 +85,7 @@ export default function MyCourses() {
                   >
                     All Courses
                   </button>
-                  <button
+                  {/* <button
                     className={`text-light-1 lh-12 tabs__button js-tabs-button ml-30 ${
                       activeTab == 2 ? "is-active" : ""
                     } `}
@@ -76,8 +94,8 @@ export default function MyCourses() {
                     onClick={() => setActiveTab(2)}
                   >
                     Finished
-                  </button>
-                  <button
+                  </button> */}
+                  {/* <button
                     className={`text-light-1 lh-12 tabs__button js-tabs-button ml-30 ${
                       activeTab == 3 ? "is-active" : ""
                     } `}
@@ -86,7 +104,7 @@ export default function MyCourses() {
                     onClick={() => setActiveTab(3)}
                   >
                     Not enrolled
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="tabs__content py-30 px-30 js-tabs-content">
@@ -109,7 +127,7 @@ export default function MyCourses() {
                         </form>
                       </div>
 
-                      <div className="col-auto">
+                      {/* <div className="col-auto">
                         <div className="d-flex flex-wrap y-gap-10 x-gap-20">
                           <div>
                             <div
@@ -233,22 +251,22 @@ export default function MyCourses() {
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div> 
                         </div>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="row y-gap-30 pt-30">
-                      {pageItems.map((data, i) => (
-                        <CoursesCardDashboard data={data} key={i} />
+                      {pageItems.length > 0 && pageItems.map((data, i) => (
+                        <CoursesCardDashboard data={data} key={`course-card-${i}`} />
                       ))}
                     </div>
 
-                    <div className="row justify-center pt-30">
+                    {/* <div className="row justify-center pt-30">
                       <div className="col-auto">
                         <Pagination />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* <div className="tabs__pane -tab-item-2"></div>

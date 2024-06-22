@@ -28,7 +28,7 @@ export default function CourseCardSix({ data, index }) {
           </div>
         </div>
 
-        <div className="coursesCard__content pl-20 sm:pl-10 pr-10">
+        <div className="coursesCard__content pl-20 sm:pl-10 w-[100%] pr-10">
           <div className="col-auto">
             {/* <div className="text-15 lh-13 sm:mt-20 mt-0 fw-900 text-light-1">
                 Course
@@ -39,11 +39,11 @@ export default function CourseCardSix({ data, index }) {
                 </Link>
             </div>
           </div>
-          <div className="col-auto">
+          <div className="" style={{width: "250px"}}>
             <div className="progress sm:mt-10 mt-30">
-                <div className="progress-bar" style={{width: "70%"}}></div>
+                <div className="progress-bar" style={{width: "100%"}}></div>
             </div>
-            <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900"></div> 57%</div>
+            <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900"></div>100%</div>
           </div>
         </div>
       </div>

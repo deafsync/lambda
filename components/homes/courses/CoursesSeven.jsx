@@ -8,22 +8,38 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CourseCardSix from "@/components/homes/courseCards/CourseCardSix";
 import Link from "next/link";
+import { get_user_formations } from "@/services/core.service";
 
 export default function CoursesSeven() {
   const [showSlider, setShowSlider] = useState(false);
   const [currentCourseState, setCurrentCourseState] = useState("All");
   const [pageItem, setPageItem] = useState([]);
 
+  // useEffect(() => {
+  //   if (currentCourseState == "All") {
+  //     setPageItem(coursesData);
+  //   } else {
+  //     const filtered = coursesData.filter(
+  //       (elm) => elm.state == currentCourseState,
+  //     );
+  //     setPageItem(filtered);
+  //   }
+  // }, [currentCourseState]);
+
   useEffect(() => {
-    if (currentCourseState == "All") {
-      setPageItem(coursesData);
-    } else {
-      const filtered = coursesData.filter(
-        (elm) => elm.state == currentCourseState,
-      );
-      setPageItem(filtered);
-    }
-  }, [currentCourseState]);
+    get_user_formations()
+      .then(res => {
+        if(!res) {
+          toast.error("An error occured")
+        } else {
+          console.log("res  ____ ", res)
+          setPageItem(res)
+        }
+      })
+      .catch(err => {
+        toast.error("Something happen")
+      })
+  }, [])
 
   useEffect(() => {
     setShowSlider(true);
@@ -41,7 +57,7 @@ export default function CoursesSeven() {
                 </h2>
 
                 <p className="sectionTitle__text ">
-                  YOu have {3} course in progress
+                  You have {3} course in progress
                 </p>
               </div>
             </div>
@@ -94,7 +110,7 @@ export default function CoursesSeven() {
                       },
                     }}
                   >
-                    {pageItem.slice(0, 3).map((elm, i) => (
+                    {pageItem.length > 0 && pageItem.map((elm, i) => (
                       <SwiperSlide
                         key={i}
                         className="swiper-slide -type-1  border-light bg-white rounded-8 "

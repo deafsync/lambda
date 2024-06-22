@@ -5,12 +5,13 @@ import Reviews from "./ReviewSecond";
 import Overview from "./Overview";
 import CourseContent from "./CourseContent";
 import Star from "../common/Star";
-import { coursesData } from "@/data/courses";
 import React, { useState, useEffect } from "react";
 import PinContentTwo from "./PinContentTwo";
 
 import ModalVideoComponent from "../common/ModalVideo";
 import Image from "next/image";
+import { get_user_formation } from "@/services/core.service";
+import toast from "react-hot-toast";
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
   // { id: 2, href: "#course-content", text: "Course Content", isActive: false },
@@ -19,13 +20,25 @@ const menuItems = [
 ];
 
 export default function CourseDetailsFive({ id }) {
-  const [pageItem, setPageItem] = useState(coursesData[0]);
+  // const [pageItem, setPageItem] = useState(coursesData[0]);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(1);
+  const [coursesData, setCoursesData] = useState(null)
+
+  // useEffect(() => {
+  //   setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
+  // }, []);
 
   useEffect(() => {
-    setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
-  }, []);
+    get_user_formation(id)
+      .then(res => {
+        setCoursesData(res)
+      }).catch(err => {
+          console.log(err)
+          toast.error("something happen")
+      })
+  }, [])
+
   return (
     <>
       <div className="js-pin-container relative">
@@ -156,13 +169,13 @@ export default function CourseDetailsFive({ id }) {
                       ))}
                     </div>
 
-                    <div className="tabs__content   js-tabs-content">
+                    {coursesData && <div className="tabs__content   js-tabs-content">
                       <div
                         className={`tabs__pane -tab-item-1 ${
                           activeTab == 1 ? "is-active" : ""
                         } `}
                       >
-                        <Overview />
+                        <Overview  data={coursesData} />
                       </div>
 
                       <div
@@ -170,7 +183,7 @@ export default function CourseDetailsFive({ id }) {
                           activeTab == 2 ? "is-active" : ""
                         } `}
                       >
-                        <Instractor />
+                        <Instractor data={coursesData.author} />
                       </div>
 
                       <div
@@ -180,7 +193,7 @@ export default function CourseDetailsFive({ id }) {
                       >
                         <Reviews />
                       </div>
-                    </div>
+                    </div>}
                   </div>
                 </div>
               </div>

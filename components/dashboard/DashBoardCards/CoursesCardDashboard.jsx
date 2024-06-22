@@ -7,22 +7,25 @@ import { useState, useEffect } from "react";
 export default function CoursesCardDashboard({ data }) {
   const [activeShare, setActiveShare] = useState(false);
   const [rating, setRating] = useState([]);
+  
   useEffect(() => {
     for (let i = Math.floor(data.rating); i >= 1; i--) {
       setRating((pre) => [...pre, "star"]);
     }
   }, []);
+
+
   return (
     <a 
       className="d-block courseHover w-1/5 xl:w-1/3 lg:w-1/2 sm:w-1/1"
-      href={`/course/${data.id}/lecture/${2}`}
+      href={`/course/${data.form_id}/lecture/${data.cours[0].id}`}
     >
       <div className="relative">
         <Image
           width={560}
           height={325}
           className="rounded-8 w-1/1"
-          src={data.imageSrc}
+          src={data.image}
           alt="image"
         />
 
@@ -56,7 +59,7 @@ export default function CoursesCardDashboard({ data }) {
       </div>
 
       <div className="pt-15">
-        <div className="d-flex y-gap-10 justify-between items-center">
+        {/* <div className="d-flex y-gap-10 justify-between items-center">
           <div className="text-14 lh-1">{data.authorName}</div>
 
           <div className="d-flex items-center">
@@ -69,9 +72,9 @@ export default function CoursesCardDashboard({ data }) {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <h3 className="text-16 fw-500 lh-15 mt-10">{data.title}</h3>
+        <h3 className="text-16 fw-500 lh-15 mt-10">{data.titre}</h3>
 
         <div className="progress-bar mt-10">
           <div className="progress-bar__bg bg-light-3"></div>
@@ -79,8 +82,8 @@ export default function CoursesCardDashboard({ data }) {
         </div>
 
         <div className="d-flex y-gap-10 justify-between items-center mt-10">
-          <div className="text-dark-1">% {data.completed} Completed</div>
-          <div>25%</div>
+          {/* <div className="text-dark-1">% {data.completed} Completed</div> */}
+          {/* <div>25%</div> */}
         </div>
       </div>
     </a>

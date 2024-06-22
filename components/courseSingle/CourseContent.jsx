@@ -17,13 +17,15 @@ export default function CourseContent({lessonItems}) {
     setVideoId(videoId)
   }
 
+  console.log("lessonItems ", lessonItems)
+
   return (
     <>
       <div id="course-content" className="pt-60 lg:pt-40">
         <h2 className="text-20 fw-500">Course Content</h2>
 
         <div className="d-flex justify-between items-center mt-30">
-          <div className="">{lessonItems[0].lessons.length} lectures</div>
+          <div className="">{lessonItems.length} lectures</div>
           {/* <a href="#" className="underline text-purple-1">
             Expand All Sections
           </a> */}
@@ -45,37 +47,37 @@ export default function CourseContent({lessonItems}) {
                   className="accordion__button py-20 px-30 bg-light-4"
                 >
                   <div className="d-flex items-center">
-                    <div className="accordion__icon">
+                    {/* <div className="accordion__icon">
                       <div className="icon">
                         <FontAwesomeIcon icon={faChevronDown} />
                       </div>
                       <div className="icon">
                         <FontAwesomeIcon icon={faChevronUp} />
                       </div>
-                    </div>
+                    </div> */}
                     <span className="text-17 fw-500 text-dark-1">
-                      Course Content
+                      {elm.titre}
                     </span>
                   </div>
 
                   <div>
-                    {elm.lessons.length} lectures • {elm.duration} min
+                    {elm.ressources.length} ressources • {elm.duree} min
                   </div>
                 </div>
 
-                <div
+                {/* <div
                   className="accordion__content"
                   style={activeItemId == elm.id ? { maxHeight: "700px" } : {}}
                 >
                   <div className="accordion__content__inner px-30 py-30">
                     <div className="y-gap-20">
-                      {elm.lessons.map((itm, index) => (
+                      {elm.ressources.map((itm, index) => (
                         <div key={index} className="d-flex justify-between">
                           <div className="d-flex items-center">
                             <div className="d-flex justify-center items-center size-30 rounded-full bg-purple-3 mr-10">
                               <div className="icon-play text-9"></div>
                             </div>
-                            <div>{itm.title}</div>
+                            <div>{itm.titre}</div>
                           </div>
 
                           <div className="d-flex x-gap-20 items-center">
@@ -95,7 +97,7 @@ export default function CourseContent({lessonItems}) {
                       ))}
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>

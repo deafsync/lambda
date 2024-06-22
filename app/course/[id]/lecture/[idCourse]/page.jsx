@@ -25,15 +25,16 @@ export default function page({params}) {
   return (
     <div  className="main-content  " >
       <Preloader/>
-        <HeaderTen/>  {/*
+        <HeaderTen id={params.id}/>  {/*
                         TODO: Pass the course name
                       */}
         <div  className="content-wrapper  js-content-wrapper overflow-hidden">
             <LessonItems 
               id={params.idCourse}
+              course_id = {params.id}
             /> {/*
-                        TODO: Pass active course id
-                      */}
+                  TODO: Pass active course id
+                */}
             
         </div>
     </div>

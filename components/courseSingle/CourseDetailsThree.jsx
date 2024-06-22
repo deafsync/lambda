@@ -15,6 +15,9 @@ import Instractor from "./Instractor";
 import Reviews from "./Reviews";
 import { lessonItems } from "@/data/aboutcourses";
 import { useContextElement } from "@/context/Context";
+import toast from "react-hot-toast";
+import { get_formations, get_formations_list, get_one_formations, get_user_formation } from "@/services/core.service";
+import { data_formatter } from "@/utils/time";
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
@@ -31,6 +34,19 @@ export default function CourseDetailsThree({ id }) {
   const router = useRouter()
   const pathname = usePathname()
 
+  const [state, setState] = useState(null)
+
+  useEffect(() => {
+    console.log(id)
+    get_formations_list()
+      .then(res => {
+        setState(res.filter(el => el.id == id)[0])
+      }).catch(err => {
+          console.log(err)
+          toast.error("something happen")
+      })
+  }, [])
+
   useEffect(() => {
     setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
   }, []);
@@ -39,13 +55,13 @@ export default function CourseDetailsThree({ id }) {
     // TODO: add formation to user's formation & redirection to course page
 
     router.push(`${pathname}/lecture/${1}`)
-    
   }
 
   // TODO: get API data and provide to children
 
+
   return (
-    <div id="js-pin-container" className="js-pin-container relative">
+    state && <div id="js-pin-container" className="js-pin-container relative">
       <section className="page-header -type-6">
         <div className="page-header__bg bg-purple-1"></div>
         <div className="container">
@@ -72,14 +88,13 @@ export default function CourseDetailsThree({ id }) {
 
                 <div>
                   <h1 className="text-30 lh-14 text-white pr-60 lg:pr-0">
-                    {pageItem.title}
+                    {state.titre}
                   </h1>
                 </div>
 
-                <p className="col-xl-9 mt-20 text-white">
-                  Use XD to get a job in UI Design, User Interface, User
-                  Experience design, UX design & Web Design
-                </p>
+                {/* <p className="col-xl-9 mt-20 text-white">
+                  {state.description}
+                </p> */}
 
                 <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
                   <div className="d-flex items-center text-white">
@@ -90,20 +105,20 @@ export default function CourseDetailsThree({ id }) {
                       <Star star={pageItem.rating} textColor={"text-green-1"} />
                     </div>
                     <div className="text-14 lh-1 ml-10">
-                      ({pageItem.ratingCount})
+                      ({7})
                     </div>
                   </div>
 
                   <div className="d-flex items-center text-white">
                     <div className="icon icon-person-3 text-13"></div>
                     <div className="text-14 ml-8">
-                      853 enrolled on this course
+                      1 enrolled on this course
                     </div>
                   </div>
 
                   <div className="d-flex items-center text-white">
                     <div className="icon icon-wall-clock text-13"></div>
-                    <div className="text-14 ml-8">Last updated 11/2021</div>
+                    <div className="text-14 ml-8">Last updated {data_formatter(state.updated_at)}</div>
                   </div>
                 </div>
 
@@ -116,7 +131,7 @@ export default function CourseDetailsThree({ id }) {
                     data-bg="img/avatars/small-1.png"
                   ></div>
                   <div className="text-14 lh-1 ml-10 text-white">
-                    {pageItem.authorName}
+                    {state.author.first_name + " " + state.author.last_name}
                   </div>
                 </div>
 
@@ -135,7 +150,7 @@ export default function CourseDetailsThree({ id }) {
           </div>
         </div>
       </section>
-      <PinContent pageItem={pageItem} />
+      <PinContent pageItem={state} />
 
       <section className="layout-pt-md layout-pb-md">
         <div className="container">
@@ -158,9 +173,9 @@ export default function CourseDetailsThree({ id }) {
                 </div>
               </div> */}
 
-              <Overview />
-              <CourseContent lessonItems={lessonItems} />
-              <Instractor />
+              <Overview data={state} />
+              <CourseContent lessonItems={state.cours} />
+              <Instractor data={state.author}/>
               {/* <Reviews /> */}
             </div>
           </div>

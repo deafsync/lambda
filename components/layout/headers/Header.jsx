@@ -14,6 +14,7 @@ import { notifications } from "@/data/notifications";
 import MobileMenuHome from "../component/MobileMenuHome";
 import { auth, logout } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import { get_user } from "@/services/user.service";
 
 export default function Header() {
 
@@ -40,6 +41,8 @@ export default function Header() {
           setIsAuth(true)
         }
       })
+
+    get_user().then(() => {})
   }, [isLog])
 
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
@@ -63,7 +66,7 @@ export default function Header() {
           <div className="col-auto">
             <div className="header-left d-flex items-center">
               <div className="header__logo ">
-                <Link href="/">
+                <Link href={isAuth ? "/home" : "/"}>
                   <Image
                     width={140}
                     height={50}

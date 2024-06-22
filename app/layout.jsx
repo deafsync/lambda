@@ -16,6 +16,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import Context from '@/context/Context';
 
 import { Toaster } from "react-hot-toast"
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 export default function RootLayout({ children }) {
   useEffect(() => {
@@ -36,8 +37,13 @@ export default function RootLayout({ children }) {
       
       </head>
       <body>
+
         <Toaster/>
-        <Context> {children}</Context>
+        <Context> 
+          <AppRouterCacheProvider>
+            {children}
+          </AppRouterCacheProvider>
+        </Context>
       </body>
     </html>
   )

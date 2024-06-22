@@ -5,22 +5,31 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useContextElement } from "@/context/Context";
 import Link from "next/link";
+import { get_formations_list } from "@/services/core.service";
 
 const CourseCart = () => {
   const { cartCourses, setCartCourses } = useContextElement();
   const [totalPrice, setTotalPrice] = useState(0);
+
+  console.log("CART _____ ",cartCourses)
 
   const handleRemoveCart = (index) => {
     const item = cartCourses[index];
 
     setCartCourses((pre) => [...pre.filter((elm) => elm !== item)]);
   };
+
+  const [courseData, setCoursesData] = useState([])
+
   useEffect(() => {
+    
     const sum = cartCourses.reduce((accumulator, currentValue) => {
-      return accumulator + currentValue.discountedPrice * currentValue.quantity;
+      return accumulator + parseInt(currentValue.montant) * 1; //currentValue.quantity
     }, 0);
-    setTotalPrice(sum);
+    setTotalPrice(0);
+    
   }, [cartCourses]);
+
   return (
     <div className="header-cart bg-white -dark-bg-dark-1 rounded-8">
       <div
@@ -39,7 +48,7 @@ const CourseCart = () => {
                   <Image
                     width={80}
                     height={80}
-                    src={elm.imageSrc}
+                    src={elm.image}
                     alt="image"
                   />
                 </div>
@@ -48,13 +57,13 @@ const CourseCart = () => {
                   <div className="text-dark-1 lh-15">{elm.title}</div>
 
                   <div className="d-flex items-center mt-10">
-                    {elm.paid ? (
+                    {parseInt(elm.montant) != 0 ? (
                       <>
                         <div className="lh-12 fw-500 line-through text-light-1 mr-10">
-                          ${elm.originalPrice}
+                          ${elm.montant}
                         </div>
                         <div className="text-18 lh-12 fw-500 text-dark-1">
-                          ${elm.discountedPrice}
+                          ${elm.montant}
                         </div>
                       </>
                     ) : (

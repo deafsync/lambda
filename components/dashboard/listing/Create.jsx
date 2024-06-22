@@ -98,8 +98,7 @@ export default function Listing() {
           toast.error("An error occured")
         }
       }).catch(err => {
-        console.log(err)
-          
+        console.log(err)    
       })
   };
 
@@ -218,10 +217,10 @@ export default function Listing() {
                       onChange={handleChange}
                     >
                       <option value="">Select your language</option>
-                      <option value="anglais">English</option>
-                      <option value="français">Français</option>
-                      <option value="fongbé">Fongbé</option>
-                      <option value="yoruba">Yoruba</option>
+                      <option value="en">English</option>
+                      <option value="fr">Français</option>
+                      <option value="fon">Fongbé</option>
+                      <option value="yor">Yoruba</option>
                     </select>
                   </div>
 
@@ -236,10 +235,10 @@ export default function Listing() {
                       onChange={handleChange}
                     >
                       <option value="">Select your language</option>
-                      <option value="anglais">English</option>
-                      <option value="français">Français</option>
-                      <option value="fongbé">Fongbé</option>
-                      <option value="yoruba">Yoruba</option>
+                      <option value="en">English</option>
+                      <option value="fr">Français</option>
+                      <option value="fon">Fongbé</option>
+                      <option value="yor">Yoruba</option>
                     </select>
                   </div>
 
@@ -254,10 +253,10 @@ export default function Listing() {
                       onChange={handleChange}
                     >
                       <option value="">Select your language</option>
-                      <option value="anglais">English</option>
-                      <option value="français">Français</option>
-                      <option value="fongbé">Fongbé</option>
-                      <option value="yoruba">Yoruba</option>
+                      <option value="en">English</option>
+                      <option value="fr">Français</option>
+                      {/* <option value="fon">Fongbé</option> */}
+                      <option value="yor">Yoruba</option>
                     </select>
                   </div>
 

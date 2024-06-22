@@ -15,6 +15,8 @@ export const get_user = async () => {
     .then((res) => {
         console.log(res.status)
         if(res.status == 201 || res.status == 200) {
+          localStorage.setItem('NiI.sInR5-cCI-6I?kpX-@6I?kpX', JSON.stringify(res.data));
+
           return res.data
         } else if(res.status == 400) {
             return false
@@ -65,4 +67,23 @@ export const update_user = async (credentials) => {
     // console.log("RESPONSE", response)
   
     return response 
+}
+
+export const get_users = async () => {
+
+  const response = await URL.get(`/accounts/auth/user/all/`)
+  .then((res) => {
+      if(res.status == 201 || res.status == 200) {
+        return res.data
+      } else if(res.status == 400) {
+          return false
+      }
+  })
+    .catch((err) => {
+      return false
+    })
+
+  console.log("RESPONSE", response)
+
+  return response 
 }

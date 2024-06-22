@@ -42,10 +42,11 @@ export default function CourseCart() {
     setCartCourses((pre) => [...pre.filter((elm) => elm !== item)]);
   };
   useEffect(() => {
+    console.log("CART COURSE ----> ", cartCourses)
     const sum = cartCourses.reduce((accumulator, currentValue) => {
-      return accumulator + currentValue.discountedPrice * currentValue.quantity;
+      return accumulator + parseInt(currentValue.montant) * 1; //currentValue.quantity
     }, 0);
-    setTotalPrice(sum);
+    setTotalPrice(0);
   }, [cartCourses]);
 
   return (
@@ -108,7 +109,7 @@ export default function CourseCart() {
                         <div className="">
                           <div
                             className="size-100 bg-image rounded-8 js-lazy"
-                            style={{ backgroundImage: `url(${elm.imageSrc})` }}
+                            style={{ backgroundImage: `url(${elm.image})` }}
                           ></div>
                         </div>
                         <div className="fw-500 text-dark-1 ml-30">
@@ -172,7 +173,7 @@ export default function CourseCart() {
                         </div>
 
                         <p>
-                          ${(elm.quantity * elm.discountedPrice).toFixed(2)}
+                          ${(elm.quantity * 0).toFixed(2)}
                         </p>
                       </div>
                     </div>

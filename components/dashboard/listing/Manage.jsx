@@ -74,8 +74,6 @@ export default function Listing({id}) {
       })
   }, [])
 
-  console.log("ID : ", id)
-
   useEffect(() => {
     get_one_formations(id.id)
         .then(res => {
@@ -368,7 +366,7 @@ export default function Listing({id}) {
                                     <h2 className="text-17 lh-1 fw-500">Curriculum</h2>
                                 </div>
 
-                                <Curriculum />
+                                <Curriculum id={id.id}/>
                             </div>
                         </div>
                     </div>
@@ -549,6 +547,7 @@ export default function Listing({id}) {
 
                                 <CurriculumDub
                                     language={dubLanguage}
+                                    id={id.id}
                                 />
                             </div>
                         </div>

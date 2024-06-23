@@ -31,7 +31,7 @@ import React from 'react'
 import Preloader from '@/components/common/Preloader'
 
 export const metadata = {
-  title: 'Home-7 ',
+  title: 'Home',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

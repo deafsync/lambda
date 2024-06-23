@@ -18,7 +18,7 @@ import ChangePasswordForm from '@/components/others/ChangePasswordForm'
 import Terms from '@/components/terms/Terms'
 import React from 'react'
 export const metadata = {
-  title: 'Login ',
+  title: 'Change password ',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

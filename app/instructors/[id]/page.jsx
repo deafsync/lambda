@@ -9,7 +9,7 @@ import Header from '@/components/layout/headers/Header'
 import React from 'react'
 
 export const metadata = {
-  title: 'Instractors-single ',
+  title: 'Instractors-detail',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

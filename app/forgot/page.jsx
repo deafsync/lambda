@@ -18,7 +18,7 @@ import ForgotForm from '@/components/others/ForgotForm'
 import Terms from '@/components/terms/Terms'
 import React from 'react'
 export const metadata = {
-  title: 'Login ',
+  title: 'Forgot password ',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

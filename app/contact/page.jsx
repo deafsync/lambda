@@ -17,7 +17,7 @@ import Header from '@/components/layout/headers/Header'
 import React from 'react'
 
 export const metadata = {
-  title: 'Contact-1 ',
+  title: 'Contact',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

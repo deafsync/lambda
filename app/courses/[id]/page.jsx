@@ -9,7 +9,7 @@ import FooterOne from '@/components/layout/footers/FooterOne'
 import Header from '@/components/layout/headers/Header'
 import React from 'react'
 export const metadata = {
-  title: 'Couese-list-7 ',
+  title: 'Couese-list-details',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
 }

@@ -15,7 +15,7 @@ import AsideStudio from '@/components/courseSingle/AsideStudio'
 
 
 export const metadata = {
-  title: 'Lesson-single-1 ',
+  title: 'Studio ',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

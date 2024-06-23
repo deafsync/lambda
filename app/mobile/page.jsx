@@ -4,7 +4,7 @@ import FooterOne from "@/components/layout/footers/FooterOne";
 import Preloader from "@/components/common/Preloader";
 
 export const metadata = {
-  title: 'lambda',
+  title: 'mobile',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
 }

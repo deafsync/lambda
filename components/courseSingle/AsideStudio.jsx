@@ -54,7 +54,7 @@ export default function AsideStudio({ id }) {
     get_course(id)
         .then( res => {
             if(res) {
-                toast.success('Course successfuly created')
+                toast.success('Studio started')
                 setDub(res.ressources.filter(el => el.type_ressource == "Dubbing"))
 
                 let data = res.ressources.filter(el => el.type_ressource == "Subtitle")

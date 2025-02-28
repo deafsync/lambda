@@ -32,13 +32,6 @@ export default function LessonItems({ rightPosition, id, course_id }) {
 
   const [sub, setSub] = useState([])
 
-  const toggleDropdown = () => {
-    if (typeof document !== "undefined") {
-      document.getElementById("dd16button").classList.toggle("-is-dd-active");
-      document.getElementById("dd16content").classList.toggle("-is-el-visible");
-    }
-  };
-
   const [state, setState] = useState(null)
   const router = useRouter()
 
@@ -111,48 +104,20 @@ export default function LessonItems({ rightPosition, id, course_id }) {
               ><span className="text-30"></span> <u>Course language :</u></div>
             </b>
 
-            <div
-                id="dd16button"
-                onClick={toggleDropdown}
-                className="dropdown js-dropdown js-category-active"
-            >
-            <div
-                className="dropdown__button d-flex items-center text-14 bg-white -dark-bg-dark-2 border-light rounded-8 px-20 py-10 "
-                data-el-toggle=".js-category-toggle"
-                data-el-toggle-active=".js-category-active"
-            >
-                <span className="js-dropdown-title">{language}</span>
-                <i className="icon text-9 ml-40 icon-chevron-down"></i>
-            </div>
-
-            <div
-                id="dd16content"
-                className="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-category-toggle"
-            >
-                <div className="text-14 y-gap-15 js-dropdown-list">
-                <div
-                    onClick={() => {
-                      setLanguage("English")
-                      handleSwitchLanguage(true)
-                    }}
-                >
-                    <span className="d-block js-dropdown-link">
-                        English
-                    </span>
-                </div>
-                <div
-                    onClick={() => {
-                      setLanguage("Français")
-                      handleSwitchLanguage(false)
-                    }}
-                >
-                    <span className="d-block js-dropdown-link">
-                        Français
-                    </span>
-                </div>
-
-                </div>
-            </div>
+            <div className="relative inline-block">
+              {/* Select natif */}
+              <select 
+                value={language}
+                onChange={(e) => {
+                  const newLanguage = e.target.value;
+                  setLanguage(newLanguage);
+                  handleSwitchLanguage(newLanguage === "English");
+                }}
+                className="appearance-none bg-white text-14 border-light rounded-8 px-20 py-10 pr-12 focus:outline-none cursor-pointer"
+              >
+                <option value="English">English</option>
+                <option value="Français">Français</option>
+              </select>
             </div>
         </div>
 

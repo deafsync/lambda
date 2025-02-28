@@ -11,7 +11,7 @@ const CourseCart = () => {
   const { cartCourses, setCartCourses } = useContextElement();
   const [totalPrice, setTotalPrice] = useState(0);
 
-  console.log("CART _____ ",cartCourses)
+  console.log("CART _____ ", cartCourses)
 
   const handleRemoveCart = (index) => {
     const item = cartCourses[index];

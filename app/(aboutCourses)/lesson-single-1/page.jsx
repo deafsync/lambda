@@ -24,19 +24,16 @@ export default function page() {
         <div  className="content-wrapper  js-content-wrapper overflow-hidden">
             <LessonItems/>
             <section  className="layout-pt-lg layout-pb-lg lg:pt-40">
-        <div  className="container">
-          <div  className="row justify-end">
-            <div  className="col-xxl-8 col-xl-7 col-lg-8">
-              <Video/>
-
-              <Descriptions/>
-              <Reviews/>
-
-
+              <div  className="container">
+                <div  className="row justify-end">
+                  <div  className="col-xxl-8 col-xl-7 col-lg-8">
+                    <Video/>
+                    <Descriptions/>
+                    <Reviews/>
+                  </div>
                 </div>
-                </div>
-                </div>
-                </section>
+              </div>
+            </section>
         </div>
     </div>
   )

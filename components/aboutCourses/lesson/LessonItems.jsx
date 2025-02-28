@@ -32,6 +32,13 @@ export default function LessonItems({ rightPosition, id, course_id }) {
 
   const [sub, setSub] = useState([])
 
+  const toggleDropdown = () => {
+    if (typeof document !== "undefined") {
+      document.getElementById("dd16button").classList.toggle("-is-dd-active");
+      document.getElementById("dd16content").classList.toggle("-is-el-visible");
+    }
+  };
+
   const [state, setState] = useState(null)
   const router = useRouter()
 
@@ -106,14 +113,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
 
             <div
                 id="dd16button"
-                onClick={() => {
-                    window.document
-                    .getElementById("dd16button")
-                    .classList.toggle("-is-dd-active");
-                    window.document
-                    .getElementById("dd16content")
-                    .classList.toggle("-is-el-visible");
-                }}
+                onClick={toggleDropdown}
                 className="dropdown js-dropdown js-category-active"
             >
             <div

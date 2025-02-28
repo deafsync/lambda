@@ -13,7 +13,7 @@ import HeaderTen from '@/components/layout/headers/HeaderTen'
 import React from 'react'
 
 export const metadata = {
-  title: 'Lesson-single-1 ',
+  title: 'Lesson-single-2 ',
   description:
     'Elevate your e-learning content with lambda, the most impressive platforms for online courses and education.',
   

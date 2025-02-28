@@ -107,10 +107,10 @@ export default function LessonItems({ rightPosition, id, course_id }) {
             <div
                 id="dd16button"
                 onClick={() => {
-                    document
+                    window.document
                     .getElementById("dd16button")
                     .classList.toggle("-is-dd-active");
-                    document
+                    window.document
                     .getElementById("dd16content")
                     .classList.toggle("-is-el-visible");
                 }}

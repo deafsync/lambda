@@ -58,16 +58,15 @@ export default function Tabs() {
               } `}
             >
               <p className="text-light-1">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content
-                here, content here', making it look like readable English.
+                Effective content presentation is crucial in capturing user attention
+                and maintaining engagement. A well-structured layout ensures a seamless
+                reading experience, allowing information to be processed more
+                efficiently.
                 <br />
                 <br />
-                Many desktop publishing packages and web page editors now use
-                Lorem Ipsum as their default model text, and a search for 'lorem
-                ipsum' will uncover many web sites still in their infancy.
+                Modern web design incorporates strategies that balance aesthetics and
+                readability, ensuring that text remains visually appealing without
+                overwhelming the user.
               </p>
             </div>
             <div
@@ -76,11 +75,9 @@ export default function Tabs() {
               } `}
             >
               <p className="text-light-1">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content
-                here, content here', making it look like readable English.
+                Clarity and organization in content help enhance user comprehension and
+                retention. By structuring text with appropriate spacing and formatting,
+                designers can create a more intuitive reading flow.
               </p>
             </div>
             <div
@@ -89,9 +86,9 @@ export default function Tabs() {
               } `}
             >
               <p className="text-light-1">
-                Many desktop publishing packages and web page editors now use
-                Lorem Ipsum as their default model text, and a search for 'lorem
-                ipsum' will uncover many web sites still in their infancy.
+                Many digital platforms prioritize user experience by implementing
+                well-designed typography and layout strategies. A clear and structured
+                approach ensures that information is easily accessible and digestible.
               </p>
             </div>
             <div
@@ -100,13 +97,13 @@ export default function Tabs() {
               } `}
             >
               <p className="text-light-1">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters,
+                The effectiveness of a page's layout significantly influences user
+                engagement. A thoughtful design approach ensures that content remains
+                both visually appealing and functional.
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </div>

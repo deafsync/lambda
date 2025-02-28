@@ -77,6 +77,9 @@ export default function Listing({id}) {
   useEffect(() => {
     get_one_formations(id.id)
         .then(res => {
+
+            console.log("****************", res)
+
             setState(res)
         }).catch(err => {
             console.log(err)
@@ -252,10 +255,10 @@ export default function Listing({id}) {
                                                 onChange={handleChange}
                                             >
                                             <option value="">Select your language</option>
-                                            <option value="anglais">English</option>
-                                            <option value="français">Français</option>
-                                            <option value="fongbé">Fongbé</option>
-                                            <option value="yoruba">Yoruba</option>
+                                            <option value="en">English</option>
+                                            <option value="fr">Français</option>
+                                            <option value="fon">Fongbé</option>
+                                            <option value="yor">Yoruba</option>
                                             </select>
                                         </div>
 
@@ -270,10 +273,10 @@ export default function Listing({id}) {
                                                 onChange={handleChange}
                                             >
                                             <option value="">Select your language</option>
-                                            <option value="anglais">English</option>
-                                            <option value="français">Français</option>
-                                            <option value="fongbé">Fongbé</option>
-                                            <option value="yoruba">Yoruba</option>
+                                            <option value="en">English</option>
+                                            <option value="fr">Français</option>
+                                            <option value="fon">Fongbé</option>
+                                            <option value="yor">Yoruba</option>
                                             </select>
                                         </div>
 
@@ -288,10 +291,10 @@ export default function Listing({id}) {
                                             onChange={handleChange}
                                             >
                                             <option value="">Select your language</option>
-                                            <option value="anglais">English</option>
-                                            <option value="français">Français</option>
-                                            <option value="fongbé">Fongbé</option>
-                                            <option value="yoruba">Yoruba</option>
+                                            <option value="en">English</option>
+                                            <option value="fr">Français</option>
+                                            <option value="fon">Fongbé</option>
+                                            <option value="yor">Yoruba</option>
                                             </select>
                                         </div>
 

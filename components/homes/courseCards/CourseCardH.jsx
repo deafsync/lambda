@@ -18,12 +18,10 @@ export default function CourseCardSix({ data, index }) {
       <div className="coursesCard -type-4 d-flex sm:d-block items-center border-light rounded-8 px-10 py-10">
         <div className="coursesCard__image rounded-8">
            <div className="relative">
-            <Image
-              width={250}
-              height={175}
-              className="w-1/1"
+            <img
               src={data.imageSrc}
               alt="image"
+              style={{ objectFit: "cover", width: "330px", height: "175px" }}
             />
           </div>
         </div>
@@ -34,9 +32,9 @@ export default function CourseCardSix({ data, index }) {
                 Course
             </div> */}
             <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
-                <Link className="linkCustom" href={`/courses/${data.id}`}>
-                {data.title}
-                </Link>
+                <div className="linkCustom">
+                  {data.title}
+                </div>
             </div>
           </div>
           <div className="" style={{width: "250px"}}>

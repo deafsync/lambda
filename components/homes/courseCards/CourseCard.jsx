@@ -13,6 +13,8 @@ export default function CourceCard({ data, index }) {
     }
   }, []);
 
+  console.log("course ", data)
+
   return (
     <div className="col-lg-3 col-md-6">
       <div>

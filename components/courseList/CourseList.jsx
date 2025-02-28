@@ -195,8 +195,7 @@ export default function CourseList({idCategory}) {
   }, [currentSortingOption, filteredData]);
 
   useEffect(() => {
-    console.log("CATEGORY ID", idCategory.split("-")[1], categories)
-    if(idCategory !== 0) {
+    if(idCategory && idCategory !== 0) {
         handleFilterCategories(categories[idCategory.split("-")[1]]?.title)
     }
   }, [idCategory, categories])

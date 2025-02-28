@@ -23,8 +23,6 @@ export default function CoursesCardDashboard({ data }) {
     >
       <div className="relative">
         <img
-          width={560}
-          height={325}
           className="rounded-8 w-1/1"
           style={{ objectFit: "cover", width: "560px", height: "175px" }}
           src={data.image}

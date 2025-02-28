@@ -1,7 +1,7 @@
 "use client";
 
 import { courses } from "@/data/curriculum";
-import { create_course } from "@/services/core.service";
+import { create_course, get_one_formations } from "@/services/core.service";
 import { extractYouTubeID } from "@/utils/link";
 import { CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -15,14 +15,33 @@ export default function Curriculum({id}) {
 
   const [loading, setLoading] = useState(false)
 
-  // useEffect(() => {
-  //   setCv(courses)
-  // }, [])
+  useEffect(() => {
+    get_one_formations(id)
+      .then(res => {
+        if(res) {
+          console.log("res ", res)
+          setCv(res.cours.map((itm, index) => {
+            return {
+              id: itm.id,
+              titre: itm.titre,
+              duree: itm.duree,
+              video_url: `https://www.youtube.com/watch?v=${itm.video_url}`
+            }
+          }))
+        } else {
+          toast.error("An error occured")
+        }
+      }).catch(err => {
+        console.log(err)
+        toast.error("Somthing happen")
+      })
+
+  }, [])
 
   const handleAdd = () => {
     let data = [...cv]
     data.push(
-      {id: 0, titre: "Hello World Project from GitHub", duree: 0, video_url: "https://www.youtube.com/watch?v=fLeJJPxua3E"}
+      {id: 0, titre: "Hello World Project from GitHub", duree: 0, video_url: ""}
     )
 
     setCv(data)
@@ -39,6 +58,8 @@ export default function Curriculum({id}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    console.log("----------------------", cv)
 
     for(let i = 0; i < cv.length; i++) {
       if(cv[i].video_url == "" || cv[i].titre == "" || cv[i].duree == 0) {
@@ -68,6 +89,7 @@ export default function Curriculum({id}) {
         } else {
           toast.error("An error occured")
         }
+
         setLoading(false)
       }).catch(err => {
         console.log(err)
@@ -160,7 +182,7 @@ export default function Curriculum({id}) {
 
                         <input
                           required
-                          value={cv[index].video_url}
+                          value={`${cv[index].video_url}`}
                           name="video_url"
                           onChange={(event) => handleChange(event, index)}
                           type="url"

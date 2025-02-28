@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import CourceCard from "../courseCards/CourseCard";
+import CourseCard from "../courseCards/CourseCard";
 import { coursesData } from "../../../data/courses";
 import { useState, useEffect } from "react";
 import { get_categories } from "@/services/core.service";
@@ -110,7 +110,7 @@ export default function Courses() {
       >
         {filtered
           ? filtered.map((elm, index) => (
-              <CourceCard
+              <CourseCard
                 key={index}
                 data={elm}
                 index={index}
@@ -120,7 +120,7 @@ export default function Courses() {
             ))
           : courses
               .slice(0, 8)
-              .map((elm, index) => <CourceCard key={index} data={elm} />)}
+              .map((elm, index) => <CourseCard key={index} data={elm} />)}
       </div>
     </section>
   );

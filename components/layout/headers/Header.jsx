@@ -37,7 +37,7 @@ export default function Header() {
     auth()
       .then(res => {
         if(!res) {
-          router.push('/')
+          setIsAuth(false)
         } else {
           setIsAuth(true)
         }

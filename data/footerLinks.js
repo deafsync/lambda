@@ -14,7 +14,7 @@ export const footerLinks = [
     title: "CATEGORIES",
     links: [
       { href: "/courses/", label: "Business" },
-      { href: "/courses/", label: "IT & Software" },
+      // { href: "/courses/", label: "IT & Software" },
       { href: "/courses/", label: "Design" },
       { href: "/courses/", label: "Marketing" },
     ],

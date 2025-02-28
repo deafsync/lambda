@@ -1,1 +1,1 @@
-export const BASE_URL = "https://lambda-api-isvd.onrender.com"
+export const BASE_URL = "http://127.0.0.1:8000" // "https://lambda-api-isvd.onrender.com"

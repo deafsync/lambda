@@ -2,16 +2,16 @@ export const contactData = [
   {
     id: 1,
     icon: "/assets/img/contact-1/1.svg",
-    address: "328 Queensberry Street, North Melbourne VIC 3051, Australia.",
+    address: "Parana, Calavi, Benin",
   },
   {
     id: 2,
     icon: "/assets/img/contact-1/2.svg",
-    phoneNumber: "+(1) 123 456 7890",
+    phoneNumber: "+(229) 0197 028 433",
   },
   {
     id: 3,
     icon: "/assets/img/contact-1/3.svg",
-    email: "hi@educrat.com",
+    email: "info@deafsync.com",
   },
 ];

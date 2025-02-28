@@ -26,8 +26,7 @@ export default function ContactOne() {
             <div className="col-lg-4">
               <h3 className="text-24 fw-500">Keep In Touch With Us.</h3>
               <p className="mt-25">
-                Neque convallis a cras semper auctor. Libero id faucibus nisl
-                tincidunt egetnvallis.
+              Stay connected with us for the latest updates, news, and special offers. Follow us on social media or reach out via email for any inquiries.
               </p>
 
               <div className="y-gap-30 pt-60 lg:pt-40">
@@ -55,8 +54,8 @@ export default function ContactOne() {
             <div className="col-lg-7">
               <h3 className="text-24 fw-500">Send a Message.</h3>
               <p className="mt-25">
-                Neque convallis a cras semper auctor. Libero id faucibus nisl
-                <br /> tincidunt egetnvallis.
+                Have any questions or inquiries? Feel free to send us a message,
+                <br />and our team will get back to you as soon as possible.
               </p>
 
               <form

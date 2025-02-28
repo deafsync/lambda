@@ -43,14 +43,14 @@ export default function Video({url, sub}) {
             style={{width: '100% !important'}}
           />
           
-          {/* {sub && sub.map((link, id) => <track
-              label="English"
+          {sub && sub.map((el_sub, id) => <track
+              label={el_sub.lang}
               kind="subtitles"
-              srclang="en"
-              src={link}
+              srcLang={el_sub.lang}
+              src={`/api/proxy?url=${encodeURIComponent(el_sub.link)}`}
               default={id==0}
               key={id}
-          />)} */}
+          />)}
         </video>
       </div>
       {/* <ModalVideoComponent

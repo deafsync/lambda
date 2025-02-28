@@ -16,6 +16,13 @@ import { get_user_formation } from "@/services/core.service";
 import toast from "react-hot-toast";
 import { BASE_URL } from "@/utils/url";
 
+const lang_dic = {
+  "en": "English",
+  "fr": "Français",
+  "yor": "Yoruba",
+  "fon": "Fon",
+}
+
 export default function LessonItems({ rightPosition, id, course_id }) {
   const [openAccordion, setOpenAccordion] = useState(true);
   const [isOpen, setIsOpen] = useState(true);
@@ -23,15 +30,25 @@ export default function LessonItems({ rightPosition, id, course_id }) {
   const [videoId, setVideoId] = useState(0)
   const [dub, setDub] = useState(true)
 
+  const [sub, setSub] = useState([])
+
   const [state, setState] = useState(null)
   const router = useRouter()
 
-  const [language, setLanguage] = useState("choose")
+  const [language, setLanguage] = useState("Choose")
 
   useEffect(() => {
     get_user_formation(course_id)
       .then(res => {
         setState(res)
+
+        setLanguage(lang_dic[res.langue])
+
+        setSub(res.cours[videoId].ressources.filter(el => el.type_ressource == "Subtitle").map(el => ({
+          link: el.file_link,
+          lang: el.titre
+        })))
+
         setUrl(`${BASE_URL}/${res.cours[videoId].video}`)
       }).catch(err => {
           console.log(err)
@@ -216,7 +233,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
           <div  className="">
               <div  className="row justify-end">
                   <div  className="col-lg-9 col-md-8">
-                      {url && <Video url={url} />}
+                      {url && <Video url={url} sub={sub} />}
                       {/*
                         TODO: Put video depend on the id
                       */}

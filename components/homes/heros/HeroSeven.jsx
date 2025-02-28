@@ -53,7 +53,7 @@ export default function HeroSeven() {
                   Continue your learning
                 </div>
                 <h1 className="masthead__title">
-                  Build data skills
+                  Build your skills
                   <br /> <span className="text-purple-1">online</span>
                 </h1>
                 <p className="mt-5">

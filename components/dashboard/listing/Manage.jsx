@@ -230,9 +230,9 @@ export default function Listing({id}) {
                                             </label>
 
                                             <select 
-                                            name="level"
-                                            value={state.level}
-                                            onChange={handleChange}
+                                                name="level"
+                                                value={state.level}
+                                                onChange={handleChange}
                                             >
                                                 <option value="">Select your level</option>
                                                 <option value="Beginner">Beginner</option>

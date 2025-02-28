@@ -126,7 +126,7 @@ export default function CourseList({idCategory}) {
     }
     if (filterDublanguange.length > 0) {
       const filtered = refItems.filter((elm) =>
-        filterlanguange.includes(elm.dub_language),
+        filterDublanguange.includes(elm.dub_language),
       );
       filteredArrays = [...filteredArrays, filtered];
     }
@@ -195,11 +195,11 @@ export default function CourseList({idCategory}) {
   }, [currentSortingOption, filteredData]);
 
   useEffect(() => {
-    console.log("CATEGORY ID", idCategory)
-    // if(idCategory !== 0) {
-    //     handleFilterCategories(categories[idCategory-1].title)
-    // }
-  }, [])
+    console.log("CATEGORY ID", idCategory.split("-")[1], categories)
+    if(idCategory !== 0) {
+        handleFilterCategories(categories[idCategory.split("-")[1]]?.title)
+    }
+  }, [idCategory, categories])
 
   const handleFilterCategories = (item) => {
     if (filterCategories.includes(item)) {
@@ -250,6 +250,8 @@ export default function CourseList({idCategory}) {
   const handleFilterDuration = (item) => {
     setFilterDuration(item);
   };
+
+  console.log("FILTERED DATA", coursesData)
 
   return (
     <>
@@ -716,7 +718,7 @@ export default function CourseList({idCategory}) {
                                   <div className="sidebar-checkbox__count">
                                     (
                                     {
-                                      coursesData.filter((itm) => !itm.paid)
+                                      coursesData.filter((itm) => itm.level == elm.title)
                                         .length
                                     }
                                     )
@@ -803,7 +805,7 @@ export default function CourseList({idCategory}) {
                                     (
                                       {
                                         coursesData.filter(
-                                          (itm) => itm.language == elm.infos,
+                                          (itm) => itm.language == elm.infos
                                         ).length
                                       }
                                     )
@@ -812,12 +814,12 @@ export default function CourseList({idCategory}) {
                               ))}
                             </div>
                             <div className="sidebar__more mt-15">
-                              <a
+                              <div
                                 href="#"
                                 className="text-14 fw-500 underline text-purple-1"
                               >
                                 Show more
-                              </a>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -898,7 +900,7 @@ export default function CourseList({idCategory}) {
                                     (
                                     {
                                       coursesData.filter(
-                                        (itm) => itm.dub_language == elm.infos,
+                                        (itm) => itm.dub_language == elm.infos
                                       ).length
                                     }
                                     )
@@ -907,12 +909,12 @@ export default function CourseList({idCategory}) {
                               ))}
                             </div>
                             <div className="sidebar__more mt-15">
-                              <a
+                              <div
                                 href="#"
                                 className="text-14 fw-500 underline text-purple-1"
                               >
                                 Show more
-                              </a>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1440,11 +1442,11 @@ export default function CourseList({idCategory}) {
                                   </div>
                                   <div className="sidebar-checkbox__count">
                                     (
-                                    {
-                                      coursesData.filter(
-                                        (itm) => itm.level == item.title,
-                                      ).length
-                                    }
+                                      {
+                                        coursesData.filter(
+                                          (itm) => itm.level === item.title,
+                                        ).length
+                                      }
                                     )
                                   </div>
                                 </div>
@@ -1855,14 +1857,14 @@ export default function CourseList({idCategory}) {
                             </div>
                             <div className="row x-gap-20 y-gap-20 items-center pt-25">
                                 <div className="col-auto">
-                                <button
-                                    className="button h-50 px-30 -purple-3 text-purple-1"
-                                    onClick={() => addCourseToCart(elm.id)}
-                                >
-                                    {isAddedToCartCourses(elm.id)
-                                    ? "Already Added"
-                                    : "Add To Cart"}
-                                </button>
+                                  <button
+                                      className="button h-50 px-30 -purple-3 text-purple-1"
+                                      onClick={() => addCourseToCart(elm.id)}
+                                  >
+                                      {isAddedToCartCourses(elm.id)
+                                      ? "Already Added"
+                                      : "Add To Cart"}
+                                  </button>
                                 </div>
                                 {/* <div className="col-auto">
                                   <button className="button size-50 rounded-full -purple-3 text-light-1">

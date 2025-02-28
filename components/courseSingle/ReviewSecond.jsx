@@ -94,7 +94,7 @@ export default function Reviews() {
             </div>
           </div>
 
-          <h2 className="text-20 fw-500 mt-60 lg:mt-40">Reviews</h2>
+          {/* <h2 className="text-20 fw-500 mt-60 lg:mt-40">Reviews</h2>
           <ul className="comments__list mt-30">
             {reviews.slice(0, 2).map((elm, i) => (
               <li key={i} className="comments__item">
@@ -146,7 +146,7 @@ export default function Reviews() {
                 </button>
               </div>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
 

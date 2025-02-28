@@ -74,7 +74,7 @@ export default function HeroSix() {
               <div className="masthead__content">
                 <h1 className="masthead__title">
                   More Than {" "}
-                  <span className="text-purple-1">{number}+</span>{" "}
+                  <span className="text-purple-1">{number + 10}+</span>{" "}
                   <br className="md:d-none" /> Education Courses
                   <br className="md:d-none" /> Online Join Us Today
                 </h1>
@@ -89,7 +89,7 @@ export default function HeroSix() {
                     </Link>
                   </div>
 
-                  <div
+                  {/* <div
                     className="col-auto"
                     onClick={() => setIsOpen(true)}
                     cursor
@@ -104,7 +104,7 @@ export default function HeroSix() {
                       </div>
                       <div className="ml-10">Watch Video</div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="row x-gap-20 y-gap-20 items-center pt-60 lg:pt-30">

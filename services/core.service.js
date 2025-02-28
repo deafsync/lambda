@@ -391,7 +391,7 @@ export const get_user_formation = async (id) => {
       return false
     })
 
-  console.log("RESPONSE USER FORMATION", response)
+  // console.log("RESPONSE USER FORMATION", response)
 
   return response 
 }

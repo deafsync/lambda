@@ -118,7 +118,10 @@ export default function CourceCard({ data, index }) {
                   src={data.authorImageSrc ? data.authorImageSrc : "/assets/img/auth/img_2.png"}
                   alt="image"
                 />
-                <div>{data.authorName}</div>
+                <div>
+                  {/* {data.authorName} */}
+                  Yao Ferdinand
+                </div>
               </div>
 
               <div className="coursesCard-footer__price">

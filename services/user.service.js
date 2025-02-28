@@ -4,6 +4,9 @@ export const get_user = async () => {
 
     const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
     // console.log(token.refresh)
+
+    if(token == null) return false
+
     const config = {
         headers: {
         'Authorization': `Bearer ${token.refresh}`,

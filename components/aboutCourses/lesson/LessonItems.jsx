@@ -83,8 +83,8 @@ export default function LessonItems({ rightPosition, id, course_id }) {
             
             <b>
               <div 
-                className="text-dark-1 mr-15 text-17"
-              ><span className="text-30">👉</span> <u>Course language :</u></div>
+                className="text-dark-1 mb-1 mr-15 text-17"
+              ><span className="text-30"></span> <u>Course language :</u></div>
             </b>
 
             <div

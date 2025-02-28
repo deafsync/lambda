@@ -7,7 +7,7 @@ export default function LandJob() {
         <div className="row y-gap-30 justify-between items-center">
           <div className="col-xl-5 col-lg-6 col-md-9 lg:order-2">
             <h3 className="text-40 lh-1">
-              Land your dream job in data science
+              Land your dream job in ??
             </h3>
             <p className="mt-25">
               From a certification in data science to personalized resume

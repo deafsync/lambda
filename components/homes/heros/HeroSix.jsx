@@ -73,7 +73,7 @@ export default function HeroSix() {
             <div className="col-lg-6" data-aos="fade-up" data-aos-delay="500">
               <div className="masthead__content">
                 <h1 className="masthead__title">
-                  More Than{" "}
+                  More Than {" "}
                   <span className="text-purple-1">{number}+</span>{" "}
                   <br className="md:d-none" /> Education Courses
                   <br className="md:d-none" /> Online Join Us Today

@@ -1748,10 +1748,10 @@ export default function CourseList({idCategory}) {
                             <div className="col">
                             <div className="d-flex items-center">
                                 <div className="text-14 lh-1 text-yellow-1 mr-10">
-                                {elm.rating}
+                                  {elm.rating}
                                 </div>
                                 <div className="d-flex x-gap-5 items-center">
-                                <Star star={elm.rating} />
+                                  <Star star={elm.rating} />
                                 </div>
                                 <div className="text-13 lh-1 ml-10">
                                 ({7})
@@ -1777,7 +1777,10 @@ export default function CourseList({idCategory}) {
                                     src={elm.authorImageSrc ? elm.authorImageSrc : "/assets/img/auth/img_2.png"}
                                     alt="image"
                                     />
-                                    <div className="ml-10">{elm.authorName}</div>
+                                    <div className="ml-10">
+                                      {/* {elm.authorName} */}
+                                      Yao Ferdinand
+                                    </div>
                                 </div>
                                 </div>
 

@@ -72,7 +72,7 @@ export default function HeaderNine({ setIsSidebarClosed, setMessageOpen }) {
                 </button>
               </div>
 
-              <div className="header__logo ml-30 md:ml-20">
+              <div className="header__logo">
                 <Link href="/">
                   <Image
                     width={140}

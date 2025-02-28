@@ -19,7 +19,8 @@ export default function Instractor({data}) {
           </div>
 
           <div className="">
-            <h5 className="text-17 lh-14 fw-500">{data.first_name + " " + data.last_name}</h5>
+            <h5 className="text-17 lh-14 fw-500"> Yao Ferdinand </h5>
+            {/* {data.first_name + " " + data.last_name} */}
             <p className="mt-5">Author of this course; Expert</p>
 
             <div className="d-flex x-gap-20 y-gap-10 flex-wrap items-center pt-10">

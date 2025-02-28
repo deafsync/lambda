@@ -40,6 +40,7 @@ export default function CourseDetailsThree({ id }) {
     console.log(id)
     get_formations_list()
       .then(res => {
+        console.log("res  ____ ", res.filter(el => el.id == id)[0])
         setState(res.filter(el => el.id == id)[0])
       }).catch(err => {
           console.log(err)
@@ -131,7 +132,7 @@ export default function CourseDetailsThree({ id }) {
                     data-bg="img/avatars/small-1.png"
                   ></div>
                   <div className="text-14 lh-1 ml-10 text-white">
-                    {state.author.first_name + " " + state.author.last_name}
+                    {/* {state.author.first_name + " " + state.author.last_name} */} Yao Ferdinand
                   </div>
                 </div>
 
@@ -141,9 +142,9 @@ export default function CourseDetailsThree({ id }) {
                   </button> : <button
                       className="button -md -green-1 text-dark-1"
                       onClick={() => addCourseToCart(id)}
-                  >
-                    Enroll now
-                  </button>}
+                    >
+                      Enroll now
+                    </button>}
                 </div>
               </div>
             </div>

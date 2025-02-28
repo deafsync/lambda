@@ -289,7 +289,7 @@ export default function Listing() {
                     </label>
 
                     <select 
-                      name="category"
+                      name="categorie"
                       value={state.categorie}
                       onChange={handleChange}
                     >

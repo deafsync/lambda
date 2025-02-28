@@ -104,7 +104,7 @@ export default function CourseDetailsSix({ id }) {
                     }}
                   ></div>
                   <div className="text-14 lh-1 ml-10 text-dark-3">
-                    {pageItem.authorName}
+                    {/* {pageItem.authorName} */} Yao Ferdinand
                   </div>
                 </div>
 

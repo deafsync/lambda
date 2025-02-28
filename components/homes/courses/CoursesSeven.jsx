@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import CourseCardSix from "@/components/homes/courseCards/CourseCardSix";
 import Link from "next/link";
 import { get_user_formations } from "@/services/core.service";
+import toast from "react-hot-toast";
 
 export default function CoursesSeven() {
   const [showSlider, setShowSlider] = useState(false);

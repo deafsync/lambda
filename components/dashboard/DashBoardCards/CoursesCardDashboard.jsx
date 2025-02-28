@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 export default function CoursesCardDashboard({ data }) {
   const [activeShare, setActiveShare] = useState(false);
   const [rating, setRating] = useState([]);
+
+  console.log("****************", data.cours.length)
   
   useEffect(() => {
     for (let i = Math.floor(data.rating); i >= 1; i--) {
@@ -14,17 +16,17 @@ export default function CoursesCardDashboard({ data }) {
     }
   }, []);
 
-
   return (
     <a 
       className="d-block courseHover w-1/5 xl:w-1/3 lg:w-1/2 sm:w-1/1"
-      href={`/course/${data.form_id}/lecture/${data.cours[0].id}`}
+      href={`/course/${data.form_id}/lecture/${data.cours[0]?.id}`}
     >
       <div className="relative">
-        <Image
+        <img
           width={560}
           height={325}
           className="rounded-8 w-1/1"
+          style={{ objectFit: "cover", width: "560px", height: "175px" }}
           src={data.image}
           alt="image"
         />
@@ -74,7 +76,17 @@ export default function CoursesCardDashboard({ data }) {
           </div>
         </div> */}
 
-        <h3 className="text-16 fw-500 lh-15 mt-10">{data.titre}</h3>
+        <h3 
+          className="text-16 fw-500 lh-15 mt-10"
+          style={{
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            maxWidth: '100%'
+          }}
+        >
+          {data.titre}
+        </h3>
 
         <div className="progress-bar mt-10">
           <div className="progress-bar__bg bg-light-3"></div>

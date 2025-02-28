@@ -24,12 +24,10 @@ export default function CourseCardSix({ data, index }) {
           />
            */}
            <div className="relative">
-            <Image
-              width={250}
-              height={175}
-              className="w-1/1"
+            <img
               src={data.image}
               alt="image"
+              style={{width: "250px", height: "175px", objectFit: "cover"}}
             />
             <div className="absolute-full-center d-flex justify-center items-center">
               <div
@@ -43,16 +41,16 @@ export default function CourseCardSix({ data, index }) {
           </div>
         </div>
 
-        <div className="coursesCard__content pl-20 sm:pl-10 pr-10">
+        <div className="coursesCard__content pl-20 sm:pl-10 pr-10" style={{flex: 1}}>
           {/* <div className="text-15 lh-13 sm:mt-20 mt-0 fw-900 text-light-1">
             Titre du cours
           </div> */}
           <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
-            <Link className="linkCustom" href={`/course/${data.id}/lecture/${data.cours[0].id}`}>
+            <Link className="linkCustom" href={`/course/${data.id}/lecture/${data.cours[0]?.id}`}>
               {data.titre}
             </Link>
           </div>
-          <div className="progress sm:mt-10 mt-30" style={{width: "200px"}}>
+          <div className="progress sm:mt-10 mt-30" style={{width: "100%"}}>
             <div className="progress-bar" style={{width: "70%"}}></div>
           </div>
           <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900">Cours n°1:</div> ...</div>

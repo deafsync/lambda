@@ -3,7 +3,7 @@
 import ModalVideoComponent from "@/components/common/ModalVideo";
 import { lessonItems } from "@/data/aboutcourses";
 
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faBars, faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
@@ -42,6 +42,8 @@ export default function LessonItems({ rightPosition, id, course_id }) {
       .then(res => {
         setState(res)
 
+        console.log("RES", res)
+
         setLanguage(lang_dic[res.langue])
 
         setSub(res.cours[videoId].ressources.filter(el => el.type_ressource == "Subtitle").map(el => ({
@@ -72,14 +74,18 @@ export default function LessonItems({ rightPosition, id, course_id }) {
   }
 
   const handleSwitchCourse = (id) => {
+
+    console.log("ID", id, dub)
+
     setVideoId(id)
     if(dub) {
-      let video = state.cours[videoId].ressources.filter(el => el.description == "dubbed video")
+      let video = state.cours[id].ressources.filter(el => el.description == "dubbed video")
       setUrl(video[0].file_link)
     } else {
-      setUrl(`${BASE_URL}/${state.cours[videoId].video}`)
+      setUrl(`${BASE_URL}/${state.cours[id].video}`)
     }
   }
+
 
   return (
     <>
@@ -137,15 +143,19 @@ export default function LessonItems({ rightPosition, id, course_id }) {
                   <div className="d-flex items-center">
                     <div className="accordion__icon">
                       <div className="icon" data-feather="chevron-up">
-                        <FontAwesomeIcon icon={faChevronDown} />
-                      </div>
-                      <div className="icon" data-feather="chevron-up">
-                        <FontAwesomeIcon icon={faChevronUp} />
+                        <FontAwesomeIcon icon={faBars} />
                       </div>
                     </div>
-                    <span className="text-17 fw-500 text-dark-1">
-                      {item.titre}
-                    </span>
+                    <div className="d-flex flex-column">
+                      <span 
+                        className="text-17 fw-500 ell text-dark-1"
+                      >
+                        {item.titre}
+                      </span>
+                      <div className="icon" style={{marginTop: '10px', color: "#999"}} data-feather="chevron-up">
+                        {item.duree} minutes
+                      </div>
+                    </div>
                   </div>
                 </div>
 

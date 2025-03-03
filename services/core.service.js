@@ -348,22 +348,29 @@ export const get_user_formations = async () => {
   const response = await URL.get(`/formations/user_formations/`, config)
     .then((res) => {
         if(res.status == 201 || res.status == 200) {
-          console.log("__________________", res.data)
+          console.log("------------------", res.data)
           let data = res.data.map(el => {
-            el.formation["form_id"] = el.id
+              if (!el.formation) {  
+                  console.warn("⚠️ Formation null détectée pour l'élément :", el);
+                  return null; // Ignore l'élément si la formation est null
+              }
 
-            return el.formation
-          })
+              el.formation["form_id"] = el.id;
+              return el.formation;
+          }).filter(el => el !== null); // Supprime les valeurs null
+
           return data
         } else if(res.status == 400) {
-            return false
+          return false
         }
     })
     .catch((err) => {
+      console.error("Erreur lors de la récupération des formations:", err);
+
       return false
     })
 
-  // console.log("RESPONSE USER FORMATION", response)
+  console.log("RESPONSE USER FORMATION", response)
 
   return response 
 }
@@ -391,7 +398,7 @@ export const get_user_formation = async (id) => {
       return false
     })
 
-  // console.log("RESPONSE USER FORMATION", response)
+  console.log("RESPONSE USER FORMATION", response)
 
   return response 
 }

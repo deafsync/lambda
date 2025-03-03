@@ -41,7 +41,7 @@ export default function Curriculum({id}) {
   const handleAdd = () => {
     let data = [...cv]
     data.push(
-      {id: 0, titre: "Hello World Project from GitHub", duree: 0, video_url: ""}
+      {id: 0, titre: "Hello World Project from GitHub", duree: 0.0, video_url: ""}
     )
 
     setCv(data)
@@ -62,7 +62,7 @@ export default function Curriculum({id}) {
     console.log("----------------------", cv)
 
     for(let i = 0; i < cv.length; i++) {
-      if(cv[i].video_url == "" || cv[i].titre == "" || cv[i].duree == 0) {
+      if(cv[i].video_url == "" || cv[i].titre == "" || cv[i].duree == 0.0) {
         toast.error("Your missed an input")
         return 
       }
@@ -73,7 +73,12 @@ export default function Curriculum({id}) {
       return
     }
 
-    let data = cv[0]
+    if(cv.length == 0) 
+      return
+
+    let data = {...cv[cv.length - 1]}
+    
+    const temp_video_url = data.video_url
 
     data.video_url = extractYouTubeID(data.video_url)
     data["formation"]  = id
@@ -91,6 +96,9 @@ export default function Curriculum({id}) {
         }
 
         setLoading(false)
+
+        
+
       }).catch(err => {
         console.log(err)
         toast.error("Somthing happen")
@@ -171,8 +179,8 @@ export default function Curriculum({id}) {
                           value={cv[index].duree}
                           name="duree"
                           onChange={(event) => handleChange(event, index)}
-                          type="text"
-                          placeholder="Put duree here"
+                          type="number"
+                          placeholder="Put duree here (number)"
                         />
                       </div>
                       <div className="col-12 mb-20 contact-form">

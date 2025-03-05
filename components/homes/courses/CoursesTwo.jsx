@@ -5,24 +5,63 @@ import CourceCard from "../courseCards/CourseCard";
 import { useState, useEffect } from "react";
 import { viewStatus } from "../../../data/courses";
 import Link from "next/link";
+import { get_categories, get_user_formations } from "@/services/core.service";
+import toast from "react-hot-toast";
+import { retrive_course_infos } from "@/utils/course";
 export default function CoursesTwo() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [currentCourseState, setCurrentCourseState] = useState("All");
   const [pageItem, setPageItem] = useState([]);
-  useEffect(() => {
-    setDropdownOpen(false);
 
-    if (currentCourseState == "All") {
-      setPageItem(coursesData);
-    } else {
-      const filtered = coursesData.filter(
-        (elm) => elm.viewStatus == currentCourseState,
-      );
-      setPageItem(filtered);
-    }
-  }, [currentCourseState]);
+  useEffect(() => {
+
+    get_user_formations()
+      .then(response => {
+        if(!response) {
+          toast.error("An error occured")
+        } else {
+          console.log("res  ____ ", response)
+
+          get_categories()
+          .then(categoryCourses => {
+            let courses_data = []
+
+            const idsToExclude = new Set(response.map(item => item.id));
+
+            const formationsList = []
+
+            for(const categoryCourse of categoryCourses) {
+              if(categoryCourse.formations) {
+                categoryCourse.formations = categoryCourse.formations.map(item => ({
+                  ...item,
+                  categoryTitle: categoryCourse.titre
+                }))
+                formationsList.push(...categoryCourse.formations)
+              }
+            }
+
+            let res = formationsList.filter(formation => !idsToExclude.has(formation.id) )
+    
+            for(let i = res.length - 1; i >= 0; i--) {
+              courses_data.push(...retrive_course_infos([res[i]], res[i].categoryTitle))
+            }
+        
+            setPageItem(courses_data)
+          }).catch(err => {
+            console.log(err)
+            toast.error("Geting categories make error")
+          })
+        }
+      })
+      .catch(err => {
+        toast.error("Something happen")
+      })
+
+
+  }, []);
+
   return (
-    <section className="layout-pt-lg layout-pb-lg">
+    pageItem.length > 0 ? <section className="layout-pt-lg layout-pb-lg">
       <div className="container">
         <div className="row y-gap-15 justify-between items-center">
           <div className="col-lg-6">
@@ -30,7 +69,7 @@ export default function CoursesTwo() {
               <h2 className="sectionTitle__title ">Recent courses</h2>
 
               <p className="sectionTitle__text ">
-                10 + unique online course list designs
+                {pageItem.length > 8 ? 8 : pageItem.length} + unique online course
               </p>
             </div>
           </div>
@@ -97,6 +136,16 @@ export default function CoursesTwo() {
           </div>
         </div>
       </div>
-    </section>
+    </section> : <div className="row justify-center pb-60">
+      <div className="col-auto">
+        <Link
+          href="/courses"
+          className="button -icon -purple-3 text-purple-1"
+        >
+          All Courses
+          <i className="icon-arrow-top-right text-13 ml-10"></i>
+        </Link>
+      </div>
+    </div>
   );
 }

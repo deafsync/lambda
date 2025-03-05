@@ -12,7 +12,7 @@ export default function CourseCardSix({ data, index }) {
   }, []);
   console.log("-------------> DATA", data)
   return (
-    <div className="col">
+    <Link className="col" href={`/course/${data.id}/lecture/${data.cours[0]?.id}`}>
       <div className="coursesCard -type-4 d-flex sm:d-block items-center border-light rounded-8 px-10 py-10">
         <div className="coursesCard__image rounded-8">
           {/* <Image
@@ -46,16 +46,16 @@ export default function CourseCardSix({ data, index }) {
             Titre du cours
           </div> */}
           <div className="text-17 lh-13 fw-500 text-dark-1 mt-10">
-            <Link className="linkCustom" href={`/course/${data.id}/lecture/${data.cours[0]?.id}`}>
+            <div className="linkCustom">
               {data.titre}
-            </Link>
+            </div>
           </div>
           <div className="progress sm:mt-10 mt-30" style={{width: "100%"}}>
             <div className="progress-bar" style={{width: "70%"}}></div>
           </div>
-          <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900">Cours n°1:</div> ...</div>
+          <div className="text-14 lh-1 t-10 text-light-1 mt-10"><div className="d-inline fw-900">Cours n°1:</div> {data.cours[0]?.titre}</div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

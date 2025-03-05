@@ -25,7 +25,7 @@ export default function CategoriesNine() {
               <h2 className="sectionTitle__title ">Top Categories</h2>
 
               <p className="sectionTitle__text ">
-              Here is ours top categorie course
+              Here is our top course categorie
               </p>
             </div>
           </div>

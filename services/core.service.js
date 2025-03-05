@@ -99,6 +99,47 @@ export const create_formation = async (credentials) => {
   return response 
 }
 
+export const update_formation = async (credentials) => {
+
+  const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
+  // console.log(token.refresh)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token.refresh}`,
+      'content-type' : 'multipart/form-data',
+      'Accept': 'application/json'
+    }
+  };
+
+  delete  credentials["cours"]
+  delete  credentials["categorie"]
+  delete  credentials["image"]
+
+  const id = Number(credentials["id"])
+
+  delete  credentials["id"]
+
+  const response = await URL.patch(`/formations/formations/${id}/`,
+    credentials,
+    config
+  )
+  .then((res) => {
+      console.log(res.status)
+      if(res.status == 201 || res.status == 200) {
+        return true
+      } else if(res.status == 400) {
+          return false
+      }
+  })
+    .catch((err) => {
+      return false
+    })
+
+  // console.log("RESPONSE", response)
+
+  return response 
+}
+
 export const get_formations = async () => {
 
   const token = JSON.parse(localStorage.getItem('NiI.sInR5'));

@@ -25,37 +25,48 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../common/PaginationTwo";
 import toast from "react-hot-toast";
-import { get_categories } from "@/services/core.service";
+import { get_categories, get_user_formations } from "@/services/core.service";
 import { retrive_course_infos } from "@/utils/course";
 
 export default function CourseList({idCategory}) {
 
   const [categories, setCategories] = useState([]);
   const [coursesData, setCoursesData] = useState([]);
+  const [idsToExclude, setIdsToExclude] = useState(null)
 
   useEffect(() => {
-    get_categories()
-      .then(res => {
-        let data = []
-        let courses_data = []
+    get_user_formations()
+      .then(response => {
+        if(!response) {
+          toast.error("An error occured")
+        } else {
+          get_categories()
+            .then(res => {
+              let data = []
+              let courses_data = []
 
-        for(let i = 0; i < res.length; i++) {
-          data.push({
-            id: `categories-list-${i}`,
-            title: res[i].titre
-          })
+              setIdsToExclude( new Set(response.map(item => item.id)) )
 
-          if(res[i].formations.length > 0)
-            courses_data.push(...retrive_course_infos(res[i].formations, res[i].titre))
+              for(let i = 0; i < res.length; i++) {
+                data.push({
+                  id: `categories-list-${i}`,
+                  title: res[i].titre
+                })
+
+                if(res[i].formations.length > 0)
+                  courses_data.push(...retrive_course_infos(res[i].formations, res[i].titre))
+              }
+
+              console.log("----------------->", data)
+
+              setCategories(data)
+              setCoursesData(courses_data)
+            }).catch(err => {
+              console.log(err)
+              toast.error("Geting categories make error")
+            })
+
         }
-
-        console.log("----------------->", data)
-
-        setCategories(data)
-        setCoursesData(courses_data)
-      }).catch(err => {
-        console.log(err)
-        toast.error("Geting categories make error")
       })
   }, [])
 
@@ -1730,8 +1741,8 @@ export default function CourseList({idCategory}) {
                     {sortedFilteredData
                     .slice((pageNumber - 1) * 7, pageNumber * 7)
                     .map((elm, i) => (
-                        <div key={i} className="col-12 border-bottom-light">
-                        <div className="coursesCard -type-1 row y-gap-20 flex-row items-center">
+                        <Link href={`/course/${elm.id}`} key={i} className="col-12 border-bottom-light">
+                          <div className="coursesCard -type-1 row y-gap-20 flex-row items-center">
                             <div className="col-xl-3 col-lg-4">
                             <div className="coursesCard__image rounded-8 relative">
                               <Image
@@ -1760,12 +1771,12 @@ export default function CourseList({idCategory}) {
                             </div>
 
                             <div className="col-xl-7 text-17 lh-15 fw-500 text-dark-1 mt-10">
-                                <Link
-                                className="linkCustom"
-                                href={`/course/${elm.id}`}
+                                <div
+                                  className="linkCustom"
+                                  href={`/course/${elm.id}`}
                                 >
-                                {elm.title}
-                                </Link>
+                                  {elm.title}
+                                </div>
                             </div>
                             <div className="mt-8">{elm.desc}</div>
 
@@ -1855,7 +1866,7 @@ export default function CourseList({idCategory}) {
                                 )}
                             </div>
                             <div className="row x-gap-20 y-gap-20 items-center pt-25">
-                                <div className="col-auto">
+                                {idsToExclude && !idsToExclude.has(elm.id) && <div className="col-auto">
                                   <button
                                       className="button h-50 px-30 -purple-3 text-purple-1"
                                       onClick={() => addCourseToCart(elm.id)}
@@ -1864,7 +1875,7 @@ export default function CourseList({idCategory}) {
                                       ? "Already Added"
                                       : "Add To Cart"}
                                   </button>
-                                </div>
+                                </div>}
                                 {/* <div className="col-auto">
                                   <button className="button size-50 rounded-full -purple-3 text-light-1">
                                       <div
@@ -1885,7 +1896,7 @@ export default function CourseList({idCategory}) {
                             </div>
                             </div>
                         </div>
-                        </div>
+                      </Link>
                     ))}
                 </div>
 

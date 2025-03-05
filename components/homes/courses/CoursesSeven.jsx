@@ -33,7 +33,7 @@ export default function CoursesSeven() {
         if(!res) {
           toast.error("An error occured")
         } else {
-          console.log("res  ____ ", res)
+          // console.log("res  ____ ", res)
           setPageItem(res)
         }
       })
@@ -58,7 +58,7 @@ export default function CoursesSeven() {
                 </h2>
 
                 <p className="sectionTitle__text ">
-                  You have {3} course in progress
+                  You have {pageItem.length} course in progress
                 </p>
               </div>
             </div>

@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import CurriculumDub from "./CurriculumDub";
 
 import {toast} from "react-hot-toast" 
-import { get_categories, get_one_formations } from "@/services/core.service";
+import { get_categories, get_one_formations, update_formation } from "@/services/core.service";
 
 const menuItems = [
     { id: 1, href: "#start", text: "Commencer", isActive: true },
@@ -97,8 +97,15 @@ export default function Listing({id}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    toast.success("Course information updated")
-    console.log(state)
+    update_formation(state)
+        .then(res => {
+            toast.success("Course information updated")
+            setState(res)
+        }).catch(err => {
+            console.log(err)
+            toast.error("something happen")
+        })
+
   };
 
   const handleAddLanguage = (e) => {

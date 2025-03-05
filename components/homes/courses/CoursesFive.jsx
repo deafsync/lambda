@@ -7,38 +7,80 @@ import { coursesData } from "@/data/courses";
 import { courseStates } from "@/data/courses";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { get_categories, get_user_formations } from "@/services/core.service";
+import { retrive_course_infos } from "@/utils/course";
+import toast from "react-hot-toast";
 
 export default function CoursesFive({ tabBtnStyle }) {
   const [showSlider, setShowSlider] = useState(false);
-  const [currentCourseState, setCurrentCourseState] = useState("All");
   const [pageItem, setPageItem] = useState([]);
-  useEffect(() => {
-    if (currentCourseState == "All") {
-      setPageItem(coursesData);
-    } else {
-      const filtered = coursesData.filter(
-        (elm) => elm.state == currentCourseState,
-      );
-      setPageItem(filtered);
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
     }
-  }, [currentCourseState]);
+  };
+
+  useEffect(() => {
+
+    get_user_formations()
+      .then(response => {
+        if(!response) {
+          toast.error("An error occured")
+        } else {
+          get_categories()
+          .then(categoryCourses => {
+            let courses_data = []
+
+            const idsToExclude = new Set(response.map(item => item.id));
+
+            const formationsList = []
+
+            for(const categoryCourse of categoryCourses) {
+              if(categoryCourse.formations) {
+                categoryCourse.formations = categoryCourse.formations.map(item => ({
+                  ...item,
+                  categoryTitle: categoryCourse.titre
+                }))
+                formationsList.push(...categoryCourse.formations)
+              }
+            }
+
+            let res = formationsList.filter(formation => !idsToExclude.has(formation.id) )
+    
+            for(let i = 0; i < res.length; i++) {
+              courses_data.push(...retrive_course_infos([res[i]], res[i].categoryTitle))
+            }
+        
+            setPageItem(courses_data.length > 1 ? shuffleArray(courses_data) : courses_data)
+          }).catch(err => {
+            console.log(err)
+            toast.error("Geting categories make error")
+          })
+        }
+      })
+      .catch(err => {
+        toast.error("Something happen")
+      })
+
+  }, []);
 
   useEffect(() => {
     setShowSlider(true);
   }, []);
   return (
-    <section className="layout-pt-lg layout-pb-md">
+    pageItem.length > 0 && <section className="layout-pt-lg layout-pb-md">
       <div className="container">
         <div className="tabs -pills js-tabs">
-          <div className="row y-gap-20 justify-between items-end">
-            <div className="col-auto">
+          <div className="row y-gap-20 justify-between items-end">            <div className="col-auto">
               <div className="sectionTitle ">
                 <h2 className="sectionTitle__title ">
                   Our recommended courses
                 </h2>
 
                 <p className="sectionTitle__text ">
-                  10+ unique online course list designs
+                  {pageItem.length} unique online course list designs
                 </p>
               </div>
             </div>

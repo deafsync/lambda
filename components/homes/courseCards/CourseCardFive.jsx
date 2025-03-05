@@ -73,9 +73,12 @@ export default function CourceCardFive({ data, index }) {
                     alt="icon"
                   />
                 </div>
-                <div className="text-14 lh-1">{`${Math.floor(
-                  data.duration / 60,
-                )}h ${Math.floor(data.duration % 60)}m`}</div>
+                <div className="text-14 lh-1">
+                  {`${Math.floor(
+                      data.duration / 60,
+                    ) > 0 ? `${Math.floor(
+                      data.duration / 60,
+                    )}h` : "" } ${Math.floor(data.duration % 60)}m`}</div>
               </div>
 
               <div className="d-flex items-center">
@@ -96,10 +99,11 @@ export default function CourceCardFive({ data, index }) {
                 <Image
                   width={30}
                   height={30}
-                  src={data.authorImageSrc}
+                  src={data.authorImageSrc ? data.authorImageSrc : "/assets/img/auth/img_2.png"}
                   alt="image"
                 />
-                <div>{data.authorName}</div>
+                {/* <div>{data.authorName}</div> */}
+                <div>Yao Ferdinand</div>
               </div>
 
               <div className="coursesCard-footer__price">

@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Overview({data}) {
   const [showMore, setShowMore] = useState(false);
-  const [will, setWill] = useState(data.will_learn.split("\\n"))
-  const [requis, setRequis] = useState(data.prerequis.split("\\n"))
+  const [will, setWill] = useState(data.will_learn.split(/\r?\n/))
+  const [requis, setRequis] = useState(data.prerequis.split(/\r?\n/))
 
   return (
     <div id="overview" className="pt-60 lg:pt-40 to-over">

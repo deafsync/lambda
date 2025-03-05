@@ -16,7 +16,7 @@ import Reviews from "./Reviews";
 import { lessonItems } from "@/data/aboutcourses";
 import { useContextElement } from "@/context/Context";
 import toast from "react-hot-toast";
-import { get_formations, get_formations_list, get_one_formations, get_user_formation } from "@/services/core.service";
+import { get_formations, get_formations_list, get_one_formations, get_user_formation, get_user_formations } from "@/services/core.service";
 import { data_formatter } from "@/utils/time";
 
 const menuItems = [
@@ -35,9 +35,20 @@ export default function CourseDetailsThree({ id }) {
   const pathname = usePathname()
 
   const [state, setState] = useState(null)
+  const [idsToExclude, setIdsToExclude] = useState(null)
 
   useEffect(() => {
-    console.log(id)
+
+    get_user_formations()
+    .then(response => {
+      if(!response) {
+        toast.error("An error occured")
+      } else {
+        setIdsToExclude(new Set(response.map(item => item.id)))
+      }
+    })
+
+
     get_formations_list()
       .then(res => {
         console.log("res  ____ ", res.filter(el => el.id == id)[0])
@@ -59,7 +70,6 @@ export default function CourseDetailsThree({ id }) {
   }
 
   // TODO: get API data and provide to children
-
 
   return (
     state && <div id="js-pin-container" className="js-pin-container relative">
@@ -136,8 +146,8 @@ export default function CourseDetailsThree({ id }) {
                   </div>
                 </div>
 
-                <div className="pt-20">
-                  {!true ? <button className="button -md -green-1 text-dark-1" onClick={handleContinue}>
+                {idsToExclude && !idsToExclude.has(Number(id)) && <div className="pt-20">
+                  {isAddedToCartCourses(id) ? <button className="button -md -green-1 text-dark-1" onClick={handleContinue}>
                     Already enroll
                   </button> : <button
                       className="button -md -green-1 text-dark-1"
@@ -145,7 +155,7 @@ export default function CourseDetailsThree({ id }) {
                     >
                       Enroll now
                     </button>}
-                </div>
+                </div>}
               </div>
             </div>
           </div>

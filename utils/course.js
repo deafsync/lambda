@@ -1,3 +1,5 @@
+import { duration } from "@mui/material"
+
 export const retrive_course_infos = (data, category, admin=false) => {
     /**
      * Get structed data from category course
@@ -40,7 +42,8 @@ export const retrive_course_infos = (data, category, admin=false) => {
                 title: data[i].titre,
                 language: data[i].langue,
                 dub_language: data[i].langue_dub,
-                id: data[i].id
+                id: data[i].id,
+                duration: data[i].cours.reduce((acc, cours) => acc + cours.duree, 0)
             })
         if(admin)
             infos.push({
@@ -55,11 +58,12 @@ export const retrive_course_infos = (data, category, admin=false) => {
                 title: data[i].titre,
                 language: data[i].langue,
                 dub_language: data[i].langue_dub,
-                id: data[i].id
+                id: data[i].id,
+                duration: data[i].cours.reduce((acc, cours) => acc + cours.duree, 0)
             })
     }
 
-    // console.log("INFOS  --> ", infos)
+    console.log("INFOS  --> ", infos)
     
     return infos
 

@@ -15,7 +15,6 @@ const ShopCart = () => {
     setCartProducts((pre) => [...pre.filter((elm) => elm !== item)]);
   };
   useEffect(() => {
-    console.log("-----> ", cartProducts)
     const sum = cartProducts.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.price * currentValue.quantity;
     }, 0);
@@ -40,7 +39,7 @@ const ShopCart = () => {
                 </div>
 
                 <div className="col">
-                  <div className="text-dark-1 lh-15">{elm.name}</div>
+                  <div className="text-dark-1 lh-15">{elm.titre}</div>
 
                   <div className="d-flex items-center mt-10">
                     <div className="lh-12 fw-500 line-through text-light-1 mr-10">
@@ -50,6 +49,7 @@ const ShopCart = () => {
                       ${elm.price}
                     </div>
                   </div>
+
                 </div>
               </div>
             </Link>

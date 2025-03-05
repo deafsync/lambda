@@ -43,13 +43,14 @@ const CourseCart = () => {
               href={`/courses/${elm.id}`}
               className="col"
             >
-              <div className="row x-gap-10 y-gap-10">
-                <div className="col-auto">
+              <div className="row x-gap-10 d-flex justify-center y-gap-10">
+                <div className="col-auto d-flex justify-center">
                   <Image
                     width={80}
                     height={80}
                     src={elm.image}
                     alt="image"
+                    style={{objectFit: "cover"}}
                   />
                 </div>
 
@@ -68,7 +69,7 @@ const CourseCart = () => {
                       </>
                     ) : (
                       <>
-                        <div></div>
+                        <div className="text-dark-1">{elm.titre}</div>
                         <div className="text-18 lh-12 fw-500 text-dark-1">
                           Free
                         </div>
@@ -105,7 +106,7 @@ const CourseCart = () => {
         </div>
 
         <div className="row x-gap-20 y-gap-10 pt-30">
-          {cartCourses.length && (
+          {cartCourses.length ? (
             <>
               <Link
                 href={"/course-cart"}
@@ -126,7 +127,7 @@ const CourseCart = () => {
                 </button>
               </Link>
             </>
-          )}
+          ) : null}
           {!cartCourses.length && (
             <>
               <Link

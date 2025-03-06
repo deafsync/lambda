@@ -102,12 +102,14 @@ export default function LessonItems({ rightPosition, id, course_id }) {
             </button>
           </form> */}
 
-          <div className="d-flex flex-column flex-md-row align-items-center justify-center mb-4 mb-md-4 px-3 px-md-4">
-            <div className="mb-2 mb-md-0 me-0 me-md-3">
+          <div className="d-flex flex-row align-items-center justify-center mb-4 mb-md-4">
+            <div className="">
               <b>
                 <div className="text-dark-1 fs-6 fs-md-5">
                   <span className="fs-4 text-17 me-1">🌐 </span> 
-                  <u>Course language:</u>
+                  <u>
+                    <span className="">Course language:</span>
+                  </u>
                 </div>
               </b>
             </div>
@@ -140,6 +142,9 @@ export default function LessonItems({ rightPosition, id, course_id }) {
                   className={`accordion__button py-20 px-30 bg-light-4`}
                   onClick={() => {
                     setOpenAccordion((pre) => !pre)
+                  }}
+                  style={{
+                    border: videoId == index ? "1px solid #000" : "1px solid #fff"
                   }}
                 >
                   <div className="d-flex items-center">

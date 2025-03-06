@@ -97,6 +97,8 @@ export default function Listing({id}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log("*************", state)
+
     update_formation(state)
         .then(res => {
             toast.success("Course information updated")

@@ -117,8 +117,6 @@ export const update_formation = async (credentials) => {
 
   const id = Number(credentials["id"])
 
-  delete  credentials["id"]
-
   const response = await URL.patch(`/formations/formations/${id}/`,
     credentials,
     config
@@ -126,7 +124,7 @@ export const update_formation = async (credentials) => {
   .then((res) => {
       console.log(res.status)
       if(res.status == 201 || res.status == 200) {
-        return true
+        return res.data
       } else if(res.status == 400) {
           return false
       }

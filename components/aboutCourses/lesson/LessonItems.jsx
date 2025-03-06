@@ -148,7 +148,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
                     </div>
                     <div className="d-flex flex-column">
                       <span 
-                        className="text-17 fw-500 ell text-dark-1"
+                        className="fw-500 text-dark-1 text-15"
                       >
                         {item.titre}
                       </span>

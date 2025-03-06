@@ -56,7 +56,7 @@ export default function Media({setActiveTab}) {
     }
 
 
-    console.log(state)
+    // console.log(state)
   };
 
   return (

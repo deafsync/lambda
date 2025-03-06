@@ -20,7 +20,7 @@ export default function CoursesTwo() {
         if(!response) {
           toast.error("An error occured")
         } else {
-          console.log("res  ____ ", response)
+          // console.log("res  ____ ", response)
 
           get_categories()
           .then(categoryCourses => {

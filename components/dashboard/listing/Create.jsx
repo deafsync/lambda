@@ -86,7 +86,7 @@ export default function Listing() {
 
     if(data.categorie == 0) {
       data["categorie"] = category[0].id
-      console.log("ID ", category[0].id)
+      // console.log("ID ", category[0].id)
     }
 
     create_formation(data)

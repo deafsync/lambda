@@ -54,7 +54,7 @@ export const otpCode = async (credentials) => {
 
     const response = await URL.get(`/accounts/auth/users/activation/${email.email}/${credentials.otp}/`)
     .then((res) => {
-        console.log(res.status)
+        // console.log(res.status)
         if(res.status == 201 || res.status == 200 ) {
           if(res.data.message != "Invalid activation code")
             return 1
@@ -76,7 +76,7 @@ export const login = async (credentials) => {
 
   const response = await URL.post(`/accounts/auth/jwt/create/`, credentials)
   .then((res) => {
-  console.log(res.status)
+  // console.log(res.status)
     if(res.status == 201 || res.status == 200) {
       localStorage.setItem('NiI.sInR5', JSON.stringify(res.data));
       return 1
@@ -102,7 +102,6 @@ export const login = async (credentials) => {
 
 export const logout = async () => {
   const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
-  console.log(token.refresh)
   const config = {
     headers: {
       'Authorization': `Bearer ${token.refresh}`,

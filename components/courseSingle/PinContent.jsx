@@ -20,7 +20,6 @@ export default function PinContent({ pageItem }) {
   const [duration, setDuration] = useState(1)
 
   useEffect(() => {
-    console.log(pageItem)
     if(pageItem)
       setDuration(pageItem.cours.reduce((acc, cour) => acc + cour.duree, 0));
   }, [pageItem])

@@ -10,7 +10,6 @@ export default function CourseCardSix({ data, index }) {
       setRating((pre) => [...pre, "star"]);
     }
   }, []);
-  console.log("-------------> DATA", data)
   return (
     <Link className="col" href={`/course/${data.id}/lecture/${data.cours[0]?.id}`}>
       <div className="coursesCard -type-4 d-flex sm:d-block items-center border-light rounded-8 px-10 py-10">

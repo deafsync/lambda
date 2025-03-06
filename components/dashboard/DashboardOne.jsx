@@ -62,7 +62,6 @@ export default function DashboardOne() {
   useEffect(() => {
     auth()
       .then(res => {
-        console.log(res, "  AUTH")
         if(!res)
           router.push('/login')
       })

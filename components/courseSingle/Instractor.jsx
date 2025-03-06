@@ -39,12 +39,12 @@ export default function Instractor({data}) {
 
               <div className="d-flex items-center text-light-1">
                 <div className="icon-person-3 text-13 mr-8"></div>
-                <div className="text-13 lh-1">1 Students</div>
+                <div className="text-13 lh-1">10 Students</div>
               </div>
 
               <div className="d-flex items-center text-light-1">
                 <div className="icon-wall-clock text-13 mr-8"></div>
-                <div className="text-13 lh-1">3 Course</div>
+                <div className="text-13 lh-1">3 Courses</div>
               </div>
             </div>
           </div>

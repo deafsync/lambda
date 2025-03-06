@@ -17,7 +17,6 @@ export default function CurriculumDub({language, id}) {
     get_one_formations(id)
       .then(res => {
         if(res) {
-          console.log("res ", res)
           setCv(res.cours)
         } else {
           toast.error("An error occured")

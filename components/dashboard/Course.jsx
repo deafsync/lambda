@@ -36,8 +36,7 @@ export default function MyCourses() {
   useEffect(() => {
     get_admin_formations()
       .then(res => {
-        console.log("--->", res)
-        // console.log("OOOO", ...retrive_course_infos(res, "", true))
+        // console.log("--->", res)
         setPageItems([...retrive_course_infos(res, "", true)]);
       }).catch(err => {
         console.log(err)

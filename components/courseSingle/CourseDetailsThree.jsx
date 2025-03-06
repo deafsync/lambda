@@ -27,7 +27,7 @@ const menuItems = [
 ];
 
 export default function CourseDetailsThree({ id }) {
-  const [pageItem, setPageItem] = useState(coursesData[0]);
+  const [pageItem, setPageItem] = useState(null);
 
   const { isAddedToCartCourses, addCourseToCart } = useContextElement();
 
@@ -51,7 +51,6 @@ export default function CourseDetailsThree({ id }) {
 
     get_formations_list()
       .then(res => {
-        console.log("res  ____ ", res.filter(el => el.id == id)[0])
         setState(res.filter(el => el.id == id)[0])
       }).catch(err => {
           console.log(err)
@@ -90,11 +89,11 @@ export default function CourseDetailsThree({ id }) {
                       NEW
                     </div>
                   </div>
-                  {/* <div>
+                  <div>
                     <div className="badge px-15 py-8 text-11 bg-blue-1 text-white fw-400">
                       POPULAR
                     </div>
-                  </div> */}
+                  </div>
                 </div>
 
                 <div>
@@ -116,14 +115,14 @@ export default function CourseDetailsThree({ id }) {
                       <Star star={pageItem.rating} textColor={"text-green-1"} />
                     </div>
                     <div className="text-14 lh-1 ml-10">
-                      ({7})
+                      ({1})
                     </div>
                   </div>
 
                   <div className="d-flex items-center text-white">
                     <div className="icon icon-person-3 text-13"></div>
                     <div className="text-14 ml-8">
-                      1 enrolled on this course
+                      7 enrolled on this course
                     </div>
                   </div>
 
@@ -137,7 +136,7 @@ export default function CourseDetailsThree({ id }) {
                   <div
                     className="bg-image size-30 rounded-full js-lazy"
                     style={{
-                      backgroundImage: `url(${pageItem.authorImageSrc})`,
+                      backgroundImage: `url(/assets/img/masthead/4.png)`, //${pageItem.authorImageSrc}
                     }}
                     data-bg="img/avatars/small-1.png"
                   ></div>
@@ -161,6 +160,7 @@ export default function CourseDetailsThree({ id }) {
           </div>
         </div>
       </section>
+
       <PinContent pageItem={state} />
 
       <section className="layout-pt-md layout-pb-md">

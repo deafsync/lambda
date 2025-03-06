@@ -17,8 +17,6 @@ export default function CourseContent({lessonItems}) {
     setVideoId(videoId)
   }
 
-  console.log("lessonItems ", lessonItems)
-
   return (
     <>
       <div id="course-content" className="pt-60 lg:pt-40">

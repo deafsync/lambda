@@ -20,7 +20,7 @@ export default function WhyCourse() {
                 data-aos="fade-up"
                 data-aos-duration={800}
               >
-                Lorem ipsum dolor sit amet, consectetur.
+                Our training guides you every step of the way, from learning to professional success.
               </p>
             </div>
           </div>

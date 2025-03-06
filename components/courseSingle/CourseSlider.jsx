@@ -66,8 +66,6 @@ export default function CourseSlider() {
 
   }, []);
 
-  console.log(pageItem)
-
   return (
     pageItem.length > 0 && <section className="layout-pt-md layout-pb-lg">
       <div className="container">
@@ -175,7 +173,8 @@ export default function CourseSlider() {
                                   alt="icon"
                                 />
                               </div>
-                              <div className="text-14 lh-1">{`${Math.floor(
+                              <div className="text-14 lh-1">
+                                {`${Math.floor(
                                 elm.duration / 60,
                               )}h ${Math.floor(elm.duration % 60)}m`}</div>
                             </div>

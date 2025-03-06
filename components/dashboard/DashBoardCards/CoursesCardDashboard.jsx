@@ -8,7 +8,6 @@ export default function CoursesCardDashboard({ data }) {
   const [activeShare, setActiveShare] = useState(false);
   const [rating, setRating] = useState([]);
 
-  console.log("****************", data.cours.length)
   
   useEffect(() => {
     for (let i = Math.floor(data.rating); i >= 1; i--) {

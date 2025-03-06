@@ -80,7 +80,7 @@ export default function Listing() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(state)
+    // console.log(state)
 
     let data = {...state}
 

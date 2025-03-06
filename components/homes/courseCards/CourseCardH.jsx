@@ -11,7 +11,6 @@ export default function CourseCardSix({ data, index }) {
     }
   }, []);
 
-  console.log("course ", data)
 
   return (
     <div className="col-12 course--hover">

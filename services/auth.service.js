@@ -24,7 +24,7 @@ export const signup = async (credentials) => {
 
     const response = await URL.post(`accounts/auth/`, credentials)
     .then((res) => {
-        console.log(res.status)
+        // console.log(res.status)
         if(res.status == 201 || res.status == 200) {
           localStorage.setItem('NiI.sInR5-cCI-6I?kpX', JSON.stringify(res.data));
 

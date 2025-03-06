@@ -59,8 +59,6 @@ export default function Curriculum({id}) {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log("----------------------", cv)
-
     for(let i = 0; i < cv.length; i++) {
       if(cv[i].video_url == "" || cv[i].titre == "" || cv[i].duree == 0.0) {
         toast.error("Your missed an input")

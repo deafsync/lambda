@@ -69,7 +69,7 @@ export default function AsideStudio({ id }) {
                     if(el.description == "original subtitles") {
                         setData(convertWebVTTToJsArray(subtitleText))
                     } else if(el.description == "dubbed subtitles") {
-                        console.log("----->------->------>", convertWebVTTToJsArray(subtitleText))
+                        // console.log("----->------->------>", convertWebVTTToJsArray(subtitleText))
                         setDataFr(convertWebVTTToJsArray(subtitleText))
                     }
 
@@ -79,7 +79,7 @@ export default function AsideStudio({ id }) {
                 setSub(data)
                 setState(res)
 
-                console.log("SUB ===> ", res.ressources.filter(el => el.type_ressource == "Subtitle"))
+                // console.log("SUB ===> ", res.ressources.filter(el => el.type_ressource == "Subtitle"))
             } else {
                 toast.error("An error occured")
             }
@@ -119,7 +119,7 @@ export default function AsideStudio({ id }) {
         }
     }
 
-    console.log(result)
+    // console.log(result)
 
     // TODO: SAVE UPDATE & check id updated
     if(result.length == 0) {

@@ -4,7 +4,7 @@ export const create_category = async (credentials) => {
 
     const response = await URL.post(`/formations/categorie_formations/`, credentials)
     .then((res) => {
-        console.log(res.status)
+        // console.log(res.status)
         if(res.status == 201) {
           return true
         } else if(res.status == 400) {
@@ -34,7 +34,7 @@ export const get_categories = async () => {
         return false
       })
 
-    console.log("RESPONSE", response)
+    // console.log("RESPONSE", response)
   
     return response 
 }
@@ -46,10 +46,8 @@ export const get_formations_number = async () => {
   const response = await URL.get(`/formations/categorie_formations/`)
   .then((res) => {
       if(res.status == 201 || res.status == 200) {
-        console.log(res.data.length)
         for(let i = 0; i < res.data.length; i++) {
           number += res.data[i].formations.length
-          console.log(res.data[i].formations.length)
         }
 
         return number
@@ -61,7 +59,7 @@ export const get_formations_number = async () => {
       return number
     })
 
-  console.log("RESPONSE Formation", response)
+  // console.log("RESPONSE Formation", response)
 
   return response 
 }
@@ -83,7 +81,7 @@ export const create_formation = async (credentials) => {
    config
   )
   .then((res) => {
-      console.log(res.status)
+      // console.log(res.status)
       if(res.status == 201 || res.status == 200) {
         return true
       } else if(res.status == 400) {
@@ -122,7 +120,7 @@ export const update_formation = async (credentials) => {
     config
   )
   .then((res) => {
-      console.log(res.status)
+      // console.log(res.status)
       if(res.status == 201 || res.status == 200) {
         return res.data
       } else if(res.status == 400) {
@@ -154,7 +152,7 @@ export const get_formations = async () => {
     config
   )
   .then((res) => {
-    console.log(res.data)
+    // console.log(res.data)
     if(res.status == 201 || res.status == 200) {
     return res.data
     } else if(res.status == 400) {
@@ -165,7 +163,7 @@ export const get_formations = async () => {
       return false
     })
 
-  console.log("RESPONSE", response)
+  // console.log("RESPONSE", response)
 
   return response 
 }
@@ -186,7 +184,7 @@ export const get_users_number = async () => {
       return number
     })
 
-  console.log("RESPONSE", response)
+  // console.log("RESPONSE", response)
 
   return response 
 }
@@ -207,7 +205,7 @@ export const get_admin_formations = async () => {
     config
   )
   .then((res) => {
-    console.log(res.data)
+    // console.log(res.data)
     if(res.status == 201 || res.status == 200) {
       return res.data
     } else if(res.status == 400) {
@@ -218,7 +216,7 @@ export const get_admin_formations = async () => {
       return false
     })
 
-  console.log("RESPONSE", response)
+  // console.log("RESPONSE", response)
 
   return response 
 }
@@ -248,7 +246,7 @@ export const get_one_formations = async (id) => {
       return false
     })
 
-  console.log("RESPONSE", response)
+  // console.log("RESPONSE", response)
 
   return response 
 }
@@ -268,7 +266,7 @@ export const create_course = async (credentials) => {
    config
   )
   .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       if(res.status == 201 || res.status == 200) {
         return true
       } else if(res.status == 400) {
@@ -299,7 +297,7 @@ export const get_course = async (id) => {
    config
   )
   .then((res) => {
-      console.log(res.status)
+      // console.log(res.status)
       if(res.status == 201 || res.status == 200) {
         return res.data
       } else if(res.status == 400) {
@@ -320,7 +318,7 @@ export const get_formations_list = async () => {
   const response = await URL.get(`/formations/categorie_formations/`)
   .then((res) => {
       if(res.status == 201 || res.status == 200) {
-        console.log(res.data)
+        // console.log(res.data)
         let data = []
         res.data.map(el => data.push(...el.formations))
         return data
@@ -332,7 +330,7 @@ export const get_formations_list = async () => {
       return false
     })
 
-  console.log("RESPONSE ??", response)
+  // console.log("RESPONSE ", response)
 
   return response 
 }
@@ -357,7 +355,7 @@ export const proceed_course = async (id) => {
    config
   )
     .then((res) => {
-        console.log(res.status)
+        // console.log(res.status)
         if(res.status == 201 || res.status == 200) {
           return res.data
         } else if(res.status == 400) {
@@ -387,7 +385,7 @@ export const get_user_formations = async () => {
   const response = await URL.get(`/formations/user_formations/`, config)
     .then((res) => {
         if(res.status == 201 || res.status == 200) {
-          console.log("------------------", res.data)
+          // console.log("------------------", res.data)
           let data = res.data.map(el => {
               if (!el.formation) {  
                   console.warn("⚠️ Formation null détectée pour l'élément :", el);
@@ -409,7 +407,7 @@ export const get_user_formations = async () => {
       return false
     })
 
-  console.log("RESPONSE USER FORMATION", response)
+  // console.log("RESPONSE USER FORMATION", response)
 
   return response 
 }
@@ -437,7 +435,7 @@ export const get_user_formation = async (id) => {
       return false
     })
 
-  console.log("RESPONSE USER FORMATION", response)
+  // console.log("RESPONSE USER FORMATION", response)
 
   return response 
 }

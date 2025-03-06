@@ -63,7 +63,7 @@ export const retrive_course_infos = (data, category, admin=false) => {
             })
     }
 
-    console.log("INFOS  --> ", infos)
+    // console.log("INFOS  --> ", infos)
     
     return infos
 

@@ -24,7 +24,7 @@ export default function OtpForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    console.log(state)
+    // console.log(state)
 
     otpCode(state)
         .then(res => {

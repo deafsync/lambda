@@ -44,7 +44,6 @@ export default function Header() {
       })
 
     get_user().then((res) => {
-      console.log("-------------------------------------->", res.staff)
       setStaff(res.staff)
     })
   }, [isLog])

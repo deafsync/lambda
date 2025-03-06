@@ -27,7 +27,7 @@ export default function SignUpForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state)
+    // console.log(state)
 
     if(state.password != state.password) {
       setError(1)

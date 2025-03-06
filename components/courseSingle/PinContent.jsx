@@ -5,10 +5,26 @@ import { useContextElement } from "@/context/Context";
 import ModalVideoComponent from "../common/ModalVideo";
 import Image from "next/image";
 
+const lang = {
+  "en": "English",
+  "fr": "French",
+  "yor": "Yoruba",
+  "fon": "Fon"
+}
+
 export default function PinContent({ pageItem }) {
   const { isAddedToCartCourses, addCourseToCart } = useContextElement();
   const [isOpen, setIsOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const [duration, setDuration] = useState(1)
+
+  useEffect(() => {
+    console.log(pageItem)
+    if(pageItem)
+      setDuration(pageItem.cours.reduce((acc, cour) => acc + cour.duree, 0));
+  }, [pageItem])
+
   // useEffect hook to update the screen width when the window is resized
   useEffect(() => {
     const handleResize = () => {
@@ -116,7 +132,13 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-clock-2"></div>
                   <div className="ml-10">Duration</div>
                 </div>
-                <div>1 Hours</div>
+                <div>
+                {`${Math.floor(
+                      duration / 60,
+                    ) > 0 ? `${Math.floor(
+                      duration / 60,
+                    )} h` : "" } ${Math.floor(duration % 60)} min`}
+                </div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">
@@ -132,7 +154,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-translate"></div>
                   <div className="ml-10">Language</div>
                 </div>
-                <div>{pageItem.langue}</div>
+                <div>{lang[pageItem.langue]}</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">
@@ -140,7 +162,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-translate"></div>
                   <div className="ml-10">Other languages</div>
                 </div>
-                <div>{pageItem.langue_dub}</div>
+                <div>{lang[pageItem.langue_dub]}</div>
               </div>
 
               <div className="d-flex justify-between py-8 border-top-light">

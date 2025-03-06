@@ -39,7 +39,7 @@ export default function page() {
 
         <WhyCourse/>
 
-        <Achievements/>
+        {/* <Achievements/> */}
 
         <LearningPaths/>            
 

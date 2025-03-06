@@ -42,7 +42,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
       .then(res => {
         setState(res)
 
-        console.log("RES", res)
+        // console.log("RES", res)
 
         setLanguage(lang_dic[res.langue])
 
@@ -75,7 +75,7 @@ export default function LessonItems({ rightPosition, id, course_id }) {
 
   const handleSwitchCourse = (id) => {
 
-    console.log("ID", id, dub)
+    // console.log("ID", id, dub)
 
     setVideoId(id)
     if(dub) {

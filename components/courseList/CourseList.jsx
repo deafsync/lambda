@@ -57,7 +57,7 @@ export default function CourseList({idCategory}) {
                   courses_data.push(...retrive_course_infos(res[i].formations, res[i].titre))
               }
 
-              console.log("----------------->", data)
+              // console.log("----------------->", data)
 
               setCategories(data)
               setCoursesData(courses_data)
@@ -260,8 +260,6 @@ export default function CourseList({idCategory}) {
   const handleFilterDuration = (item) => {
     setFilterDuration(item);
   };
-
-  console.log("FILTERED DATA", coursesData)
 
   return (
     <>

@@ -10,7 +10,7 @@ export function convertWebVTTToJsArray(webVTTString) {
       const parts = line.split(' --> ');
       if (parts.length !== 2) continue; // skip invalid lines
   
-      console.log(parts)
+      // console.log(parts)
       const [start, end] = parts.map(part => part.trim());
 
       let text = lines[i + 1].trim(); // get the text content

@@ -25,14 +25,13 @@ export default function Context({ children }) {
     useEffect(() => {
         get_formations_list()
             .then(res => {
-                console.log('-=-=-=-> ', res)
                 setCoursesData(res)
             })
     }, [])
 
     const addCourseToCart = (id)=>{
 
-        console.log("ID : " , id)
+        // console.log("ID : " , id)
 
         if (!cartCourses.filter((elm)=>elm.id == id)[0]) {
 

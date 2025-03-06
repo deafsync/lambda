@@ -42,7 +42,7 @@ export default function CourseCart() {
     setCartCourses((pre) => [...pre.filter((elm) => elm !== item)]);
   };
   useEffect(() => {
-    console.log("CART COURSE ----> ", cartCourses)
+    // console.log("CART COURSE ----> ", cartCourses)
     const sum = cartCourses.reduce((accumulator, currentValue) => {
       return accumulator + parseInt(currentValue.montant) * 1; //currentValue.quantity
     }, 0);

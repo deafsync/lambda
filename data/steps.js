@@ -3,19 +3,19 @@ export const steps = [
     id: 1,
     icon: "icon-online-learning-4 text-64 text-green-1",
     title: "01. Learn",
-    text: "Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.",
+    text: "Gain solid knowledge with interactive courses and passionate experts.",
   },
   {
     id: 2,
     icon: "icon-graduation-1 text-64 text-green-1",
     title: "02. Graduate",
-    text: "Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.",
+    text: "Validate your skills with recognized certifications and boost your career.",
   },
   {
     id: 3,
     icon: "icon-working-at-home-2 text-64 text-green-1",
     title: "03. Work",
-    text: "Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.",
+    text: "Apply your knowledge and access top professional opportunities.",
   },
 ];
 

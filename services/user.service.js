@@ -16,7 +16,7 @@ export const get_user = async () => {
 
     const response = await URL.get(`/accounts/auth/me/`, config)
     .then((res) => {
-        console.log(res.status)
+        // console.log(res.status)
         if(res.status == 201 || res.status == 200) {
           localStorage.setItem('NiI.sInR5-cCI-6I?kpX-@6I?kpX', JSON.stringify(res.data));
 
@@ -38,7 +38,7 @@ export const update_user = async (credentials) => {
 
     const previous = await get_user()
 
-    console.log(previous)
+    // console.log(previous)
 
     const token = JSON.parse(localStorage.getItem('NiI.sInR5'));
     // console.log(token.refresh)
@@ -56,7 +56,7 @@ export const update_user = async (credentials) => {
         password: ""
     }, config)
     .then((res) => {
-        console.log(res.status)
+        // console.log(res.status)
         if(res.status == 201 || res.status == 200) {
           return true
         } else if(res.status == 400) {
@@ -86,7 +86,7 @@ export const get_users = async () => {
       return false
     })
 
-  console.log("RESPONSE", response)
+  // console.log("RESPONSE", response)
 
   return response 
 }

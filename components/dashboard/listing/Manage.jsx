@@ -77,9 +77,6 @@ export default function Listing({id}) {
   useEffect(() => {
     get_one_formations(id.id)
         .then(res => {
-
-            console.log("****************", res)
-
             setState(res)
         }).catch(err => {
             console.log(err)
@@ -97,7 +94,7 @@ export default function Listing({id}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("*************", state)
+    // console.log("*************", state)
 
     update_formation(state)
         .then(res => {
@@ -119,7 +116,7 @@ export default function Listing({id}) {
         toast.success("Subtitle added")
     }
 
-    console.log(language)
+    // console.log(language)
   }
 
 

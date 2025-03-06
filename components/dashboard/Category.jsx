@@ -19,7 +19,6 @@ export default function Categories() {
   useEffect(() => {
     get_categories()
       .then(res => {
-        console.log("******************res  ____ ", res)
         if(res) {
           setCategories(res)
         }
@@ -36,7 +35,8 @@ export default function Categories() {
         toast.error('Somthing is missed')
     else
         toast.success('Course successfuly created')
-    console.log(state)
+    
+    // console.log(state)
 
     create_category(state)
       .then(res => {

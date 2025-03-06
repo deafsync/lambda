@@ -179,7 +179,7 @@ export default function MobileMenuHome({ setActiveMobileMenu, activeMobileMenu }
           </div>
         )} */}
 
-        <div className="py-20">
+        {/* <div className="py-20">
           <div className="d-none xl:d-flex -before-border py-3 pl-30 xl:pl-20 mr-10">
             <Link
               href="/dashboard"
@@ -188,7 +188,7 @@ export default function MobileMenuHome({ setActiveMobileMenu, activeMobileMenu }
               Enseigner
             </Link>
           </div>
-        </div>
+        </div> */}
 
         {/* mobile footer start */}
         <MobileFooter />

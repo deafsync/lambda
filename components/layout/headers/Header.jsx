@@ -104,17 +104,17 @@ export default function Header() {
             <div className="header-right d-flex items-center">
               <div className="header-right__icons d-flex items-center"> {/*text-white*/}
                 {/* <Menu allClasses={"menu__nav text-dark-1 -is-active"} /> */}
-                <MobileMenu
-                  setActiveMobileMenu={setActiveMobileMenu}
-                  activeMobileMenu={activeMobileMenu}
-                />
+               
+                {!isAuth ?
+                  <MobileMenu
+                    setActiveMobileMenu={setActiveMobileMenu}
+                    activeMobileMenu={activeMobileMenu}
+                  /> : <MobileMenuHome
+                    setActiveMobileMenu={setActiveMobileMenu}
+                    activeMobileMenu={activeMobileMenu}
+                  />}
 
-                {/* <MobileMenuHome
-                  setActiveMobileMenu={setActiveMobileMenu}
-                  activeMobileMenu={activeMobileMenu}
-                /> */}
-
-                <div className="d-none xl:d-block ml-20">
+                <div className="d-none md:d-block ml-20">
                   <button
                     onClick={() => setActiveMobileMenu(true)}
                     className="text-dark-1 items-center"

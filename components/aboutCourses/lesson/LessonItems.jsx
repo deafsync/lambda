@@ -102,16 +102,17 @@ export default function LessonItems({ rightPosition, id, course_id }) {
             </button>
           </form> */}
 
-        <div className="d-flex items-center mb-10 px-30">
-            
-            <b>
-              <div 
-                className="text-dark-1 mb-1 mr-15 text-17"
-              ><span className="text-30"></span> <u>Course language :</u></div>
-            </b>
+          <div className="d-flex flex-column flex-md-row align-items-center justify-center mb-4 mb-md-4 px-3 px-md-4">
+            <div className="mb-2 mb-md-0 me-0 me-md-3">
+              <b>
+                <div className="text-dark-1 fs-6 fs-md-5">
+                  <span className="fs-4 text-17 me-1">🌐 </span> 
+                  <u>Course language:</u>
+                </div>
+              </b>
+            </div>
 
-            <div className="relative inline-block">
-              {/* Select natif */}
+            <div className="position-relative">
               <select 
                 value={language}
                 onChange={(e) => {
@@ -119,13 +120,14 @@ export default function LessonItems({ rightPosition, id, course_id }) {
                   setLanguage(newLanguage);
                   handleSwitchLanguage(newLanguage === "English");
                 }}
-                className="appearance-none bg-white text-14 border-light rounded-8 px-20 py-10 pr-12 focus:outline-none cursor-pointer"
+                className="form-select border-light rounded-3 py-2 px-3 cursor-pointer"
+                aria-label="Select language"
               >
-                <option value="English">English</option>
-                <option value="Français">Français</option>
+                <option value="English">🇬🇧 English</option>
+                <option value="Français">🇫🇷 Français</option>
               </select>
             </div>
-        </div>
+          </div>
 
           <div className="accordion -block-2 text-left js-accordion">
             {state && state.cours.map((item, index) => (

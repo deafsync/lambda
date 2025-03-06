@@ -57,7 +57,7 @@ export default function HeaderTen({id}) {
             <div className="header-right d-flex items-center">
               <div className="header-right__buttons">
                 <a href={`/learning`} className="button -sm -rounded -white text-dark-1">
-                  Back to Course
+                  Back to learning
                 </a>
               </div>
             </div>
